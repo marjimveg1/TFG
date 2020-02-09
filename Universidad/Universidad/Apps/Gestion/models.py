@@ -4,19 +4,80 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-
-class Alumno(models.Model):
-    Apellido = models.CharField(max_length=35)
-    Nombre = models.CharField(max_length=35)
-
-    def NombreCompleto(self):
-        cadena = "{0} {1}"
-
-        return cadena.format(self.Apellido, self.Nombre)
-
-
-
+class Mama(models.Model):
+    nombre = models.CharField(max_length=25)
+    apellidos = models.CharField(max_length=40)
+    email = models.EmailField()
+    fechaNacimiento = models.DateField()
+    direccion = models.CharField(max_length=55)
+    fechaUltMens = models.DateField()
 
     def __str__(self):
-        return self.NombreCompleto()
-# Create your models here.
+        return self.nombre + " " + self.apellidos
+
+class Calendario (models.Model):
+    mama = models.OneToOneField(Mama, null=False, editable=False)
+
+class Fecha(models.Model):
+    titulo = models.CharField(max_length=25)
+    momentoInicio = models.DateTimeField ()
+    momentoFin = models.DateTimeField ()
+    calendario = models.ForeignKey(Calendario, on_delete=models.CASCADE, null=False, blank=False, editable=False)
+
+class Diario(models.Model):
+    mama = models.OneToOneField(Mama, null = False,  editable=False)
+
+    def __str__(self):
+        return self.titulo
+
+class Medida(models.Model):
+    fecha = models.DateField()
+    dBiparieta = models.IntegerField()
+    cAbdominal = models.IntegerField()
+    lFemur = models.IntegerField()
+    diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False, editable=False)
+
+
+class Fotografia(models.Model):
+    enlace = models.CharField(max_length=1000)
+    despription = models.CharField(max_length=1000, null=True, blank = True)
+    diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False, editable=False)
+
+
+class Patada(models.Model):
+    momento = models.DateTimeField ()
+    despription = models.CharField(max_length=1000, null=True, blank = True)
+    diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False, editable=False)
+
+class Tension(models.Model):
+    momento = models.DateTimeField ()
+    tSistolica = models.DecimalField(max_digits=4, decimal_places=2)
+    tDiastolica = models.DecimalField(max_digits=4, decimal_places=2)
+    diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False, editable=False)
+
+
+class Medicacion(models.Model):
+    medicamento = models.CharField(max_length=50)
+    fechaInicio = models.DateField()
+    fechaFin = models.DateField()
+    frecuencia = models.IntegerField()
+    diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False, editable=False)
+
+class Peso(models.Model):
+    tipo_choice = (
+        ('Madre', 'Madre'),
+        ('Bebe', 'Bebe')
+    )
+
+    fecha = models.DateField()
+    peso = models.DecimalField(max_digits=5, decimal_places=2)
+    tipo = models.CharField(max_length=100, choices=tipo_choice)
+    diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False,  editable=False)
+
+class Contraccion(models.Model):
+    momento = models.DateTimeField ()
+    despription = models.CharField(max_length=1000, null=True)
+    diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False,  editable=False)
+
+
+
