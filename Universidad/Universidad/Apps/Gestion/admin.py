@@ -7,7 +7,8 @@ from django.contrib import admin
 
 
 from django.contrib import admin
-from Universidad.Apps.Gestion.models import Mama, Diario, Calendario, Fecha,Medida,Fotografia,Patada,Tension,Medicacion,Peso,Contraccion
+from Universidad.Apps.Gestion.models import Mama, Diario, Calendario, \
+    Fecha, Medida, Fotografia, Patada, Tension, Medicacion, Peso, Contraccion
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
@@ -28,15 +29,6 @@ admin.site.register(Patada)
 admin.site.register(Tension)
 admin.site.register(Medicacion)
 admin.site.register(Contraccion)
-
-class UserAdmin(BaseUserAdmin):
-
-
-
-    list_display = ('Apellido', 'Nombre')
-    fieldsets = (
-        (None, {'fields': ('Apellido', 'Nombre')})
-    )
 
 
 admin.site.unregister(Group)

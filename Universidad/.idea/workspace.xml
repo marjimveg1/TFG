@@ -5,8 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Universidad.db" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/migrations/0008_delete_alumno.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +41,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Universidad/Apps/Gestion/static" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -87,29 +90,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="73" key="#Notifications/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577623822313" />
-    <state x="2594" y="280" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578936761417">
+    <state x="2594" y="280" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582197844368">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="539" y="222" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577623126139" />
-    <state x="2594" y="280" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578936761417" />
+    <state x="2594" y="280" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582197844368" />
     <state x="539" y="260" key="#com.intellij.tools.ToolEditorDialog" timestamp="1579454288514">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="539" y="260" key="#com.intellij.tools.ToolEditorDialog/0.0.1536.824@0.0.1536.824" timestamp="1579454288514" />
-    <state x="279" y="57" key="SettingsEditor" timestamp="1579454396613">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2269" y="72" key="SettingsEditor" timestamp="1582195415959">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="279" y="57" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577623811605" />
+    <state x="2269" y="72" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582195415959" />
     <state x="279" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1579454396613" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1579372765217">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579372765217" />
-    <state x="2516" y="302" key="com.intellij.ide.util.TipDialog" timestamp="1580555526664">
+    <state x="2516" y="302" key="com.intellij.ide.util.TipDialog" timestamp="1582197668256">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="477" y="239" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1580144723996" />
-    <state x="2516" y="302" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1580555526664" />
+    <state x="2516" y="302" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582197668256" />
     <state x="477" y="239" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1579453955430" />
     <state x="2691" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580056011263">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -123,5 +127,9 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2587" y="161" width="586" height="717" key="find.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1580058218175" />
+    <state x="2457" y="345" width="672" height="678" key="search.everywhere.popup" timestamp="1582197904287">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2457" y="345" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582197904287" />
   </component>
 </project>
