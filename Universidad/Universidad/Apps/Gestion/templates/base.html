@@ -32,16 +32,24 @@
           </div>
           <div class=" col-12 col-md-6 text-center ">
             <ul class="list-unstyled mb-0">
-              <li class="d-inline-block p-2"><a href="" style="color:#F2E8DA" class="lead"><strong>Inicio</strong></a></li>
-              <li class="d-inline-block p-2"><a href="" style="color:#F2E8DA" class="lead"><strong>Rebajas</strong></a></li>
-              <li class="d-inline-block p-2"><a href=""  style="color:#F2E8DA" class="lead"><strong>Inicio</strong></a></li>
+              <li class="d-inline-block p-2"><a href="/inicio" style="color:#F2E8DA" class="lead"><strong>Inicio</strong></a></li>
+              <li class="d-inline-block p-2"><a href=""  style="color:#F2E8DA" class="lead"><strong>Rueda Obstétrica</strong></a></li>
+              <li class="d-inline-block p-2"><a href=""  style="color:#F2E8DA" class="lead"><strong>Gráficas</strong></a></li>
+              {% if not user.is_authenticated %}
+              <li class="d-inline-block p-2"><a href="" style="color:#F2E8DA" class="lead"><strong>Iniciar Sesión</strong></a></li>
+              {% endif %}
+
+              {% if user.is_authenticated %}
+              <li class="d-inline-block p-2"><a href="" style="color:#F2E8DA" class="lead"><strong>Agenda</strong></a></li>
+               <li class="d-inline-block p-2"><a href="" style="color:#F2E8DA" class="lead"><strong>Diario</strong></a></li>
+               <li class="d-inline-block p-2"><a href="" style="color:#F2E8DA" class="lead"><strong>Cerrar Sesión</strong></a></li>
+              {% endif %}
+
             </ul>
           </div>
         </div>
       </div>
     </nav>
-
-
 
      {% block  contenido %}
      {% endblock %}
