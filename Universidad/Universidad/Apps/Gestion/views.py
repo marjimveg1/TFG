@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse
 
-
 from django.shortcuts import render, redirect
 from .forms import MamaCreateForm
 
@@ -17,10 +16,11 @@ def inicioSesion(request):
     return render(request, 'inicioSesion.html')
 
 
-#REGISTRO DE USUARIOS
+# REGISTRO DE USUARIOS
 def registro(request):
     if request.method == 'POST':
         form = MamaCreateForm(request.POST)
+        formtest = form;
         if form.is_valid():
             form.save()
             return redirect('/inicio/')
