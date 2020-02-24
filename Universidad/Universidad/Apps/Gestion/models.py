@@ -3,21 +3,31 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth.base_user import AbstractBaseUser
+from .managers import UserManager
 
-class Mama(models.Model):
-    nombre = models.CharField(max_length=25)
-    apellidos = models.CharField(max_length=40)
+
+#class Mama(models.Model):
+class User(AbstractBaseUser, PermissionsMixin):
+    nombre = models.CharField(max_length=50)
+    apellidos = models.CharField(max_length=60)
     email = models.EmailField()
     fechaNacimiento = models.DateField()
     direccion = models.CharField(max_length=55)
     fechaUltMens = models.DateField()
+    nickName = models.CharField(('Nick Name'), unique=True, max_length=50)
+
+    objects = UserManager()
+    USERNAME_FIELD = 'nickName'
+    REQUIRED_FIELDS = []
 
     def __str__(self):
         return self.nombre + " " + self.apellidos
 
 class Calendario (models.Model):
     nombre = models.CharField(max_length=25,default='SOME STRING')
-    mama = models.OneToOneField(Mama, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
 
 class Fecha(models.Model):
     titulo = models.CharField(max_length=25)
@@ -27,7 +37,7 @@ class Fecha(models.Model):
 
 class Diario(models.Model):
     nombre = models.CharField(max_length=25,default='SOME STRING')
-    mama = models.OneToOneField(Mama, null = False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
 
     def __str__(self):
         return self.titulo

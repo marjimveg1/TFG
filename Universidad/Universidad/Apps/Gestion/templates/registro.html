@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block contenido %}
+<style>
+      header{
+        background:url('../static/img/index/portada.jpg');
+        height: 50vh;
+        background-position: cover;
+        font-family: 'Delius Unicase', cursive;
+
+      }
+      header .titulo{
+        background: rgba(242,232,218,.7);
+      }
+      header .titulo h3{
+        color:#FFACB7!important;
+      }
+
+
+      }
+</style>
+
+
+<main>
+  <section>
+  <h2 class="nav justify-content-center">Sign up</h2>
+  <br>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+
+      </p>
+    {% endfor %}
+    <div class="text-center">
+    <button type="submit" class="btn btn-info">Sign up</button>
+    </div>
+  </form>
+</section>
+</main>
+
+{% endblock %}
