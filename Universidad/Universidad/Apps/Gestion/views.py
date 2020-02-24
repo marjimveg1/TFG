@@ -24,6 +24,8 @@ def registro(request):
         if form.is_valid():
             form.save()
             return redirect('/inicio/')
+        else:
+            return render(request, 'base.html', {'form': form})
     else:
         form = MamaCreateForm()
-        return render(request, 'registro.html', {'form': form})
+    return render(request, 'registro.html', {'form': form})

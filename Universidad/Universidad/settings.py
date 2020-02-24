@@ -39,14 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap',
+  #  'bootstrap',
     'Universidad.Apps.Gestion',
-    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
 
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -127,8 +125,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
-INTERNAL_IPS = [
 
-    '127.0.0.1',
-
-]
