@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca7193b5-e81b-450d-9714-454625284569" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad.db" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/managers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registro.html" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
