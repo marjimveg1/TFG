@@ -12,17 +12,18 @@ User = get_user_model()
 class MamaCreateForm(UserCreationForm):
     formato = ("Format: dd/mm/YYYY"),
 
-    nickName = forms.CharField(label=('Nick Name'), max_length=50, required=True)
+
     nombre = forms.CharField(label=('Nombre'), required=True)
     apellidos = forms.CharField(label=('Apellidos'), required=True)
     email = forms.CharField(label=('email'), required=True)
-    fechaNacimiento = forms.DateTimeField(label=('Fecha de nacimiento'), input_formats=['%d/%m/%Y'], help_text=formato, required=True)
-    fechaUltMens = forms.DateTimeField(label=('Ultima menstruacion'), input_formats=['%d/%m/%Y'], help_text=formato, required=True)
+    fechaNacimiento = forms.DateTimeField(label=('Fecha de nacimiento'), input_formats=['%d/%m/%Y'], help_text=formato, required=False)
     direccion = forms.CharField(label=('Direccion'), required=False)
+    fechaUltMens = forms.DateTimeField(label=('Ultima menstruacion'), input_formats=['%d/%m/%Y'], help_text=formato, required=True)
+    nickName = forms.CharField(label=('Nick Name'), max_length=50, required=True)
 
     class Meta:
         model = User
-        fields = ("nickName","nombre", "apellidos", "email", "fechaNacimiento", "fechaUltMens","direccion", "password1", "password2")
+        fields = ( "nombre", "apellidos",  "email", "fechaNacimiento","direccion","fechaUltMens","nickName","password1", "password2")
 
     def save(self):
         user = super(MamaCreateForm, self).save(commit=False)

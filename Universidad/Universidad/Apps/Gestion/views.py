@@ -20,12 +20,9 @@ def inicioSesion(request):
 def registro(request):
     if request.method == 'POST':
         form = MamaCreateForm(request.POST)
-        formtest = form;
         if form.is_valid():
             form.save()
             return redirect('/inicio/')
-        else:
-            return render(request, 'base.html', {'form': form})
     else:
         form = MamaCreateForm()
     return render(request, 'registro.html', {'form': form})

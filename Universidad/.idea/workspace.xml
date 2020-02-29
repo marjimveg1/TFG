@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca7193b5-e81b-450d-9714-454625284569" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Universidad.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Universidad.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad.db" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/managers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registro.html" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registro.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,17 +41,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/manage.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\maria\PycharmProjects\Universidad\Universidad\Apps\Gestion" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Github_Repositorios\TFG\Universidad\Universidad\Apps\Gestion\templates" />
       <recent name="D:\Github_Repositorios\TFG\Universidad\Universidad\Apps\Gestion\static" />
       <recent name="C:\Users\maria\PycharmProjects\Universidad\Universidad\Apps\Gestion\templates" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\maria\PycharmProjects\Universidad\Universidad\Apps\Gestion" />
     </key>
   </component>
   <component name="RunManager" selected="Python.proyecto">
@@ -194,11 +199,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579372765217" />
-    <state x="2516" y="302" key="com.intellij.ide.util.TipDialog" timestamp="1582538591426">
+    <state x="2516" y="302" key="com.intellij.ide.util.TipDialog" timestamp="1582992424004">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="477" y="239" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1580144723996" />
-    <state x="2516" y="302" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582538591426" />
+    <state x="2516" y="302" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582992424004" />
     <state x="477" y="239" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1579453955430" />
     <state x="2691" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580056011263">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -220,16 +225,5 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2457" y="345" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582197904287" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Universidad/Apps/Gestion/views.py</url>
-          <line>22</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

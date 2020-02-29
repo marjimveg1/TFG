@@ -11,9 +11,9 @@ from .managers import UserManager
 #class Mama(models.Model):
 class User(AbstractBaseUser, PermissionsMixin):
     nombre = models.CharField(max_length=50)
-    apellidos = models.CharField(max_length=60)
+    apellidos = models.CharField(max_length=60, null=True)
     email = models.EmailField()
-    fechaNacimiento = models.DateField()
+    fechaNacimiento = models.DateTimeField()
     direccion = models.CharField(max_length=55)
     fechaUltMens = models.DateField()
     nickName = models.CharField(('Nick Name'), unique=True, max_length=50)
@@ -23,7 +23,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.nombre + " " + self.apellidos
+        return self.nickName
 
 class Calendario (models.Model):
     nombre = models.CharField(max_length=25,default='SOME STRING')
