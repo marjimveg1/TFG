@@ -13,7 +13,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     nombre = models.CharField(max_length=50)
     apellidos = models.CharField(max_length=60, null=True)
     email = models.EmailField()
-    fechaNacimiento = models.DateTimeField()
+    fechaNacimiento = models.DateField()
     direccion = models.CharField(max_length=55)
     fechaUltMens = models.DateField()
     nickName = models.CharField(('Nick Name'), unique=True, max_length=50)

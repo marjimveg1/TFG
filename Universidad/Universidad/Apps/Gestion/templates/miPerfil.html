@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block contenido %}
+<style>
+      header{
+        background:url('../static/img/index/portada.jpg');
+        height: 50vh;
+        background-position: cover;
+        font-family: 'Delius Unicase', cursive;
+
+      }
+      header .titulo{
+        background: rgba(242,232,218,.7);
+      }
+      header .titulo h3{
+        color:#FFACB7!important;
+      }
+
+
+      }
+</style>
+
+
+<main>
+   <h2 class="nav justify-content-center">Mi perfil</h2>
+
+    <br>
+    <strong>Nombre de usuario: </strong>{{ user.nickName }}
+    <br>
+    <strong>Nombre: </strong>{{ user.nombre }}
+    <br>
+    <strong>Apellidos: </strong>{{ user.apellidos }}
+    <br>
+    <strong>Email: </strong>{{ user.email }}
+    <br>
+    <strong>Dirección: </strong>{{ user.direccion }}
+    <br>
+    <strong>Fecha de nacimiento: </strong>{{ user.fechaNacimiento }}
+    <br>
+    <strong>Fecha última menstruación: </strong>{{ user.fechaUltMens }}
+     <br>
+     <a href="/cambiarContra"  >Cambiar contraseña</a>
+     <br>
+      <br>
+
+      	<input   class="btn btn-info btn-sm" type="button" value="Edit profile" onclick="window.location='/editarPerfil/{{user.id}}'"></input>
+      	<input   class="btn btn-danger btn-sm" type="button" value="Delete profile" onclick="window.location='/borrarUsuario/{{user.id}}'"></input>
+</main>
+
+{% endblock %}

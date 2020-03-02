@@ -28,13 +28,19 @@
       <div class="container-fluid">
         <div class="row align-items-center p-3">
           <div class="col-12 col-md-6 text-center">
-            <img  src="../static/img/index/2.png" alt="Logo"  class="img-fluid">
+          <a title="Inicio" href="/inicio">
+            <img  src="../static/img/index/2.png" alt="Logo" class="img-fluid">
+          </a>
           </div>
           <div class=" col-12 col-md-6 text-center ">
             <ul class="list-unstyled mb-0">
+              {% if not user.is_authenticated %}
               <li class="d-inline-block p-2"><a href="/inicio" style="color:#F2E8DA" class="lead"><strong>Inicio</strong></a></li>
+              {% endif %}
+
               <li class="d-inline-block p-2"><a href=""  style="color:#F2E8DA" class="lead"><strong>Rueda Obstétrica</strong></a></li>
               <li class="d-inline-block p-2"><a href=""  style="color:#F2E8DA" class="lead"><strong>Gráficas</strong></a></li>
+
               {% if not user.is_authenticated %}
               <li class="d-inline-block p-2"><a href="/inicioSesion" style="color:#F2E8DA" class="lead"><strong>Iniciar Sesión</strong></a></li>
               {% endif %}
@@ -42,7 +48,8 @@
               {% if user.is_authenticated %}
               <li class="d-inline-block p-2"><a href="" style="color:#F2E8DA" class="lead"><strong>Agenda</strong></a></li>
                <li class="d-inline-block p-2"><a href="" style="color:#F2E8DA" class="lead"><strong>Diario</strong></a></li>
-               <li class="d-inline-block p-2"><a href="" style="color:#F2E8DA" class="lead"><strong>Cerrar Sesión</strong></a></li>
+               <li class="d-inline-block p-2"><a href="/miPerfil" style="color:#F2E8DA" class="lead"><strong>Mi Perfil</strong></a></li>
+               <li class="d-inline-block p-2"><a href="/cerrarSesion" style="color:#F2E8DA" class="lead"><strong>Cerrar Sesión</strong></a></li>
               {% endif %}
 
             </ul>
@@ -69,6 +76,8 @@
   {% endblock %}
   </body>
 
+
+<br><br><br>
 <footer class="bg-secondary text-center py-3 position">
       <p class="lead mb-0 text-light">Trabajo Fin de Grado. María Jiménez Vega.</p>
 </footer>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block contenido %}
+<section>
+    <h2 class="nav justify-content-center">Inicio sesión</h2>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="nav justify-content-center">
+        <button type="submit" class="btn btn-info">Iniciar sesión</button>
+            </div>
+    </form>
+
+     <a href="/registro"  >Registrarme</a>
+    <br>
+    <br>
+
+</section>
+{% endblock %}

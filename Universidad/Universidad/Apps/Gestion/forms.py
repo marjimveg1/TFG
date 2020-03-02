@@ -54,3 +54,12 @@ class MamaCreateForm(UserCreationForm):
             now = timezone.now()
             if year_birth > now:
                 self.add_error('year_birth', ('Np ìede ser futuro'))
+
+
+class EditarPerfilForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('nickName','nombre','apellidos','direccion','fechaNacimiento', 'fechaUltMens')
+
+    def clean_password(self):
+        return self.initial["password"]
