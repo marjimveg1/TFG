@@ -2,21 +2,26 @@
 {% load i18n static %}
 
 {% block contenido %}
-<section>
-    <h2 class="nav justify-content-center">Inicio sesión</h2>
-    <br>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
 
-        <div class="nav justify-content-center">
-        <button type="submit" class="btn btn-info">Iniciar sesión</button>
-            </div>
-    </form>
+<div class="border m-5 p-4 text-center formulario">
+    <h3>Inicio sesión</h3>
+    <form method="post" class= "px-4 py-3">
 
-     <a href="/registro"  >Registrarme</a>
-    <br>
-    <br>
+           {% csrf_token %}
+           {{ form.as_p }}
 
-</section>
+
+
+                <button type="submit" class="btn btn-info">Iniciar sesión</button>
+
+      </form>
+
+
+
+ <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="/registro">¿Nuevo aqui? Registrate</a>
+  <a class="dropdown-item" href="#">¿Olvidate tu contraseña?</a>
+
+
+</div>
 {% endblock %}

@@ -2,29 +2,12 @@
 {% load i18n static %}
 
 {% block contenido %}
-<style>
-      header{
-        background:url('../static/img/index/portada.jpg');
-        height: 50vh;
-        background-position: cover;
-        font-family: 'Delius Unicase', cursive;
-
-      }
-      header .titulo{
-        background: rgba(242,232,218,.7);
-      }
-      header .titulo h3{
-        color:#FFACB7!important;
-      }
 
 
-      }
-</style>
 
-
-<main>
-   <h2 class="nav justify-content-center">Mi perfil</h2>
-
+<div class="m-5 p-4  display">
+   <h2 class="nav">Mi perfil</h2>
+ <div class="dropdown-divider"></div>
     <br>
     <strong>Nombre de usuario: </strong>{{ user.nickName }}
     <br>
@@ -46,6 +29,7 @@
 
       	<input   class="btn btn-info btn-sm" type="button" value="Edit profile" onclick="window.location='/editarPerfil/{{user.id}}'"></input>
       	<input   class="btn btn-danger btn-sm" type="button" value="Delete profile" onclick="window.location='/borrarUsuario/{{user.id}}'"></input>
-</main>
+</div>>
+
 
 {% endblock %}

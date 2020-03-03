@@ -1,35 +1,25 @@
-header{
+
+
+ #headerInicio{
         background:url('../../img/index/portada.jpg');
-        height: 100vh;
+        height: 50vh;
         background-position: cover;
         font-family: 'Delius Unicase', cursive;
 
+      }
+       .titulo{
+        background: rgba(242,232,218,.7);
+      }
+       .titulo h3{
+        color:#FFACB7!important;
+      }
+.formulario{
+        background-color: #FFFAFA ;
+}
 
-      }
-      header .titulo{
-        background: rgba(255,255,255,.7);
-      }
-
-      header .titulo h1{
-        color:#e4ab9a!important;
-      }
-      h2{
-        background:#e4ab9a;
-        color:#fff;
-        font-family: 'Delius Unicase', cursive;
-      }
-      .precio{
-        color:#e4ab9a;
-      }
-      .btnRosa{
-        background:#e4ab9a;
-        border:1px solid #e4ab9a;
-      }
-      .btnWhats{
-        width: 70px;
-        bottom: 20px;
-        right: 20px;
-      }
+.display{
+        background-color: #FFFFF ;
+}
 
 /*
 FFACB7 (rosa)
@@ -37,4 +27,5 @@ C1D1DD (negro)
 0A0C1C (celeste)
 89182F (burdeos)
 F2E8DA (vainilla)
+FFFAFA (rosa formulario)
 */
