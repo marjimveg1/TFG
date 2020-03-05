@@ -6,8 +6,9 @@
 
 <div class="border m-5 p-4  formulario">
   <h2 class="nav justify-content-center">Registro</h2>
+   <div class="dropdown-divider"></div>
   <br>
-  <form method="post">
+  <form method="post"  class= "px-4 py-3">
     {% csrf_token %}
     {% for field in form %}
       <p>

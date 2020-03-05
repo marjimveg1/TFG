@@ -21,6 +21,13 @@
         background-color: #FFFFF ;
 }
 
+.menuInicio{
+
+    color: #6c757d;
+}
+.menuInicio:hover{
+color:#FFFAFA;
+}
 /*
 FFACB7 (rosa)
 C1D1DD (negro)
