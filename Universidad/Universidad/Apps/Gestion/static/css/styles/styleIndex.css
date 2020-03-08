@@ -1,4 +1,10 @@
 
+.btn{
+     background-color: #6C757D;
+     border: none;
+     display: inline-block;
+}
+
 
  #headerInicio{
         background:url('../../img/index/portada.jpg');
@@ -15,6 +21,11 @@
       }
 .formulario{
         background-color: #FFFAFA ;
+        width: device-width;
+        justify-content: center;
+        margin-right:auto;
+        text-align:center;
+        display:inline-block;
 }
 
 .display{
@@ -30,9 +41,52 @@ color:#FFFAFA;
 }
 /*
 FFACB7 (rosa)
-C1D1DD (negro)
-0A0C1C (celeste)
+C1D1DD (CELESTE)
+0A0C1C (negro)
 89182F (burdeos)
 F2E8DA (vainilla)
 FFFAFA (rosa formulario)
+6C757D (gris pie)
 */
+
+
+/* Style inputs, select elements and textareas */
+input[type=text], select, textarea{
+  width: device-width;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+input[type=password]{
+  width: device-width;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+
+
+
+}
