@@ -7,9 +7,9 @@
 
 
  #headerInicio{
-        background:url('../../img/index/portada.jpg');
+        background:url('../../img/index/portadaL.jpg');
         height: 50vh;
-        background-position: cover;
+        background-position: center;
         font-family: 'Delius Unicase', cursive;
 
       }
@@ -85,7 +85,6 @@ input[type=submit] {
   cursor: pointer;
   float: right;
 }
-
 
 
 
