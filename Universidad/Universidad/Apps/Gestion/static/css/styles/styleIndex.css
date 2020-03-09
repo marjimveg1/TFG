@@ -12,12 +12,13 @@
         font-family: 'Delius Unicase', cursive;
 
       }
-       .titulo{
-        background: rgba(255,255, 255,.6);
-      }
-       .titulo h3{
+.titulo{
+     background: rgba(255,255, 255,.6);
+}
+.titulo h3{
         color:#FFC3BA!important;
-      }
+}
+
 .formulario{
         background-color: #FFFAFA ;
         width: device-width;
@@ -38,15 +39,7 @@
 .menuInicio:hover{
 color:#6C757D;
 }
-/*
-FFACB7 (rosa)
-C1D1DD (CELESTE)
-0A0C1C (negro)
-89182F (burdeos)
-F2E8DA (vainilla)
-FFFAFA (rosa formulario)
-6C757D (gris pie)
-*/
+
 
 
 /* Style inputs, select elements and textareas */
@@ -88,4 +81,20 @@ input[type=submit] {
 
 
 
+.navbar-nav .dropdown-menu {
+     background-color: #FFC3BA;
 }
+
+.navbar-light .navbar-nav .nav-link {
+    color: #6C757D;
+}
+
+/*
+FFACB7 (rosa)
+C1D1DD (CELESTE)
+0A0C1C (negro)
+89182F (burdeos)
+F2E8DA (vainilla)
+FFFAFA (rosa formulario)
+6C757D (gris pie)
+*/
