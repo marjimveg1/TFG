@@ -6,18 +6,17 @@
 }
 
 
- #headerInicio{
-        background:url('../../img/index/portadaL.jpg');
-        height: 50vh;
-        background-position: center;
+#headerInicio{
+
+        background-position: cover;
         font-family: 'Delius Unicase', cursive;
 
       }
        .titulo{
-        background: rgba(242,232,218,.7);
+        background: rgba(255,255, 255,.6);
       }
        .titulo h3{
-        color:#FFACB7!important;
+        color:#FFC3BA!important;
       }
 .formulario{
         background-color: #FFFAFA ;
@@ -34,10 +33,10 @@
 
 .menuInicio{
 
-    color: #6c757d;
+    color: #6C757D;
 }
 .menuInicio:hover{
-color:#FFFAFA;
+color:#6C757D;
 }
 /*
 FFACB7 (rosa)
@@ -85,6 +84,7 @@ input[type=submit] {
   cursor: pointer;
   float: right;
 }
+
 
 
 

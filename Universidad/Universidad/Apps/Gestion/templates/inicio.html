@@ -4,26 +4,58 @@
 {% block contenido %}
 
 <header id="headerInicio">
-      <div class="container h-100">
+      <div  class="container h-100 mt-2">
         <div class="row h-100">
-          <div class="col-12 align-self-center text-center titulo shadow">
-            <h3  style="font-size:8vw;" class="display-1">Cuanrenta Semanas</h3>
+             <div class="col-12 align-self-center text-center titulo shadow">
+                 <h3  style="font-size:8vw;" class="display-1">Cuarenta Semanas</h3></div>
+
 <style>
-       
-        @media only screen and (max-width: 769px) {
+    #headerInicio {
+            background-color: #FFC3BA;
+            height: 100px;
+
+            }
+ @media only screen and (min-width: 400px) {
             #headerInicio {
-            background-image: url("../../static/img/index/portadaS.jpg");
+            height: 175px;
+
             }
 
         }
-        @media only screen and (max-width: 970px) {
+
+
+        @media only screen and (min-width: 579px) {
             #headerInicio {
-            background-image: url("../../static/img/index/portadaM.jpg");
+            height: 225px;
+
             }
+
+        }
+
+        @media only screen and (min-width: 768px) {
+            #headerInicio {
+
+            height: 275px;
+
             }
-        </style>
+
+        }
+
+         @media only screen and (min-width: 991px) {
+            #headerInicio {
+            height: 325px;
+
+            }
+
+        }
+
+
+
+
+
+
+</style>
           </div>
-        </div>
       </div>
 </header>
 
