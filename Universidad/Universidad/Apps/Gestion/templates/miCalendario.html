@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block contenido %}
+
+<div>
+    <br><br><br><br><br>
+     {% for fecha in fechas%}
+
+
+{{ fecha.momentoInicio }}
+{% endfor %}
+
+</div>
+
+
+{% endblock %}

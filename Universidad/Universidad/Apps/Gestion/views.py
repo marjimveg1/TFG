@@ -6,7 +6,9 @@ from .forms import MamaCreateForm, EditarPerfilForm
 from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
-
+import psycopg2;
+from Universidad.Apps.Gestion.models import User, Diario, Calendario, \
+    Fecha, Medida, Fotografia, Patada, Tension, Medicacion, Peso, Contraccion
 
 
 # Create your views here.
@@ -74,3 +76,21 @@ def registro(request):
     else:
         form = MamaCreateForm()
     return render(request, 'registro.html', {'form': form})
+
+# CALENDARIO
+def miCalendario(request):
+    if request.user.is_authenticated:
+        user = request.user
+        fechas = Fecha.objects.filter(calendario = (Calendario.objects.filter(user = user)[0]))
+
+        return render(request, 'miCalendario.html', {"fechas": fechas})
+
+#def crearCalendario(request):
+#    if request.method == 'POST':
+#        form = FechaCreateForm(request.POST)
+#        if form.is_valid():
+#            form.save()
+#            return redirect('/miCalendario/')
+#    else:
+#        form = FechaCreateForm()
+#    return render(request, 'registro.html', {'form': form})

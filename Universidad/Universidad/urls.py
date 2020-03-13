@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from Universidad.Apps.Gestion.views import inicio, inicioSesion, registro, miPerfil, editarPerfil, borrarUsuario, cambiar_contra
+from Universidad.Apps.Gestion.views import inicio, inicioSesion, registro, miPerfil, editarPerfil, borrarUsuario, cambiar_contra, miCalendario
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls import url, re_path
@@ -30,6 +30,8 @@ urlpatterns = [
     url(r'editarPerfil/(?P<id_user>\d+)', editarPerfil),
     url(r'borrarUsuario/(?P<id_user>\d+)', borrarUsuario),
     url(r'cambiarContra/$', cambiar_contra, name='cambiarContra'),
+
+    url('miCalendario/',miCalendario),
 
     url('inicioSesion/', auth_views.LoginView.as_view()),
     url('cerrarSesion/', auth_views.LogoutView.as_view(), name='logout'),
