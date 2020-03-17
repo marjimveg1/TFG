@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b559192-cc1d-4e7a-9100-f193a3f700fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/error.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/miPerfil.html" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/miPerfil.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/miCalendario.html" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/miCalendario.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Universidad/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/urls.py" afterDir="false" />
     </list>

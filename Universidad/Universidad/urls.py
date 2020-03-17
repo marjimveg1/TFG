@@ -34,7 +34,6 @@ urlpatterns = [
 
     url('miCalendario/',miCalendario, name='miCalendario'),
     url('anadirFecha/',crearFechaCalendario, name='anadirFecha'),
-    url('miCalendario1/',miCalendario1, name='anadirFecha'),
 
     url('inicioSesion/', auth_views.LoginView.as_view(), name='inicioSesion'),
     url('cerrarSesion/', auth_views.LogoutView.as_view(), name='logout'),
