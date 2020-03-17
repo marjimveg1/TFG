@@ -16,7 +16,6 @@ from .models import *
 from django import template
 from datetime import date, timedelta
 from .models import Fecha
-from .utils import Calendar
 
 
 from datetime import datetime, date
@@ -126,19 +125,18 @@ def crearFechaCalendario(request):
 
 
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
 
         # use today's date for the calendar
-        d = get_date(self.request.GET.get('day', None))
-
-        # Instantiate our calendar class with today's year and date
-        cal = Calendar(d.year, d.month)
+    d = get_date(self.request.GET.get('day', None))
+       # Instantiate our calendar class with today's year and date
+    cal = Calendar(d.year, d.month)
 
         # Call the formatmonth method, which returns our calendar as a table
-        html_cal = cal.formatmonth(withyear=True)
-        context['calendar'] = mark_safe(html_cal)
-        return context
+    html_cal = cal.formatmonth(withyear=True)
+    context['calendar'] = mark_safe(html_cal)
+    return context
 
 
 def get_date(req_day):
@@ -196,20 +194,4 @@ def EntradasDia(request):
     return render(request,'cal_mes.html', {'calendar': cal_mes, 'headers': week_headers})
 
 
-class CalendarView(ListView):
-    model = Fecha
-    template_name = 'calendar.html'
-    success_url = reverse_lazy('calendar')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        d = get_date(self.request.GET.get('month', None))
-        prev_month = int(d.strftime('%m')) -1
-        next_month = int(d.strftime('%m')) + 1
-        cal = Calendar(d.year, d.month)
-        html_cal = cal.formatmonth(withyear=True)
-        context['calendar'] = mark_safe(html_cal)
-        context['prev_month'] = prev_month
-        context['next_month'] = next_month
-        return context
 
