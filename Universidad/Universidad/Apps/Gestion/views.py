@@ -9,11 +9,14 @@ from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.views.generic import DayArchiveView, YearArchiveView, TodayArchiveView
+from django.urls import reverse_lazy
+import calendar
 
 from .models import *
 from django import template
 from datetime import date, timedelta
 from .models import Fecha
+from .utils import Calendar
 
 
 from datetime import datetime, date
@@ -193,3 +196,21 @@ def EntradasDia(request):
     print(week_headers)
 
     return render(request,'cal_mes.html', {'calendar': cal_mes, 'headers': week_headers})
+
+
+class CalendarView(ListView):
+    model = Fecha
+    template_name = 'calendar.html'
+    success_url = reverse_lazy('calendar')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        d = get_date(self.request.GET.get('month', None))
+        prev_month = int(d.strftime('%m')) -1
+        next_month = int(d.strftime('%m')) + 1
+        cal = Calendar(d.year, d.month)
+        html_cal = cal.formatmonth(withyear=True)
+        context['calendar'] = mark_safe(html_cal)
+        context['prev_month'] = prev_month
+        context['next_month'] = next_month
+        return context

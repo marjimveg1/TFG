@@ -6,7 +6,7 @@ from django.db import models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 from .managers import UserManager
-
+from django.urls import reverse
 
 #class Mama(models.Model):
 class User(AbstractBaseUser, PermissionsMixin):
@@ -34,6 +34,11 @@ class Fecha(models.Model):
     momentoInicio = models.DateTimeField ()
     momentoFin = models.DateTimeField ()
     calendario = models.ForeignKey(Calendario, on_delete=models.CASCADE, null=False, blank=False)
+
+    @property
+    def get_html_url(self):
+        url = reverse('event_edit', args=(self.id,))
+        return f'<p>{self.title}</p><a href="{url}">edit</a>'
 
 class Diario(models.Model):
     nombre = models.CharField(max_length=25,default='SOME STRING')

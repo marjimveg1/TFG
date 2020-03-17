@@ -40,4 +40,5 @@ urlpatterns = [
     url('cerrarSesion/', auth_views.LogoutView.as_view(), name='logout'),
 url('blog/',
     EntradasDia, name='entradas'),
+url(r'^calendar/$', CalendarView.as_view(), name='calendar'),
 ]
