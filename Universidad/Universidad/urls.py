@@ -38,5 +38,6 @@ urlpatterns = [
 
     url('inicioSesion/', auth_views.LoginView.as_view(), name='inicioSesion'),
     url('cerrarSesion/', auth_views.LogoutView.as_view(), name='logout'),
+url('blog/',
+    EntradasDia, name='entradas'),
 ]
-

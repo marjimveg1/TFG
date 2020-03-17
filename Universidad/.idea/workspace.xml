@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b559192-cc1d-4e7a-9100-f193a3f700fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cal_mes.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/entradas_dia.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/miPerfil.html" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/miPerfil.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Universidad/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Universidad/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Universidad/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +16,14 @@
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -28,17 +36,22 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Github_Repositorios\TFG\Universidad\Universidad\Apps\Gestion\templates" />
+      <recent name="D:\Github_Repositorios\TFG\Universidad\Universidad\Apps\Gestion" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Github_Repositorios\TFG\Universidad\Universidad\Apps\Gestion\templates" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Django server.Unnamed">
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Universidad" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -115,7 +128,7 @@
       <updated>1584305013360</updated>
       <workItem from="1584305068810" duration="261000" />
       <workItem from="1584305343617" duration="44000" />
-      <workItem from="1584445370086" duration="2606000" />
+      <workItem from="1584445370086" duration="11264000" />
     </task>
     <servers />
   </component>
@@ -131,38 +144,38 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="264" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584305141107" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1584445723191">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1584462505651">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584445723191" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1584445723191">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584462505651" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1584462505651">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584445723191" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1584445723190">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584462505651" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1584462505651">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584445723190" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1584445723191">
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584462505651" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1584462505651">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584445723191" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1584445723191">
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584462505651" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1584462505651">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584445723191" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1584445723191">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584462505651" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1584462505651">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584445723191" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1584445723191">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584462505651" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1584462505651">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584445723191" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1584445723191">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584462505651" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1584462505651">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584445723191" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584462505651" />
     <state x="2383" y="165" key="SettingsEditor" timestamp="1584305278478">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
