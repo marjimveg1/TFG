@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block contenido %}
+
+
+
+<div class="border m-5 p-4  formulario">
+  <h2 class="nav">Cambiar contraseña</h2>
+ <div class="dropdown-divider"></div>
+ <form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Guardar cambios</button>
+</form>
+</div>
+
+{% endblock %}

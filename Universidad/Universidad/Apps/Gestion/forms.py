@@ -3,6 +3,9 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
+from Universidad.Apps.Gestion.models import User, Diario, Calendario, \
+    Fecha, Medida, Fotografia, Patada, Tension, Medicacion, Peso, Contraccion
+
 
 User = get_user_model()
 
@@ -63,3 +66,24 @@ class EditarPerfilForm(forms.ModelForm):
 
     def clean_password(self):
         return self.initial["password"]
+
+
+
+class FechaCalendarioForm(forms.ModelForm):
+    class Meta:
+        model = Fecha
+        exclude = {'calendario',}
+        fields = ['titulo','momentoInicio','momentoFin',]
+
+        labels = {
+            'titulo': 'Titulo',
+            'momentoInicio': 'Inicio',
+            'momentoFin': 'Fin',
+
+        }
+
+        widgets = {
+            'titulo': forms.TextInput(attrs={'class':'form-control'}),
+            'momentoInicio': forms.TextInput(attrs={'class':'form-control'}),
+            'momentoFin': forms.TextInput(attrs={'class':'form-control'}),
+            }
