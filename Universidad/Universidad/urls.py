@@ -28,9 +28,9 @@ urlpatterns = [
     url('registro/', registro),
     url('miPerfil/', miPerfil),
 
-    url(r'editarPerfil/(?P<id_user>\d+)', editarPerfil,name='editarPerfil'),
-    url(r'borrarUsuario/(?P<id_user>\d+)', borrarUsuario, name='borrarUsuario'),
-    url(r'cambiarContra/$', cambiar_contra, name='cambiarContra'),
+    url('editarPerfil/', editarPerfil,name='editarPerfil'),
+    url('borrarUsuario/', borrarUsuario, name='borrarUsuario'),
+    url('cambiarContra/', cambiar_contra, name='cambiarContra'),
 
     url('miCalendario/',miCalendario, name='miCalendario'),
     url('anadirFecha/',crearFechaCalendario, name='anadirFecha'),

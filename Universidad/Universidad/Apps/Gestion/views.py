@@ -35,9 +35,9 @@ def miPerfil(request):
         return render(request, 'miPerfil.html', {"user": user})
 
 
-def borrarUsuario(request, id_user):
+def borrarUsuario(request):
     User = get_user_model()
-    user = User.objects.get(id=id_user)
+    user = request.user
     if request.method == "POST":
         user.delete()
         return render(request, 'inicio.html')
@@ -47,9 +47,10 @@ def borrarUsuario(request, id_user):
     return render(request, "borrarUsuario.html", context)
 
 
-def editarPerfil(request, id_user):
+def editarPerfil(request):
     User = get_user_model()
-    user = User.objects.get(id=id_user)
+    user = request.user
+
     if request.method == 'GET':
         form = EditarPerfilForm(instance=user)
     else:
