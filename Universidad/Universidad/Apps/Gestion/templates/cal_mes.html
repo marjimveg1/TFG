@@ -15,12 +15,22 @@
             {% for day in week %}
                      <td{% if not day.in_month %} class="cal_not_in_month"{% endif %}>
                          {% if day.event %}
-                             <a href="/blog/{{ day.day|date:"Y/m/d" }}">{{ day.day|date:"j" }}</a>
-                         {% else %}
-                             {{ day.day|date:"j" }}
-                         {% endif %}</td>
+                             <a href="/blog/{{ day.day|date:"Ymd" }}">{{ day.day|date:"j" }}</a>
+                         {% else %}{{ day.day|date:"j" }}{% endif %}</td>
 {% endfor %}
     </tr>
 {% endfor %}
     </table>
+
+
+    <br><br>
+    <div>
+
+    {% if getDetalle %}
+         {% for detalle in detalles %}
+            {{ detalle.momentoInicio }}
+             <br>
+        {% endfor %}
+    {% endif  %}
+    </div>
 {% endblock %}

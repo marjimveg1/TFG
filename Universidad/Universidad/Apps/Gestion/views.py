@@ -126,7 +126,7 @@ def crearFechaCalendario(request):
     return render(request, 'anadirFechaCalendario.html', {'form': form})
 
 
-def Calendario(request):
+def agenda(request, fechaDetalle):
     user = request.user
     calendario_owner = Calendario.objects.filter(user=user)[0]
     year = date.today().year
@@ -143,9 +143,25 @@ def Calendario(request):
     ultimo_dia_calendario = ultimo_dia_mes + timedelta(7 - ultimo_dia_mes.weekday())
 
 
+    detalles = []
     cal_mes = []
     week = []
     week_headers = []
+    getDetelle = False
+
+    if (len(fechaDetalle) == 8):
+        ano_parametro = fechaDetalle[0:4]
+        mes_parametro = fechaDetalle[4:6]
+        dia_parametro = fechaDetalle[6:8]
+
+        try:
+            nueva_fecha = date(int(ano_parametro), int(mes_parametro), int(dia_parametro))
+            getDetalle = True
+
+        except:
+            detalles = ""
+    else:
+        detalles = ""
 
     i = 0
     day = primer_dia_calendario
@@ -156,10 +172,11 @@ def Calendario(request):
         cal_day['day'] = day
         cal_day['event'] = False
         for event in event_list:
-            a = event
             if day == event.momentoInicio.date():
                 cal_day['event'] = True
-                cal_day['event_details'] = event
+                if day == nueva_fecha:
+                        detalles.append(event)
+
         if day.month == month:
             cal_day['in_month'] = True
         else:
@@ -171,7 +188,9 @@ def Calendario(request):
         i += 1
         day += timedelta(1)
 
-    return render(request,'cal_mes.html', {'calendar': cal_mes, 'headers': week_headers})
+
+
+    return render(request,'cal_mes.html', {'calendar': cal_mes, 'headers': week_headers, 'getDetalle': getDetalle, 'detalles': detalles})
 
 
 

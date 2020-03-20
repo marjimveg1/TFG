@@ -37,7 +37,6 @@ urlpatterns = [
 
     url('inicioSesion/', auth_views.LoginView.as_view(), name='inicioSesion'),
     url('cerrarSesion/', auth_views.LogoutView.as_view(), name='logout'),
-    url('blog/', Calendario, name='entradas'),
-    url(r'^blog/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})$',
-        CalendarioDetalle, name='entradas'),
+    re_path(r'blog/(?P<fechaDetalle>\d+)',
+        agenda, name='entradas'),
 ]
