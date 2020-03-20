@@ -91,6 +91,9 @@ def registro(request):
         form = MamaCreateForm(request.POST)
         if form.is_valid():
             form.save()
+
+            return redirect('/inicio/')
+        else:
             return redirect('/inicio/')
     else:
         form = MamaCreateForm()
@@ -123,45 +126,21 @@ def crearFechaCalendario(request):
     return render(request, 'anadirFechaCalendario.html', {'form': form})
 
 
-
-
-def get_context_data(self, **kwargs):
-    context = super().get_context_data(**kwargs)
-
-        # use today's date for the calendar
-    d = get_date(self.request.GET.get('day', None))
-       # Instantiate our calendar class with today's year and date
-    cal = Calendar(d.year, d.month)
-
-        # Call the formatmonth method, which returns our calendar as a table
-    html_cal = cal.formatmonth(withyear=True)
-    context['calendar'] = mark_safe(html_cal)
-    return context
-
-
-def get_date(req_day):
-    if req_day:
-        year, month = (int(x) for x in req_day.split('-'))
-        return date(year, month, day=1)
-    return datetime.today()
-
-
-def EntradasDia(request):
+def Calendario(request):
     user = request.user
     calendario_owner = Calendario.objects.filter(user=user)[0]
-    year = 2012
-    month = 1
+    year = date.today().year
+    month = date.today().month
     event_list = Fecha.objects.filter(calendario = calendario_owner)
-   # event_list = Fecha.objects.filter(momentoInicio__year=year, momentoFin__month=month, calendario=calendario_owner )
-    first_day_of_month = date(year, month, 1)
+    primer_dia_mes = date(year, month, 1)
     if (month == 12):
         year += 1
         month = 1
     else:
         month += 1
-    last_day_of_month = date(year, month, 1) - timedelta(1)
-    first_day_of_calendar = first_day_of_month - timedelta(first_day_of_month.weekday())
-    last_day_of_calendar = last_day_of_month + timedelta(7 - last_day_of_month.weekday())
+    ultimo_dia_mes = date(year, month, 1) - timedelta(1)
+    primer_dia_calendario = primer_dia_mes - timedelta(primer_dia_mes.weekday())
+    ultimo_dia_calendario = ultimo_dia_mes + timedelta(7 - ultimo_dia_mes.weekday())
 
 
     cal_mes = []
@@ -169,16 +148,18 @@ def EntradasDia(request):
     week_headers = []
 
     i = 0
-    day = first_day_of_calendar
-    while day <= last_day_of_calendar:
+    day = primer_dia_calendario
+    while day <= ultimo_dia_calendario:
         if i < 7:
             week_headers.append(day)
         cal_day = {}
         cal_day['day'] = day
         cal_day['event'] = False
         for event in event_list:
-            if day >= event.momentoInicio.date() and day <= event.momentoInicio.date():
+            a = event
+            if day == event.momentoInicio.date():
                 cal_day['event'] = True
+                cal_day['event_details'] = event
         if day.month == month:
             cal_day['in_month'] = True
         else:
@@ -189,9 +170,12 @@ def EntradasDia(request):
             week = []
         i += 1
         day += timedelta(1)
-    print(week_headers)
 
     return render(request,'cal_mes.html', {'calendar': cal_mes, 'headers': week_headers})
+
+
+
+
 
 
 
