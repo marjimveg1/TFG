@@ -87,3 +87,20 @@ class FechaCalendarioForm(forms.ModelForm):
             'momentoInicio': forms.TextInput(attrs={'class':'form-control'}),
             'momentoFin': forms.TextInput(attrs={'class':'form-control'}),
             }
+
+
+
+class BuscarFechaForm(forms.ModelForm):
+    class Meta:
+        fields = ['mes','año',]
+
+        labels = {
+            'mes': 'Mes',
+            'año': 'Año',
+
+        }
+
+        widgets = {
+            'mes': forms.TextInput(attrs={'class':'form-control'}),
+            'año': forms.TextInput(attrs={'class':'form-control'}),
+        }

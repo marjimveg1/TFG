@@ -4,7 +4,7 @@ from builtins import print
 from django.http import HttpResponse
 
 from django.shortcuts import render, redirect
-from .forms import MamaCreateForm, EditarPerfilForm, FechaCalendarioForm
+from .forms import MamaCreateForm, EditarPerfilForm, FechaCalendarioForm, BuscarFechaForm
 from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
@@ -87,26 +87,23 @@ def cambiar_contra(request):
 
 # REGISTRO DE USUARIOS
 def registro(request):
+    user = request.user
     if request.method == 'POST':
         form = MamaCreateForm(request.POST)
         if form.is_valid():
             form.save()
 
-            return redirect('/inicio/')
+            return render(request, 'miPerfil.html', {"user": user})
         else:
-            return redirect('/inicio/')
+            form = MamaCreateForm()
     else:
         form = MamaCreateForm()
     return render(request, 'registro.html', {'form': form})
 
 
 # CALENDARIO
-def miCalendario(request):
-    if request.user.is_authenticated:
-        user = request.user
-        fechas = Fecha.objects.filter(calendario=(Calendario.objects.filter(user=user)[0]))
-
-        return render(request, 'miCalendario.html', {"fechas": fechas})
+def buscarFecha(request):
+    return render(request, 'buscarFecha.html')
 
 
 def crearFechaCalendario(request):
@@ -126,13 +123,69 @@ def crearFechaCalendario(request):
     return render(request, 'anadirFechaCalendario.html', {'form': form})
 
 
-def agenda(request, fechaDetalle):
+
+
+
+def agenda(request, fechaDetalle=None, mes=None):
     user = request.user
     calendario_owner = Calendario.objects.filter(user=user)[0]
-    year = date.today().year
-    month = date.today().month
-    event_list = Fecha.objects.filter(calendario = calendario_owner)
+    eventos_owner_lista = Fecha.objects.filter(calendario=calendario_owner)
+    hoy = date.today()
+    getDetalle = False
+    getMes= False
+
+    if (fechaDetalle==None and mes==None): #Quiero ver el mes actual, sin detalles
+        year = hoy.year
+        month = hoy.month
+        fecha_pedida = hoy
+
+    elif(fechaDetalle==None and mes!=None): #Quiero ver el mes siguiente o el anterior
+        fecha_pedida = hoy + timedelta(month=mes)
+        month = fecha_pedida.month
+        year = fecha_pedida.year
+        getMes = True
+
+    elif(fechaDetalle !=None and mes==None): #Detalle de la fecha fechaDetalle en el mes actual
+        year = hoy.year
+        month = hoy.month
+        fecha_pedida = hoy
+
+        if (len(fechaDetalle) == 8):
+            ano_parametro = fechaDetalle[0:4]
+            mes_parametro = fechaDetalle[4:6]
+            dia_parametro = fechaDetalle[6:8]
+
+            try:
+                nueva_fecha = date(int(ano_parametro), int(mes_parametro), int(dia_parametro))
+                getDetalle = True
+
+            except:
+                detalles = ""
+
+
+    else: #Detalle de la fecha fechaDetalle en el mes siguiente o anteerior
+        getMes=True
+        carry, nuevo_mes = divmod(hoy.month+int(mes),12)
+
+        fecha_pedida = hoy.replace(year=hoy.year+carry, month=nuevo_mes)
+        month = fecha_pedida.month
+        year = fecha_pedida.year
+
+        if (len(fechaDetalle) == 8):
+            ano_parametro = fechaDetalle[0:4]
+            mes_parametro = fechaDetalle[4:6]
+            dia_parametro = fechaDetalle[6:8]
+
+            try:
+                nueva_fecha = date(int(ano_parametro), int(mes_parametro), int(dia_parametro))
+                getDetalle = True
+
+            except:
+                getDetalle = False
+
+
     primer_dia_mes = date(year, month, 1)
+
     if (month == 12):
         year += 1
         month = 1
@@ -147,54 +200,70 @@ def agenda(request, fechaDetalle):
     cal_mes = []
     week = []
     week_headers = []
-    getDetelle = False
 
-    if (len(fechaDetalle) == 8):
-        ano_parametro = fechaDetalle[0:4]
-        mes_parametro = fechaDetalle[4:6]
-        dia_parametro = fechaDetalle[6:8]
-
-        try:
-            nueva_fecha = date(int(ano_parametro), int(mes_parametro), int(dia_parametro))
-            getDetalle = True
-
-        except:
-            detalles = ""
-    else:
-        detalles = ""
 
     i = 0
-    day = primer_dia_calendario
-    while day <= ultimo_dia_calendario:
+    dia = primer_dia_calendario
+    while dia <= ultimo_dia_calendario:
         if i < 7:
-            week_headers.append(day)
+            week_headers.append(dia)
         cal_day = {}
-        cal_day['day'] = day
+        cal_day['day'] = dia
         cal_day['event'] = False
-        for event in event_list:
-            if day == event.momentoInicio.date():
+        for evento in eventos_owner_lista:
+            if dia == evento.momentoInicio.date():
                 cal_day['event'] = True
-                if day == nueva_fecha:
-                        detalles.append(event)
+                if getDetalle:
+                    if dia == nueva_fecha:
+                        detalles.append(evento)
 
-        if day.month == month:
+        if dia.month == month:
             cal_day['in_month'] = True
         else:
             cal_day['in_month'] = False
         week.append(cal_day)
-        if day.weekday() == 6:
+        if dia.weekday() == 6:
             cal_mes.append(week)
             week = []
         i += 1
-        day += timedelta(1)
+        dia += timedelta(1)
+    mesCal = getMesEspañol(fecha_pedida)
+    añoCal = fecha_pedida.strftime("%Y")
+
+    return render(request, 'cal_mes.html',
+                  {'mesCal': mesCal, 'anoCal': añoCal, 'calendar': cal_mes, 'headers': week_headers,
+                  'getDetalle': getDetalle, 'detalles': detalles, "getMes": getMes, 'masMes': mes})
+
+def getMesEspañol(fecha):
+    numeroMes = fecha.month
+
+    if numeroMes ==1:
+        res = 'Enero'
+    elif numeroMes ==2:
+        res = 'Febrero'
+    elif numeroMes ==3:
+        res = 'Marzo'
+    elif numeroMes ==4:
+        res = 'Abril'
+    elif numeroMes ==5:
+        res = 'Mayo'
+    elif numeroMes ==6:
+        res = 'Junio'
+    elif numeroMes ==7:
+        res = 'Julio'
+    elif numeroMes ==8:
+        res = 'Agosto'
+    elif numeroMes ==9:
+        res = 'Septiembre'
+    elif numeroMes ==10:
+        res = 'Octubre'
+    elif numeroMes ==11:
+        res = 'Noviembre'
+    else:
+        res = 'Diciembre'
 
 
-
-    return render(request,'cal_mes.html', {'calendar': cal_mes, 'headers': week_headers, 'getDetalle': getDetalle, 'detalles': detalles})
-
-
-
-
+    return res
 
 
 

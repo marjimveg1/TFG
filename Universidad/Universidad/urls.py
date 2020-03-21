@@ -32,11 +32,15 @@ urlpatterns = [
     url('borrarUsuario/', borrarUsuario, name='borrarUsuario'),
     url('cambiarContra/', cambiar_contra, name='cambiarContra'),
 
-    url('miCalendario/',miCalendario, name='miCalendario'),
     url('anadirFecha/',crearFechaCalendario, name='anadirFecha'),
 
     url('inicioSesion/', auth_views.LoginView.as_view(), name='inicioSesion'),
     url('cerrarSesion/', auth_views.LogoutView.as_view(), name='logout'),
-    re_path(r'blog/(?P<fechaDetalle>\d+)',
-        agenda, name='entradas'),
+
+    url(r'^buscarFecha/$', buscarFecha, name='buscarFecha'),
+    url(r'^miAgenda/$', agenda, name='agenda'),
+    url(r'^miAgenda/(?P<fechaDetalle>\d+)/$', agenda, name='agenda'),
+    url(r'^miAgenda/(?P<mes>[+|-]+\d+)/$', agenda, name='agenda'),
+    url(r'^miAgenda/(?P<mes>[+|-]+\d+)/(?P<fechaDetalle>\d+)/$', agenda, name='agenda'),
+
 ]

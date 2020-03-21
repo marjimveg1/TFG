@@ -38,7 +38,7 @@ class Fecha(models.Model):
     @property
     def get_html_url(self):
         url = reverse('event_edit', args=(self.id,))
-        return f'<p>{self.title}</p><a href="{url}">edit</a>'
+        return '<p>{self.title}</p><a href="{url}">edit</a>'
 
 class Diario(models.Model):
     nombre = models.CharField(max_length=25,default='SOME STRING')

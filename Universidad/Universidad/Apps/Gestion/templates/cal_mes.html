@@ -1,10 +1,26 @@
 
 {% extends 'base.html' %}
-
+{% load i18n static %}
 
 {% block contenido %}
 <br><br>
-<table class="cal_month_calendar">
+    <div>
+
+    <H2>  <a class="seleccionaMes" href="/miAgenda/{{ suma(1,1)}}"> &larr; </a> {{ mesCal }} {{ anoCal}} <a class="boton_avanzaRetrocede" href="/miAgenda/"> &rarr; </a> </H2>
+
+
+    </div>
+<script>
+
+function suma(num_string1, num_string2) {
+    var numero1 = parseInt(num_string1);
+    var numero2 = parseInt(num_string2);
+    return numero1+numero2;
+}
+</script>
+
+
+    <table class="cal_month_calendar">
 <tr>
     {% for day in headers %}
     <th>{{ day|date:"D"|slice:":3" }}</th>
@@ -14,8 +30,14 @@
     <tr>
             {% for day in week %}
                      <td{% if not day.in_month %} class="cal_not_in_month"{% endif %}>
-                         {% if day.event %}
-                             <a href="/blog/{{ day.day|date:"Ymd" }}">{{ day.day|date:"j" }}</a>
+                     {% if day.event %}
+                         {% if getMes %}
+                             <a href="/miAgenda/{{ masMes }}/{{day.day|date:"Ymd" }}">{{ day.day|date:"j" }}</a>
+                             {% else %}
+                              <a href="/miAgenda/{{day.day|date:"Ymd" }}">{{ day.day|date:"j" }}</a>
+                         {% endif %}
+
+
                          {% else %}{{ day.day|date:"j" }}{% endif %}</td>
 {% endfor %}
     </tr>
@@ -33,4 +55,5 @@
         {% endfor %}
     {% endif  %}
     </div>
+
 {% endblock %}
