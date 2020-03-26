@@ -39,8 +39,8 @@ urlpatterns = [
 
     url(r'^buscarFecha/$', buscarFecha, name='buscarFecha'),
     url(r'^miAgenda/$', agenda, name='agenda'),
-    url(r'^miAgenda/(?P<fechaDetalle>\d+)/$', agenda, name='agenda'),
-    url(r'^miAgenda/(?P<mes>[+|-]+\d+)/$', agenda, name='agenda'),
-    url(r'^miAgenda/(?P<mes>[+|-]+\d+)/(?P<fechaDetalle>\d+)/$', agenda, name='agenda'),
+    url(r'^miAgenda/?detalle=(?P<fechaDetalle>\d+)/$', agenda, name='agenda'),
+    url(r'^miAgenda/?fecha=(?P<mes>[+|-]+\d+)&$', agenda, name='agenda'),
+    url(r'^miAgenda/?fecha=(?P<mes>[+|-]+\d+)&detalle=(?P<fechaDetalle>\d+)/$', agenda, name='agenda'),
 
 ]

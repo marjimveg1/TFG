@@ -4,20 +4,6 @@
 
 {% block contenido %}
 <br><br>
-    <div>
-
-    <H2>  <a class="seleccionaMes" href="/miAgenda/{{ suma(1,1)}}"> &larr; </a> {{ mesCal }} {{ anoCal}} <a class="boton_avanzaRetrocede" href="/miAgenda/"> &rarr; </a> </H2>
-
-
-    </div>
-<script>
-
-function suma(num_string1, num_string2) {
-    var numero1 = parseInt(num_string1);
-    var numero2 = parseInt(num_string2);
-    return numero1+numero2;
-}
-</script>
 
 
     <table class="cal_month_calendar">
@@ -32,9 +18,9 @@ function suma(num_string1, num_string2) {
                      <td{% if not day.in_month %} class="cal_not_in_month"{% endif %}>
                      {% if day.event %}
                          {% if getMes %}
-                             <a href="/miAgenda/{{ masMes }}/{{day.day|date:"Ymd" }}">{{ day.day|date:"j" }}</a>
+                             <a href="/miAgenda/?fecha={{ masMes }}&detalle={{day.day|date:"Ymd" }}">{{ day.day|date:"j" }}</a>
                              {% else %}
-                              <a href="/miAgenda/{{day.day|date:"Ymd" }}">{{ day.day|date:"j" }}</a>
+                              <a href="/miAgenda/?detalle={{day.day|date:"Ymd" }}">{{ day.day|date:"j" }}</a>
                          {% endif %}
 
 

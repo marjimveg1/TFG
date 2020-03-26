@@ -11,6 +11,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.views.generic import DayArchiveView, YearArchiveView, TodayArchiveView
 from django.urls import reverse_lazy
 import calendar
+from django.http import QueryDict
 
 from .models import *
 from django import template
@@ -126,7 +127,13 @@ def crearFechaCalendario(request):
 
 
 
-def agenda(request, fechaDetalle=None, mes=None):
+def agenda(request):
+    dic_solicitud = request.GET.dict()
+
+    detalle, fecha = getValores(dic_solicitud)
+
+   # fecha = "-90"
+
     user = request.user
     calendario_owner = Calendario.objects.filter(user=user)[0]
     eventos_owner_lista = Fecha.objects.filter(calendario=calendario_owner)
@@ -134,26 +141,26 @@ def agenda(request, fechaDetalle=None, mes=None):
     getDetalle = False
     getMes= False
 
-    if (fechaDetalle==None and mes==None): #Quiero ver el mes actual, sin detalles
+    if (detalle=="" and fecha==""): #Quiero ver el mes actual, sin detalles
         year = hoy.year
         month = hoy.month
         fecha_pedida = hoy
 
-    elif(fechaDetalle==None and mes!=None): #Quiero ver el mes siguiente o el anterior
-        fecha_pedida = hoy + timedelta(month=mes)
+    elif(detalle=="" and fecha!=""): #Quiero ver el mes siguiente o el anterior
+        fecha_pedida = date(int(fecha[0:4]), int(fecha[5:7]), 1)
         month = fecha_pedida.month
         year = fecha_pedida.year
         getMes = True
 
-    elif(fechaDetalle !=None and mes==None): #Detalle de la fecha fechaDetalle en el mes actual
+    elif(detalle !="" and fecha==""): #Detalle de la fecha detalle en el mes actual
         year = hoy.year
         month = hoy.month
         fecha_pedida = hoy
 
-        if (len(fechaDetalle) == 8):
-            ano_parametro = fechaDetalle[0:4]
-            mes_parametro = fechaDetalle[4:6]
-            dia_parametro = fechaDetalle[6:8]
+        if (len(detalle) == 8):
+            ano_parametro = detalle[0:4]
+            mes_parametro = detalle[4:6]
+            dia_parametro = detalle[6:8]
 
             try:
                 nueva_fecha = date(int(ano_parametro), int(mes_parametro), int(dia_parametro))
@@ -163,18 +170,16 @@ def agenda(request, fechaDetalle=None, mes=None):
                 detalles = ""
 
 
-    else: #Detalle de la fecha fechaDetalle en el mes siguiente o anteerior
-        getMes=True
-        carry, nuevo_mes = divmod(hoy.month+int(mes),12)
-
-        fecha_pedida = hoy.replace(year=hoy.year+carry, month=nuevo_mes)
+    else: #Detalle de la fecha detalle en el mes siguiente o anteerior
+        fecha_pedida = date(int(fecha[0:4]), int(fecha[5:7]), 1)
         month = fecha_pedida.month
         year = fecha_pedida.year
+        getMes = True
 
-        if (len(fechaDetalle) == 8):
-            ano_parametro = fechaDetalle[0:4]
-            mes_parametro = fechaDetalle[4:6]
-            dia_parametro = fechaDetalle[6:8]
+        if (len(detalle) == 8):
+            ano_parametro = detalle[0:4]
+            mes_parametro = detalle[4:6]
+            dia_parametro = detalle[6:8]
 
             try:
                 nueva_fecha = date(int(ano_parametro), int(mes_parametro), int(dia_parametro))
@@ -232,7 +237,7 @@ def agenda(request, fechaDetalle=None, mes=None):
 
     return render(request, 'cal_mes.html',
                   {'mesCal': mesCal, 'anoCal': añoCal, 'calendar': cal_mes, 'headers': week_headers,
-                  'getDetalle': getDetalle, 'detalles': detalles, "getMes": getMes, 'masMes': mes})
+                  'getDetalle': getDetalle, 'detalles': detalles, "getMes": getMes, 'masMes': fecha})
 
 def getMesEspañol(fecha):
     numeroMes = fecha.month
@@ -266,4 +271,18 @@ def getMesEspañol(fecha):
     return res
 
 
+
+def getValores(dic_solicitud):
+    try:
+        fechaDetalle =  dic_solicitud["detalle"]
+
+    except:
+        fechaDetalle = ""
+
+    try:
+        fecha = dic_solicitud["fecha"]
+    except:
+        fecha = ""
+
+    return fechaDetalle, fecha
 
