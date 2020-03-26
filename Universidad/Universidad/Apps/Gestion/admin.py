@@ -7,8 +7,7 @@ from django.contrib import admin
 
 
 from django.contrib import admin
-from Universidad.Apps.Gestion.models import User, Diario, Calendario, \
-    Fecha, Medida, Fotografia, Patada, Tension, Medicacion, Peso, Contraccion
+from Universidad.Apps.Gestion.models import *
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
@@ -21,7 +20,7 @@ User=get_user_model()
 #admin.site.register(User)
 admin.site.register(Diario)
 admin.site.register(Calendario)
-admin.site.register(Fecha)
+admin.site.register(Evento)
 admin.site.register(Medida)
 admin.site.register(Fotografia)
 admin.site.register(Peso)

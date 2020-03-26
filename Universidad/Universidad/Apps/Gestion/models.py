@@ -29,10 +29,10 @@ class Calendario (models.Model):
     nombre = models.CharField(max_length=25,default='SOME STRING')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
 
-class Fecha(models.Model):
+class Evento(models.Model):
     titulo = models.CharField(max_length=25)
-    momentoInicio = models.DateTimeField ()
-    momentoFin = models.DateTimeField ()
+    descripcion = models.CharField(max_length=350)
+    fecha = models.DateTimeField ()
     calendario = models.ForeignKey(Calendario, on_delete=models.CASCADE, null=False, blank=False)
 
     @property

@@ -3,15 +3,13 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
-from Universidad.Apps.Gestion.models import User, Diario, Calendario, \
-    Fecha, Medida, Fotografia, Patada, Tension, Medicacion, Peso, Contraccion
+from Universidad.Apps.Gestion.models import *
 
 
 User = get_user_model()
 
 
 # REGISTRO DE UN USUARIO (MAMÁ)
-
 class MamaCreateForm(UserCreationForm):
     formato = ("Format: dd/mm/YYYY"),
 
@@ -38,6 +36,12 @@ class MamaCreateForm(UserCreationForm):
         user.direccion = self.cleaned_data["direccion"]
         user.email = self.cleaned_data["email"]
         user.save()
+
+        calendario = Calendario()
+        calendario.nombre = "calendario"
+        calendario.user = user
+        calendario.save()
+
         return user
 
     def clean(self, *args, **kwargs):
@@ -56,7 +60,7 @@ class MamaCreateForm(UserCreationForm):
         if year_birth is not None:
             now = timezone.now()
             if year_birth > now:
-                self.add_error('year_birth', ('Np ìede ser futuro'))
+                self.add_error('fechaNacimiento', ('Np ìede ser futuro'))
 
 
 class EditarPerfilForm(forms.ModelForm):
@@ -71,21 +75,21 @@ class EditarPerfilForm(forms.ModelForm):
 
 class FechaCalendarioForm(forms.ModelForm):
     class Meta:
-        model = Fecha
+        model = Evento
         exclude = {'calendario',}
-        fields = ['titulo','momentoInicio','momentoFin',]
+        fields = ['titulo','fecha','descripcion',]
 
         labels = {
             'titulo': 'Titulo',
-            'momentoInicio': 'Inicio',
-            'momentoFin': 'Fin',
+            'fecha': 'Fecha',
+            'descripcion': 'Descripcion',
 
         }
 
         widgets = {
             'titulo': forms.TextInput(attrs={'class':'form-control'}),
-            'momentoInicio': forms.TextInput(attrs={'class':'form-control'}),
-            'momentoFin': forms.TextInput(attrs={'class':'form-control'}),
+            'fecha': forms.TextInput(attrs={'class':'form-control'}),
+            'descripcion': forms.TextInput(attrs={'class':'form-control'}),
             }
 
 

@@ -4,7 +4,7 @@ from builtins import print
 from django.http import HttpResponse
 
 from django.shortcuts import render, redirect
-from .forms import MamaCreateForm, EditarPerfilForm, FechaCalendarioForm, BuscarFechaForm
+from .forms import *
 from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
@@ -16,14 +16,13 @@ from django.http import QueryDict
 from .models import *
 from django import template
 from datetime import date, timedelta
-from .models import Fecha
+from .models import *
 
 
 from datetime import datetime, date
 
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
-from .util import Calendar
 from django.views.generic.list import ListView
 
 # Create your views here.
@@ -94,9 +93,9 @@ def registro(request):
         if form.is_valid():
             form.save()
 
-            return render(request, 'miPerfil.html', {"user": user})
+            return render(request, 'inicioSesion.html', {"user": user})
         else:
-            form = MamaCreateForm()
+            form = form
     else:
         form = MamaCreateForm()
     return render(request, 'registro.html', {'form': form})
@@ -117,7 +116,7 @@ def crearFechaCalendario(request):
                 obj = form.save(commit=False)
                 obj.calendario = calendario
                 form.save()
-                return redirect('/miCalendario/')
+                return redirect('/miAgenda/')
         else:
             form = FechaCalendarioForm()
 
@@ -136,7 +135,7 @@ def agenda(request):
 
     user = request.user
     calendario_owner = Calendario.objects.filter(user=user)[0]
-    eventos_owner_lista = Fecha.objects.filter(calendario=calendario_owner)
+    eventos_owner_lista = Evento.objects.filter(calendario=calendario_owner)
     hoy = date.today()
     getDetalle = False
     getMes= False
@@ -216,7 +215,7 @@ def agenda(request):
         cal_day['day'] = dia
         cal_day['event'] = False
         for evento in eventos_owner_lista:
-            if dia == evento.momentoInicio.date():
+            if dia == evento.fecha.date():
                 cal_day['event'] = True
                 if getDetalle:
                     if dia == nueva_fecha:

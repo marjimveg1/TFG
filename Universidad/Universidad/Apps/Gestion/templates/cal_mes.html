@@ -4,8 +4,10 @@
 
 {% block contenido %}
 <br><br>
+<div>
 
-
+<h3>{{ mesCal }} {{ anoCal }}</h3>
+</div>
     <table class="cal_month_calendar">
 <tr>
     {% for day in headers %}
@@ -36,10 +38,18 @@
 
     {% if getDetalle %}
          {% for detalle in detalles %}
-            {{ detalle.momentoInicio }}
+             {{ detalle.titulo }}
+            {{ detalle.fecha }}
+             {{ detalle.descripcion }}
              <br>
         {% endfor %}
     {% endif  %}
     </div>
 
+    <div>
+    <a href="/buscarFecha/">Buscar Fecha</a>
+        <br>
+    <a href="anadirFecha/">Añadir nuevo evento</a>
+
+    </div>
 {% endblock %}
