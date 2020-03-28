@@ -89,6 +89,16 @@ input[type=submit] {
     color: #6C757D;
 }
 
+.errorlist{
+    color:red;
+    font-weight:bold;
+    list-style:none;
+    text-align: left;
+}
+.formulario_form{
+    text-align: left;
+}
+
 /*
 FFACB7 (rosa)
 C1D1DD (CELESTE)

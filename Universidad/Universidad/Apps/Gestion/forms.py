@@ -16,11 +16,11 @@ class MamaCreateForm(UserCreationForm):
 
     nombre = forms.CharField(label=('Nombre'), required=True)
     apellidos = forms.CharField(label=('Apellidos'), required=True)
-    email = forms.CharField(label=('email'), required=True)
-    fechaNacimiento = forms.DateTimeField(label=('Fecha de nacimiento'), input_formats=['%d/%m/%Y'], help_text=formato, required=False)
-    direccion = forms.CharField(label=('Direccion'), required=False)
-    fechaUltMens = forms.DateTimeField(label=('Ultima menstruacion'), input_formats=['%d/%m/%Y'], help_text=formato, required=True)
-    nickName = forms.CharField(label=('Nick Name'), max_length=50, required=True)
+    email = forms.CharField(label=('Email'), required=True)
+    fechaNacimiento = forms.DateField(label=('Fecha de nacimiento'), input_formats=['%d/%m/%Y'], help_text=formato, required=False)
+    direccion = forms.CharField(label=('Dirección'), required=False)
+    fechaUltMens = forms.DateField(label=('Última menstruación'), input_formats=['%d/%m/%Y'], help_text=formato, required=True)
+    nickName = forms.CharField(label=('Nombre de usuario'), max_length=50, required=True)
 
     class Meta:
         model = User
@@ -60,7 +60,13 @@ class MamaCreateForm(UserCreationForm):
         if year_birth is not None:
             now = timezone.now()
             if year_birth > now:
-                self.add_error('fechaNacimiento', ('Np ìede ser futuro'))
+                self.add_error('fechaNacimiento', ('No puede ser futuro'))
+
+        fecha_mens = cleaned_data.get('fechaUltMens', None)
+        if fecha_mens is not None:
+            now = timezone.now()
+            if fecha_mens > now:
+                self.add_error('fechaUltMens', ('No puede ser futuro'))
 
 
 class EditarPerfilForm(forms.ModelForm):
