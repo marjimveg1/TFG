@@ -80,6 +80,7 @@ class EditarPerfilForm(forms.ModelForm):
 
 
 class FechaCalendarioForm(forms.ModelForm):
+
     class Meta:
         model = Evento
         exclude = {'calendario',}
@@ -92,11 +93,6 @@ class FechaCalendarioForm(forms.ModelForm):
 
         }
 
-        widgets = {
-            'titulo': forms.TextInput(attrs={'class':'form-control'}),
-            'fecha': forms.TextInput(attrs={'class':'form-control'}),
-            'descripcion': forms.TextInput(attrs={'class':'form-control'}),
-            }
 
 
 

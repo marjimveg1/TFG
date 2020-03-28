@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b559192-cc1d-4e7a-9100-f193a3f700fc" name="Default Changelist" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioSesion.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/static/css/styles/styleIndex.css" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/static/css/styles/styleIndex.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirFechaCalendario.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirFechaCalendario.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/buscarFecha.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/buscarFecha.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cambiarContra.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cambiarContra.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/editarPerfil.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/editarPerfil.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registro.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registro.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,8 +64,22 @@
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="Gestion_patada" />
+        <option name="myItemId" value="Gestion_fecha" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Django default" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
       </PATH_ELEMENT>
     </PATH>
   </component>
@@ -80,7 +92,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1613">
+            <state relative-caret-position="-103">
               <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
               <folding>
                 <element signature="e#24#50#0" expanded="true" />
@@ -89,61 +101,81 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="editarPerfil.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/editarPerfil.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="18" column="63" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cambiarContra.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cambiarContra.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="358">
+              <caret line="26" column="14" lean-forward="true" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="anadirFechaCalendario.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirFechaCalendario.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="22" column="16" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="22" selection-end-column="16" />
+            <state relative-caret-position="374">
+              <caret line="17" column="16" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="17" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registration/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="14" column="82" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registro.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="registro.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registro.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="4" />
+            <state relative-caret-position="352">
+              <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="buscarFecha.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/buscarFecha.html">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="54" lean-forward="false" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
+            <state relative-caret-position="528">
+              <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styleIndex.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/static/css/styles/styleIndex.css">
+      <file leaf-file-name="fields.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/forms/fields.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2178">
-              <caret line="99" column="1" lean-forward="false" selection-start-line="99" selection-start-column="1" selection-end-line="99" selection-end-column="1" />
+            <state relative-caret-position="174">
+              <caret line="374" column="0" lean-forward="false" selection-start-line="374" selection-start-column="0" selection-end-line="374" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -158,7 +190,6 @@
       <find>fecha_pedida</find>
       <find>Fec</find>
       <find>Fecha</find>
-      <find>fecha</find>
       <find>getMes</find>
       <find>Fin</find>
       <find>fin</find>
@@ -169,6 +200,12 @@
       <find>crear</find>
       <find>Mama</find>
       <find>regist</find>
+      <find>fecha</find>
+      <find>even</find>
+      <find>model</find>
+      <find>models</find>
+      <find>dateT</find>
+      <find>Date</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -187,14 +224,16 @@
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cal_mes.html" />
-        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/static/css/styles/styleIndex.css" />
-        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registro.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioSesion.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/buscarFecha.html" />
+        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registro.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirFechaCalendario.html" />
+        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" />
+        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/editarPerfil.html" />
+        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cambiarContra.html" />
       </list>
     </option>
   </component>
@@ -844,9 +883,9 @@
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22771214" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957503" sideWeight="0.49316823" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.49316823" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957503" sideWeight="0.50512385" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296328" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921588" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957503" sideWeight="0.49487618" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33738074" sideWeight="0.48975235" order="7" side_tool="false" content_ui="tabs" />
@@ -933,13 +972,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py</url>
-          <line>42</line>
-          <option name="timeStamp" value="88" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="93" />
     </breakpoint-manager>
     <watches-manager />
@@ -1186,14 +1218,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/editarPerfil.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="63" lean-forward="true" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicio.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1202,37 +1226,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cambiarContra.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/util.py" />
-    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/forms/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1651">
           <caret line="177" column="8" lean-forward="false" selection-start-line="177" selection-start-column="8" selection-end-line="177" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#63#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1258,14 +1257,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="56" lean-forward="false" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
           <folding />
         </state>
       </provider>
@@ -1302,9 +1293,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="dbDummy://dbtable:/c3d706f/8bbcd824-efef-43fb-ab87-80f24260a90e/tfg_db.public.Gestion_fecha">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registro.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/forms/fields.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="374" column="0" lean-forward="false" selection-start-line="374" selection-start-column="0" selection-end-line="374" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1613">
+        <state relative-caret-position="-103">
           <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding>
             <element signature="e#24#50#0" expanded="true" />
@@ -1314,16 +1358,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirFechaCalendario.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="16" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="22" selection-end-column="16" />
+        <state relative-caret-position="374">
+          <caret line="17" column="16" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="17" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/registro.html">
+    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/editarPerfil.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="4" />
+        <state relative-caret-position="336">
+          <caret line="18" column="63" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cambiarContra.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="26" column="14" lean-forward="true" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
           <folding />
         </state>
       </provider>
