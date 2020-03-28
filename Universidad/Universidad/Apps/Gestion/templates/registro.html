@@ -2,7 +2,11 @@
 {% load i18n static %}
 
 {% block contenido %}
-
+<style>
+li{color:red;
+            font-weight:bold;
+}
+</style>
 
 <div class="border m-5 p-4  formulario">
   <h2 class="nav justify-content-center">Registro</h2>
@@ -14,12 +18,12 @@
       <p>
         {{ field.label_tag }}<br>
         {{ field }}
-
+ {{ field.errors }}
       </p>
     {% endfor %}
     <div class="text-center">
 
-        {{ form.errors }}
+
     <button type="submit" class="btn btn-info">Registrar</button>
     </div>
   </form>
