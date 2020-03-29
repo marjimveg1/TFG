@@ -32,8 +32,7 @@ def inicio(request):
     return render(request, 'inicio.html')
 
 
-def inicioSesion(request):
-    return render(request, 'inicioSesion.html')
+
 
 
 def miPerfil(request):
@@ -64,7 +63,10 @@ def editarPerfil(request):
         form = EditarPerfilForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
-        return render(request, 'miPerfil.html', {"user": user})
+            return render(request, 'miPerfil.html', {"user": user})
+        else:
+            form = form
+
     return render(request, 'editarPerfil.html', {'form': form})
 
 
@@ -93,7 +95,7 @@ def registro(request):
         if form.is_valid():
             form.save()
 
-            return render(request, 'inicioSesion.html', {"user": user})
+            return redirect('../inicioSesion')
         else:
             form = form
     else:

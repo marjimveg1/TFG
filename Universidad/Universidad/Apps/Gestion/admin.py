@@ -17,7 +17,7 @@ User=get_user_model()
 
 # Register your models here.
 #admin.site.register(User)
-#admin.site.register(User)
+admin.site.register(User)
 admin.site.register(Diario)
 admin.site.register(Calendario)
 admin.site.register(Evento)

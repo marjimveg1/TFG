@@ -11,20 +11,23 @@ User = get_user_model()
 
 # REGISTRO DE UN USUARIO (MAMÁ)
 class MamaCreateForm(UserCreationForm):
-    formato = ("Format: dd/mm/YYYY"),
-
-
-    nombre = forms.CharField(label=('Nombre'), required=True)
-    apellidos = forms.CharField(label=('Apellidos'), required=True)
-    email = forms.CharField(label=('Email'), required=True)
-    fechaNacimiento = forms.DateField(label=('Fecha de nacimiento'), input_formats=['%d/%m/%Y'], help_text=formato, required=False)
-    direccion = forms.CharField(label=('Dirección'), required=False)
-    fechaUltMens = forms.DateField(label=('Última menstruación'), input_formats=['%d/%m/%Y'], help_text=formato, required=True)
-    nickName = forms.CharField(label=('Nombre de usuario'), max_length=50, required=True)
 
     class Meta:
         model = User
-        fields = ( "nombre", "apellidos",  "email", "fechaNacimiento","direccion","fechaUltMens","nickName","password1", "password2")
+        fields = ( "nombre", "apellidos",  "email", "direccion","fechaNacimiento","fechaUltMens","nickName","password1", "password2")
+
+    widgets = {
+        'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+        'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
+        'email': forms.EmailInput(attrs={'class': 'form-control'}),
+        'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+        'fechaNacimiento': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
+        'fechaUltMens': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
+        'nickName': forms.TextInput(attrs={'class': 'form-control'}),
+        'password1': forms.TextInput(attrs={'class': 'form-control'}),
+        'password2': forms.TextInput(attrs={'class': 'form-control'}),
+    }
+
 
     def save(self):
         user = super(MamaCreateForm, self).save(commit=False)
@@ -58,13 +61,13 @@ class MamaCreateForm(UserCreationForm):
         year_birth = cleaned_data.get('fechaNacimiento', None)
         # Comprobamos que la fecha de nacimiento sea en pasado
         if year_birth is not None:
-            now = timezone.now()
+            now = timezone.now().date()
             if year_birth > now:
                 self.add_error('fechaNacimiento', ('No puede ser futuro'))
 
         fecha_mens = cleaned_data.get('fechaUltMens', None)
         if fecha_mens is not None:
-            now = timezone.now()
+            now = timezone.now().date()
             if fecha_mens > now:
                 self.add_error('fechaUltMens', ('No puede ser futuro'))
 
@@ -72,10 +75,31 @@ class MamaCreateForm(UserCreationForm):
 class EditarPerfilForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('nickName','nombre','apellidos','direccion','fechaNacimiento', 'fechaUltMens')
+        fields = ('nombre','apellidos','direccion','fechaNacimiento', 'fechaUltMens')
 
-    def clean_password(self):
-        return self.initial["password"]
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
+            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+            'fechaNacimiento': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
+            'fechaUltMens': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'})
+        }
+
+    def clean(self, *args, **kwargs):
+        cleaned_data = super(EditarPerfilForm, self).clean(*args, **kwargs)
+
+        year_birth = cleaned_data.get('fechaNacimiento', None)
+        # Comprobamos que la fecha de nacimiento sea en pasado
+        if year_birth is not None:
+            now = timezone.now().date()
+            if year_birth > now:
+                self.add_error('fechaNacimiento', ('No puede ser futuro'))
+
+        fecha_mens = cleaned_data.get('fechaUltMens', None)
+        if fecha_mens is not None:
+            now = timezone.now().date()
+            if fecha_mens > now:
+                self.add_error('fechaUltMens', ('No puede ser futuro'))
 
 
 
@@ -92,8 +116,11 @@ class FechaCalendarioForm(forms.ModelForm):
             'descripcion': 'Descripcion',
 
         }
-
-
+        widgets = {
+            'titulo': forms.TextInput(attrs={'class': 'form-control'}),
+            'fecha': forms.DateTimeInput(attrs={'placeholder': 'dd/mm/aaaa hh:mm'}),
+            'descripcion' : forms.Textarea(attrs={'class': 'form-control'})
+        }
 
 
 class BuscarFechaForm(forms.ModelForm):

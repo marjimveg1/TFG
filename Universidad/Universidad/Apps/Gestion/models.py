@@ -17,6 +17,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     direccion = models.CharField(max_length=55)
     fechaUltMens = models.DateField()
     nickName = models.CharField(('Nick Name'), unique=True, max_length=50)
+    is_active = models.BooleanField(('Is active'), default=True)
+    is_staff = models.BooleanField(('Is staf'), default=False)
 
     objects = UserManager()
     USERNAME_FIELD = 'nickName'
