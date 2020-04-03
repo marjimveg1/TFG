@@ -29,11 +29,7 @@ from django.views.generic.list import ListView
 
 
 def inicio(request):
-    return render(request, 'inicio.html')
-
-
-
-
+    return render(request, 'inicio.html', {"inicioview": True})
 
 def miPerfil(request):
     if request.user.is_authenticated:

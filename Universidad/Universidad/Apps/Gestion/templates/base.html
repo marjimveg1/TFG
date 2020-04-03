@@ -87,7 +87,14 @@
 
   </head>
 
+   {% if inicioview%}
   <body onload="initMap()">
+  {% endif %}
+
+   {% if not inicioview%}
+  <body>
+  {% endif %}
+
   <div class="row align-items-center pb-5">
 <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
    <div class=" col-md-6 col-sm-6 col-8 text-center">
