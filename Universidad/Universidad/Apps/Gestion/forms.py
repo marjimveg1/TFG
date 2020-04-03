@@ -19,7 +19,7 @@ class MamaCreateForm(UserCreationForm):
     widgets = {
         'nombre': forms.TextInput(attrs={'class': 'form-control'}),
         'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
-        'email': forms.EmailInput(attrs={'class': 'form-control'}),
+        'email': forms.TextInput(attrs={'class': 'form-control'}),
         'direccion': forms.TextInput(attrs={'class': 'form-control'}),
         'fechaNacimiento': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
         'fechaUltMens': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
