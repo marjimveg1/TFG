@@ -3,22 +3,33 @@
 
 {% block contenido %}
 
-<div class="border m-5 p-4  formulario">
-  <h2 class="nav justify-content-center">Editar perfil</h2>
-   <div class="dropdown-divider"></div>
-  <form method="post"  class= "px-4 py-3">
+<div class=" row m-5 p-4  justify-content-center">
+    <div class="col-md-12">
+        <h1 align="center"  class="nav justify-content-center tituloView">Editar perfil</h1>
+        <hr style="width: 60%">
+
+    </div>
+
+    <form method="post">
     {% csrf_token %}
     {% for field in form %}
-      <p class="formulario_form">
-        {{ field.label_tag }}
-        {{ field }}<br>
-         {{ field.errors }}
-      </p>
+        <div class="col-12 ">
+             {{ field.label_tag }}
+            {{ field }}<br>
+            {{ field.errors }}
+
+        </div>
     {% endfor %}
-    <div class="text-center">
-    <button type="submit" class="btn btn-info">Guardar</button>
+<br>
+
+    <div class="text-center col-12">
+        <button type="submit" class="btn btn-info btn-lg px-4 m-1">Guardar</button>
     </div>
-  </form>
+
+    </form>
 </div>
+
+
+
 
 {% endblock %}

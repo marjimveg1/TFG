@@ -46,7 +46,7 @@ def borrarUsuario(request):
     context = {
         "User": user
     }
-    return render(request, "borrarUsuario.html", context)
+    return render(request, 'borrarUsuario.html', context)
 
 
 def editarPerfil(request):

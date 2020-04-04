@@ -111,9 +111,9 @@ class FechaCalendarioForm(forms.ModelForm):
         fields = ['titulo','fecha','descripcion',]
 
         labels = {
-            'titulo': 'Titulo',
+            'titulo': 'Título',
             'fecha': 'Fecha',
-            'descripcion': 'Descripcion',
+            'descripcion': 'Descripción',
 
         }
         widgets = {

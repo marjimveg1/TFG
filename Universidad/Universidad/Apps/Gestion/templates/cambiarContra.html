@@ -5,30 +5,44 @@
 
 
 
-<div class="border m-5 p-4  formulario">
-  <h2 class="nav">Cambiar contraseña</h2>
- <div class="dropdown-divider"></div>
+<div class=" row m-5 p-4  justify-content-center">
+    <div class="col-md-12">
+        <h1 align="center"  class="nav justify-content-center tituloView">Cambiar contraseña</h1>
+        <hr style="width: 60%">
 
-<br>
- <form method="post">
-  {% csrf_token %}
+    </div>
+
+    <form method="post">
+    {% csrf_token %}
     {% for field in form %}
-      <p class="formulario_form">
-        {{ field.label_tag }}
-        {{ field }}<br>
-         {{ field.errors }}
+        <div class="col-12 ">
+             {{ field.label_tag }}
+            {{ field }}<br>
+            {{ field.errors }}
 
-      </p>
+        </div>
     {% endfor %}
 
- <p class="border border-secondary text-secondary rounded p-2 bg-white">
-         SU CONTRASEÑA NO PUEDE ASEMEJARSE A UNA INFORMACIÓN PERSONAL
-     <br>SU CONTRASEÑA DEBE TENER AL MENOS 8 CARACTERES
-     <br> SU CONTRASEÑA NO PUEDE SER UNA CLAVE UTILIZADA COMÚNMENTE
-     <br> SU CONTRASEÑA NO PUEDE SER COMPLETAMENTE NUMÉRICA
- </p>
-   <button type="submit" class="btn btn-info">Guardar</button>
-</form>
 
+
+     <div class="m-3 alert alert-danger alertView">
+        SU CONTRASEÑA: <br>
+         * No puede asemejarse a una información personal <br>
+         * Debe tener al menos 8 caracteres <br>
+         * No puede ser una clave utilizada comúnmente <br>
+         * No puede ser completamente numérica <br>
+
+
+    </div>
+
+    <div class="text-center col-12">
+        <button type="submit" class="btn btn-info btn-lg px-4 m-1">Guardar</button>
+    </div>
+
+
+    </form>
 </div>
+
+
+
 {% endblock %}
