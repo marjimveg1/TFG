@@ -8,22 +8,9 @@ from .forms import *
 from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
-from django.views.generic import DayArchiveView, YearArchiveView, TodayArchiveView
-from django.urls import reverse_lazy
-import calendar
-from django.http import QueryDict
-
-from .models import *
-from django import template
 from datetime import date, timedelta
 from .models import *
-
-
-from datetime import datetime, date
-
 from django.shortcuts import render
-from django.utils.safestring import mark_safe
-from django.views.generic.list import ListView
 
 # Create your views here.
 
@@ -42,11 +29,13 @@ def borrarUsuario(request):
     user = request.user
     if request.method == "POST":
         user.delete()
-        return render(request, 'inicio.html')
-    context = {
-        "User": user
-    }
-    return render(request, 'borrarUsuario.html', context)
+        return redirect("../../inicio")
+    else:
+
+        context = {
+            "User": user
+        }
+        return render(request, 'borrarUsuario.html', context)
 
 
 def editarPerfil(request):

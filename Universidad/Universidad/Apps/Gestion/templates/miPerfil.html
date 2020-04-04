@@ -3,32 +3,46 @@
 
 {% block contenido %}
 
+<br>
+<div class="container">
+    <div class=" row mt-3 pt-2  display">
+        <div class="col-12">
+           <h1   class="nav tituloDisplay">Mi perfil</h1>
+            <hr style="width: 100%">
+         </div>
+    </div>
+
+    <div class="row">
+        <div class="col datosDisplay">
+            <strong>Nombre de usuario: </strong>{{ user.nickName }}
+            <br>
+             <strong>Nombre: </strong>{{ user.nombre }}
+            <br>
+            <strong>Apellidos: </strong>{{ user.apellidos }}
+            <br>
+            <strong>Email: </strong>{{ user.email }}
+            <br>
+            <strong>Dirección: </strong>{{ user.direccion }}
+            <br>
+            <strong>Fecha de nacimiento: </strong>{{ user.fechaNacimiento }}
+            <br>
+            <strong>Fecha última menstruación: </strong>{{ user.fechaUltMens }}
+            <br>
+            <div  class=" pt-2" >
+                <a   href="/registro">Cambiar contraseña</a>
+            </div>
+            <br>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col-12 ">
+                <input  class="btn btn-info m-2 p-2 botonBorrar" type='button' value='Editar perfil'  onclick="window.location='/editarPerfil/'"> </input>
+                <input  class="btn btn-info m-2 p-2 botonBorrar" type='button' value='Borrar perfil'  onclick="window.location='/borrarUsuario/'"> </input>
+            </div>
+        </div>
 
 
-<div class="m-5 p-4  display">
-   <h2 class="nav">Mi perfil</h2>
- <div class="dropdown-divider"></div>
-    <br>
-    <strong>Nombre de usuario: </strong>{{ user.nickName }}
-    <br>
-    <strong>Nombre: </strong>{{ user.nombre }}
-    <br>
-    <strong>Apellidos: </strong>{{ user.apellidos }}
-    <br>
-    <strong>Email: </strong>{{ user.email }}
-    <br>
-    <strong>Dirección: </strong>{{ user.direccion }}
-    <br>
-    <strong>Fecha de nacimiento: </strong>{{ user.fechaNacimiento }}
-    <br>
-    <strong>Fecha última menstruación: </strong>{{ user.fechaUltMens }}
-     <br>
-     <a href="/cambiarContra"  >Cambiar contraseña</a>
-     <br>
-      <br>
-
-      	<input  class="btn btn-info btn-sm" type="button" value="Editar perfil" onclick="window.location='/editarPerfil/'"></input>
-      	<input  class="btn btn-danger btn-sm" type="button" value="Borrar perfil" onclick="window.location='/borrarUsuario/'"></input>
 </div>
 
 

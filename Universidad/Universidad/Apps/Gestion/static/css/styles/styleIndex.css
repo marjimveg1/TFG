@@ -1,3 +1,5 @@
+
+
 #headerInicio{
     background-position: cover;
     font-family: 'Delius Unicase', cursive;
@@ -97,6 +99,22 @@ label {
 }
 .botonBorrar{
     background-color: #6c757d ;
+}
+.columView{
+
+}
+
+.tablita{
+    table-layout: fixed;
+    width: 250px;
+}
+
+th, td {
+    width: 100px;
+    word-wrap: break-word;
+}
+.columView{
+     color: #B6B6B6 ;
 }
 
 
