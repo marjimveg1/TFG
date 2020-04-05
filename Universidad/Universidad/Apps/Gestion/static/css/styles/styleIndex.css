@@ -1,0 +1,129 @@
+
+
+#headerInicio{
+    background-position: cover;
+    font-family: 'Delius Unicase', cursive;
+
+      }
+.titulo{
+     background: rgba(255,255, 255,.6);
+}
+.titulo h3{
+    color:#FFC3BA!important;
+}
+
+.display{
+    background-color: #ffffff ;
+}
+
+.menuInicio{
+    color: #6C757D;
+}
+.menuInicio:hover{
+    color:#6C757D;
+}
+
+.navbar-nav .dropdown-menu {
+     background-color: #FFC3BA;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #6C757D;
+}
+
+
+
+
+/* Style inputs, select elements and textareas */
+input[type=text],input[type=email] , input[type=month] , input[type=textarea], select, textarea{
+  padding: 12px;
+  border: 1px solid #f5f5f5;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  background-color: #f5f5f5;
+  width: 100%;
+  font-family: 'Rubik', sans-serif;
+}
+
+
+input[type=password]{
+  border: 1px solid #f5f5f5;
+  padding: 12px;
+  border-radius: 4px;
+  resize: vertical;
+  background-color: #f5f5f5;
+  width: 100%;
+}
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 0;
+  display: inline-block;
+    font-family: 'Rubik', sans-serif;
+}
+
+
+.btn{
+     background-color: #6C757D;
+     border: none;
+     display: inline-block;
+}
+.btn:hover{
+     background-color: #6c757d;
+
+}
+
+.errorlist{
+    color:red;
+    font-weight:bold;
+    list-style:none;
+    text-align: left;
+    font-family: 'Rubik', sans-serif;
+
+}
+
+.tituloView{
+     font-family: 'Verdana', sans-serif;
+    align-items:center;
+}
+
+.enlaceView{
+    font-family: 'Rubik', sans-serif;
+    color: #6c757d;
+}
+
+.alertView{
+    font-family: 'Rubik', sans-serif;
+
+}
+.botonBorrar{
+    background-color: #6c757d ;
+}
+.columView{
+
+}
+
+.tablita{
+    table-layout: fixed;
+    width: 250px;
+}
+
+th, td {
+    width: 100px;
+    word-wrap: break-word;
+}
+.columView{
+     color: #B6B6B6 ;
+}
+
+
+/*
+FFACB7 (rosa)
+C1D1DD (CELESTE)
+0A0C1C (negro)
+89182F (burdeos)
+F2E8DA (vainilla)
+FFFAFA (rosa formulario)
+6C757D (gris pie)
+*/

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block contenido %}
+
+
+
+<div class=" row m-5 p-4  justify-content-center">
+    <div class="col-md-12">
+        <h1 align="center"  class="nav justify-content-center tituloView">Cambiar contraseña</h1>
+        <hr style="width: 60%">
+
+    </div>
+
+    <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="col-12 ">
+             {{ field.label_tag }}
+            {{ field }}<br>
+            {{ field.errors }}
+
+        </div>
+    {% endfor %}
+
+
+
+     <div class="m-2 alert alert-danger alertView">
+        SU CONTRASEÑA: <br>
+         * No puede asemejarse a una información personal <br>
+         * Debe tener al menos 8 caracteres <br>
+         * No puede ser una clave utilizada comúnmente <br>
+         * No puede ser completamente numérica <br>
+
+
+    </div>
+
+    <div class="text-center col-12">
+        <button type="submit" class="btn btn-info btn-lg px-4 m-1">Guardar</button>
+    </div>
+
+
+    </form>
+</div>
+
+
+
+{% endblock %}

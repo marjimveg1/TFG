@@ -14,10 +14,33 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from Universidad.Apps.Gestion.views import *
 from django.contrib import admin
-from Universidad.Apps.Gestion.views import inicio
+from django.conf import settings
+from django.conf.urls import url, re_path
+from django.contrib.auth import views as auth_views
+from Universidad.Apps.Gestion.views import *
+
 
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('inicio/', inicio),
+    url('registro/', registro),
+    url('miPerfil/', miPerfil),
+
+    url('editarPerfil/', editarPerfil,name='editarPerfil'),
+    url('borrarUsuario/', borrarUsuario, name='borrarUsuario'),
+    url('cambiarContra/', cambiar_contra, name='cambiarContra'),
+
+    url('anadirFecha/',crearFechaCalendario, name='anadirFecha'),
+
+    url('inicioSesion/', auth_views.LoginView.as_view(), name='inicioSesion'),
+    url('cerrarSesion/', auth_views.LogoutView.as_view(), name='logout'),
+
+    url(r'^buscarFecha/$', buscarFecha, name='buscarFecha'),
+    url(r'^miAgenda/$', agenda, name='agenda'),
+    url(r'^miAgenda/?detalle=(?P<fechaDetalle>\d+)/$', agenda, name='agenda'),
+    url(r'^miAgenda/?fecha=(?P<mes>[+|-]+\d+)&$', agenda, name='agenda'),
+    url(r'^miAgenda/?fecha=(?P<mes>[+|-]+\d+)&detalle=(?P<fechaDetalle>\d+)/$', agenda, name='agenda'),
+
 ]

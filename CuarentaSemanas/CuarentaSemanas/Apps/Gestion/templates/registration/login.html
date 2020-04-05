@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block contenido %}
+
+<div class="border m-5 p-4 text-center formulario">
+    <h3>Inicio sesión</h3>
+    <form method="post" class= "px-4 mt-5">
+
+           {% csrf_token %}
+           {{ form.as_p }}
+
+
+
+                <button type="submit" class="btn btn-info">Iniciar sesión</button>
+
+      </form>
+
+
+
+ <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="/registro">¿Nuevo aqui? Registrate</a>
+  <a class="dropdown-item" href="#">¿Olvidate tu contraseña?</a>
+
+
+</div>
+{% endblock %}

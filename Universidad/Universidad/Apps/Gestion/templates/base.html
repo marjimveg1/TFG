@@ -1,36 +1,163 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang='es'>
-	<head>
-	</head>
-	<body>
-		<header>
-			{% block encabezado %}{% endblock %}
-            <br>
+{% load static i18n %}
+<html lang="en">
+  <head>
 
-            <h1>Inicio</h1>
-            <div>
-				<ul class="nav">
-                    <li><a href='/inicio'><strong>Introduction</strong></a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href='/logout'><strong>Log out</strong></a></li>
-                    {% else %}
-                    <li><a href='/login'><strong>Login</strong></a></li>
-                    <li><a  href='/signup'><strong>Signup</strong></a></li>
-                    {% endif %}
-                </ul>
-            </div>
-		</header>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+
+  <!--
+   <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB_r54de1RykpXIKcgbyRXyLSoDbpgEIMA" type="text/javascript"></script>-->
+
+  <script>
+ var map;
+ var infowindow;
+
+ function initMap()
+ {
+  // Creamos un mapa con las coordenadas actuales
+   navigator.geolocation.getCurrentPosition(function(pos) {
+
+   lat = pos.coords.latitude;
+   lon = pos.coords.longitude;
+
+   var myLatlng = new google.maps.LatLng(lat, lon);
+
+   var mapOptions = {
+     center: myLatlng,
+     zoom: 10,
+     mapTypeId: google.maps.MapTypeId.MAP
+   };
+
+   map = new google.maps.Map(document.getElementById("mapa"),  mapOptions);
+
+   // Creamos el infowindow
+   infowindow = new google.maps.InfoWindow();
+
+   // Especificamos la localización, el radio y el tipo de lugares que queremos obtener
+   var request = {
+     location: myLatlng,
+     radius: 50000,
+     types: ['hospital']
+   };
+
+   // Creamos el servicio PlaceService y enviamos la petición.
+   var service = new google.maps.places.PlacesService(map);
+
+   service.nearbySearch(request, function(results, status) {
+     if (status === google.maps.places.PlacesServiceStatus.OK) {
+       for (var i = 0; i < results.length; i++) {
+         crearMarcador(results[i]);
+       }
+     }
+   });
+ });
+}
+
+ function crearMarcador(place)
+ {
+   // Creamos un marcador
+   var marker = new google.maps.Marker({
+     map: map,
+     position: place.geometry.location
+   });
+
+ // Asignamos el evento click del marcador
+   google.maps.event.addListener(marker, 'click', function() {
+     infowindow.setContent(place.name);
+     infowindow.open(map, this);
+   });
+   }
+</script>
+
+    {% block  css %}
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+
+    <link href="../../static/css/styles/styleIndex.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Delius+Unicase&display=swap" rel="stylesheet">
+    {% endblock %}
+
+  <title>Cuarenta Semanas</title>
+
+  </head>
+
+   {% if inicioview%}
+  <body onload="initMap()">
+  {% endif %}
+
+   {% if not inicioview%}
+  <body>
+  {% endif %}
+
+  <div class="row align-items-center pb-5">
+<nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
+   <div class=" col-md-6 col-sm-6 col-8 text-center">
+    <a class="navbar-brand" title="Inicio" href="/inicio">
+            <img  src="../static/img/index/4.jpg" alt="Logo" class="img-fluid">
+    </a>
+   </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse">☰</button>
+
+    <div class="col-md-6 collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item"> <a class=" lead nav-link menuInicio font-weight-bold" href="/inicio"><strong>Inicio</strong></a></li>
+          {% if not user.is_authenticated %}
+                   <li class="nav-item"><a href="/inicioSesion" class="lead nav-link menuInicio font-weight-bold"><strong>Iniciar Sesión</strong></a></li>
+          {% endif %}
+
+          {% if user.is_authenticated %}
+             <li class="dropdown">
+                   <a href="/miPerfil" class="dropdown-toggle lead nav-link menuInicio font-weight-bold" data-toggle="dropdown" data-hover="dropdown">
+                        <strong>Mi perfil</strong><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu ml-auto">
+                      <li class="nav-item"><a href="/miAgenda" class="lead nav-link menuInicio font-weight-bold"><strong>Agenda</strong></a></li>
+                      <li class="nav-item"><a href="#" class="lead nav-link menuInicio font-weight-bold"><strong>Diario</strong></a></li>
+                      <li class="nav-item"><a href="/miPerfil" class="lead nav-link menuInicio font-weight-bold"><strong>Mis datos</strong></a></li>
+                      <li class="nav-item"><a href="/cerrarSesion" class="lead nav-link menuInicio font-weight-bold"><strong>Cerrar Sesión</strong></a></li>
+                     </ul>
+            </li>
+          {% endif %}
+        </ul>
+    </div>
+
+</nav>
+
+  </div>
+
+     {% block  contenido %}
+     {% endblock %}
 
 
-        <div>
-		    <section class='contenido'>
-			    {% block contenido %}{% endblock %}
-		    </section>
-        </div>
 
-		<br/>
-		<footer>
-			<p>Proyecto para la Universidad de Sevilla</p>
-		</footer>
-	</body>
+
+
+    {% block js %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{%  static 'js/jquery.min.js' %}"></script>
+
+  <script src="{%  static 'js/popper.min.js' %}"></script>
+
+  <script src="{%  static 'js/bootstrap.min.js' %}"></script>
+
+
+  {% endblock %}
+  </body>
+
+
+<br><br><br>
+<footer class="bg-secondary text-center py-3 position">
+      <p class="lead mb-0 text-light">Trabajo Fin de Grado. María Jiménez Vega.</p>
+</footer>
+
+
+</html>

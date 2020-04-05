@@ -1,184 +1,161 @@
 # -*- encoding: utf-8 -*-
-from Universidad.Apps.Gestion.models import Alumno
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
+from Universidad.Apps.Gestion.models import *
+
 
 User = get_user_model()
 
-'''
-class UserCreateForm(UserCreationForm):
-    SEX_OPTIONS = (
-        ('M', ('Man')),
-        ('W', ('Woman')),
-    )
-    formato = ("Format: dd/mm/YYYY"),
 
-    first_name = forms.CharField(label=('First name'), required=False)
-    last_name = forms.CharField(label=('Last name'), required=False)
-    year_birth = forms.DateTimeField(label=('Year Birth'), input_formats=['%d/%m/%Y'], help_text=formato,
-                                     required=False)
-    sex = forms.ChoiceField(label=('Sex'), choices=SEX_OPTIONS, required=False)
-    nickName = forms.CharField(label=('Nick Name'), max_length=50, required=True)
+# REGISTRO DE UN USUARIO (MAMÁ)
+class MamaCreateForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("first_name", "last_name", "year_birth", "sex", "nickName", "password1", "password2")
+        fields = ( "nombre", "apellidos",  "email", "direccion","fechaNacimiento","fechaUltMens","nickName","password1", "password2")
+
+        labels = {
+            'nombre': 'Nombre',
+            'apellidos': 'Apellidos',
+            'email': 'Correo electrónico',
+            'dirección': 'Dirección',
+            'fechaNacimiento': 'Fecha de nacimiento',
+            'fechaUltMens': 'Fecha última menstruación',
+            'nickName': 'Nombre de usuario',
+            'password1': 'Contraseña',
+            'password2': 'Confirme contraseña',
+
+        }
+
+    widgets = {
+        'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+        'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
+        'email': forms.TextInput(attrs={'class': 'form-control'}),
+        'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+        'fechaNacimiento': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
+        'fechaUltMens': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
+        'nickName': forms.TextInput(attrs={'class': 'form-control'}),
+        'password1': forms.TextInput(attrs={'class': 'form-control'}),
+        'password2': forms.TextInput(attrs={'class': 'form-control'}),
+    }
+
 
     def save(self):
-        user = super(UserCreateForm, self).save(commit=False)
-        user.first_name = self.cleaned_data["first_name"]
-        user.last_name = self.cleaned_data["last_name"]
+        user = super(MamaCreateForm, self).save(commit=False)
+        user.nombre = self.cleaned_data["nombre"]
+        user.apellidos = self.cleaned_data["apellidos"]
         user.nickName = self.cleaned_data["nickName"]
-        user.year_birth = self.cleaned_data["year_birth"]
-        user.sex = self.cleaned_data["sex"]
+        user.fechaNacimiento = self.cleaned_data["fechaNacimiento"]
+        user.fechaUltMens = self.cleaned_data["fechaUltMens"]
+        user.direccion = self.cleaned_data["direccion"]
+        user.email = self.cleaned_data["email"]
         user.save()
+
+        calendario = Calendario()
+        calendario.nombre = "calendario"
+        calendario.user = user
+        calendario.save()
+
         return user
 
     def clean(self, *args, **kwargs):
-        cleaned_data = super(UserCreateForm, self).clean(*args, **kwargs)
+        cleaned_data = super(MamaCreateForm, self).clean(*args, **kwargs)
         nickName = cleaned_data.get('nickName', None)
         # Recorremos todos los usuarios para ver si ya existe
         if nickName is not None:
             users = User.objects.all()
             for u in users:
                 if nickName == u.nickName:
-                    self.add_error('nickName', ('Nick Name alredy exits'))
+                    self.add_error('nickName', ('Nick Name ya existe'))
                     break
 
-        year_birth = cleaned_data.get('year_birth', None)
+        year_birth = cleaned_data.get('fechaNacimiento', None)
         # Comprobamos que la fecha de nacimiento sea en pasado
         if year_birth is not None:
-            now = timezone.now()
+            now = timezone.now().date()
             if year_birth > now:
-                self.add_error('year_birth', ('Can´t be in future'))
+                self.add_error('fechaNacimiento', ('No puede ser futuro'))
+
+        fecha_mens = cleaned_data.get('fechaUltMens', None)
+        if fecha_mens is not None:
+            now = timezone.now().date()
+            if fecha_mens > now:
+                self.add_error('fechaUltMens', ('No puede ser futuro'))
 
 
-class UserChangeForm(forms.ModelForm):
+class EditarPerfilForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('nickName', 'first_name', 'last_name', 'sex', 'year_birth')
+        fields = ('nombre','apellidos','direccion','fechaNacimiento', 'fechaUltMens')
 
-    def clean_password(self):
-        return self.initial["password"]
+        labels = {
+            'nombre': 'Nombre',
+            'apellidos': 'Apellidos',
+            'dirección': 'Dirección',
+            'fechaNacimiento': 'Fecha de nacimiento',
+            'fechaUltMens': 'Fecha última menstruación',
 
+        }
 
-# PARA EL MÉTODO CREATESUPERUSER
-class UserCreateFormAdmin(UserCreationForm):
-    SEX_OPTIONS = (
-        ('M', ('Man')),
-        ('W', ('Woman')),
-    )
-    formato = ("Format: dd/mm/YYYY"),
-
-    first_name = forms.CharField(label=('First name'), required=False)
-    last_name = forms.CharField(label=('Last name'), required=False)
-    nickName = forms.EmailField(label=('Nick Name'), required=True)
-    year_birth = forms.DateTimeField(label=('Year of Birth'), input_formats=['%d/%m/%Y'], help_text=formato,
-                                     required=False)
-    sex = forms.ChoiceField(label=('Sex'), choices=SEX_OPTIONS, required=False)
-
-    class Meta:
-        model = User
-        fields = ("first_name", "last_name", "nickName", "year_birth", "sex", "password1", "password2")
-
-    def save(self):
-        user = super(UserCreateFormAdmin, self).save(commit=False)
-        user.first_name = self.cleaned_data["first_name"]
-        user.last_name = self.cleaned_data["last_name"]
-        user.nickName = self.cleaned_data["nickName"]
-        user.year_birth = self.cleaned_data["year_birth"]
-        user.sex = self.cleaned_data["sex"]
-        user.save()
-        return user
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
+            'dirección': forms.TextInput(attrs={'class': 'form-control'}),
+            'fechaNacimiento': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
+            'fechaUltMens': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'})
+        }
 
     def clean(self, *args, **kwargs):
-        cleaned_data = super(UserCreateFormAdmin, self).clean(*args, **kwargs)
-        nickName = cleaned_data.get('nickName', None)
-        # Recorremos todos los usuarios para ver si ya existe
-        if nickName is not None:
-            all_users = User.objects.all()
-            for u in all_users:
-                if nickName == u.nickName:
-                    self.add_error('nickName', ('Nickname exits'))
-                    break
+        cleaned_data = super(EditarPerfilForm, self).clean(*args, **kwargs)
 
-        year_birth = cleaned_data.get('year_birth', None)
+        year_birth = cleaned_data.get('fechaNacimiento', None)
         # Comprobamos que la fecha de nacimiento sea en pasado
         if year_birth is not None:
-            now = timezone.now()
+            now = timezone.now().date()
             if year_birth > now:
-                self.add_error('year_birth', ('Can´t be in future'))
+                self.add_error('fechaNacimiento', ('No puede ser futuro'))
+
+        fecha_mens = cleaned_data.get('fechaUltMens', None)
+        if fecha_mens is not None:
+            now = timezone.now().date()
+            if fecha_mens > now:
+                self.add_error('fechaUltMens', ('No puede ser futuro'))
 
 
-class ClothingForm(forms.ModelForm):
+
+class FechaCalendarioForm(forms.ModelForm):
+
     class Meta:
-        model = Clothing
-        exclude = {'user', }
-        fields = ['name', 'photo', 'size', 'brand', 'link', 'category', ]
+        model = Evento
+        exclude = {'calendario',}
+        fields = ['titulo','fecha','descripcion',]
 
         labels = {
-            'name': 'Name',
-            'photo': 'Photo',
-            'size': 'Size',
-            'brand': 'Brand',
-            'link': 'Link',
-            'category': 'Category',
+            'titulo': 'Título',
+            'fecha': 'Fecha',
+            'descripcion': 'Descripción',
+
+        }
+        widgets = {
+            'titulo': forms.TextInput(attrs={'class': 'form-control'}),
+            'fecha': forms.DateTimeInput(attrs={'placeholder': 'dd/mm/aaaa hh:mm'}),
+            'descripcion' : forms.Textarea(attrs={'class': 'form-control'})
+        }
+
+
+class BuscarFechaForm(forms.ModelForm):
+    class Meta:
+        fields = ['mes','año',]
+
+        labels = {
+            'mes': 'Mes',
+            'año': 'Año',
+
         }
 
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'photo': forms.TextInput(attrs={'class': 'form-control'}),
-            'size': forms.TextInput(attrs={'class': 'form-control'}),
-            'brand': forms.TextInput(attrs={'class': 'form-control'}),
-            'link': forms.TextInput(attrs={'class': 'form-control'}),
-            'category': forms.Select(attrs={'class': 'form-control'}),
+            'mes': forms.TextInput(attrs={'class':'form-control'}),
+            'año': forms.TextInput(attrs={'class':'form-control'}),
         }
-
-
-
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        exclude = {'user', 'look', 'moment', }
-        fields = ['subject', 'body', ]
-
-        labels = {
-            'subject': 'Subject',
-            'body': 'Body',
-            'moment': 'Moment',
-        }
-
-        widgets = {
-            'subject': forms.TextInput(attrs={'class': 'form-control'}),
-            'body': forms.TextInput(attrs={'class': 'form-control'}),
-        }
-
-
-class createLook(forms.ModelForm):
-    class Meta:
-        model = Look
-        exclude = ('user',)
-        fields = [
-            'title',
-            'description',
-            'season',
-            'clothes',
-        ]
-
-        labels = {
-            'title': 'Title',
-            'description': 'Description',
-            'season': 'Season',
-            'clothes': 'Clothes',
-        }
-
-        widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.TextInput(attrs={'class': 'form-control'}),
-            'season': forms.Select(attrs={'class': 'form-control'}),
-            'clothes': forms.SelectMultiple(attrs={'class': 'form-control'}),
-        }
-
-'''
