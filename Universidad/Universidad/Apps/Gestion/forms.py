@@ -16,6 +16,19 @@ class MamaCreateForm(UserCreationForm):
         model = User
         fields = ( "nombre", "apellidos",  "email", "direccion","fechaNacimiento","fechaUltMens","nickName","password1", "password2")
 
+        labels = {
+            'nombre': 'Nombre',
+            'apellidos': 'Apellidos',
+            'email': 'Correo electrónico',
+            'dirección': 'Dirección',
+            'fechaNacimiento': 'Fecha de nacimiento',
+            'fechaUltMens': 'Fecha última menstruación',
+            'nickName': 'Nombre de usuario',
+            'password1': 'Contraseña',
+            'password2': 'Confirme contraseña',
+
+        }
+
     widgets = {
         'nombre': forms.TextInput(attrs={'class': 'form-control'}),
         'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
@@ -77,10 +90,19 @@ class EditarPerfilForm(forms.ModelForm):
         model = User
         fields = ('nombre','apellidos','direccion','fechaNacimiento', 'fechaUltMens')
 
+        labels = {
+            'nombre': 'Nombre',
+            'apellidos': 'Apellidos',
+            'dirección': 'Dirección',
+            'fechaNacimiento': 'Fecha de nacimiento',
+            'fechaUltMens': 'Fecha última menstruación',
+
+        }
+
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
-            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+            'dirección': forms.TextInput(attrs={'class': 'form-control'}),
             'fechaNacimiento': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
             'fechaUltMens': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'})
         }
