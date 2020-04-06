@@ -17,9 +17,10 @@ from django.conf.urls import url
 from Universidad.Apps.Gestion.views import *
 from django.contrib import admin
 from django.conf import settings
-from django.conf.urls import url, re_path
+from django.conf.urls import url, re_path, static
 from django.contrib.auth import views as auth_views
 from Universidad.Apps.Gestion.views import *
+
 
 
 urlpatterns = [
@@ -43,4 +44,4 @@ urlpatterns = [
     url(r'^miAgenda/?fecha=(?P<mes>[+|-]+\d+)&$', agenda, name='agenda'),
     url(r'^miAgenda/?fecha=(?P<mes>[+|-]+\d+)&detalle=(?P<fechaDetalle>\d+)/$', agenda, name='agenda'),
 
-]
+] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

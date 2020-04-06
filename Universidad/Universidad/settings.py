@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z#73e_92w3l!=ix-l8mdscg#z_2_%fjfgzx%wte4%xh7*#)9%^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'Gestion.User'
 
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Universidad.urls'
@@ -83,15 +84,22 @@ WSGI_APPLICATION = 'Universidad.wsgi.application'
 #   }
 # }
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'tfg_db',
+#        'USER': 'tfg',
+#        'PASSWORD': '1233',
+#        'HOST': 'localhost',
+#        'PORT': ''
+#    }
+#}
+import dj_database_url
+from decouple import config
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tfg_db',
-        'USER': 'tfg',
-        'PASSWORD': '1233',
-        'HOST': 'localhost',
-        'PORT': ''
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 # Password validation
@@ -132,3 +140,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL='/inicio/'
 LOGOUT_REDIRECT_URL='/inicio/'
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
