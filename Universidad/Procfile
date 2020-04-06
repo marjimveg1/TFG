@@ -1,1 +1,1 @@
-web: gunicorn Universidad.wsgi
+web: gunicorn Universidad.Universidad.wsgi
