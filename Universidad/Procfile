@@ -1,1 +1,1 @@
-web: gunicorn Universidad.wsgi --log-file -
+web: gunicorn Universidad.Universidad.wsgi.py --log-file -
