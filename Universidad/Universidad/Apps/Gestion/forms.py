@@ -155,6 +155,29 @@ class CrearTensionForm(forms.ModelForm):
             'tDiastolica' : forms.NumberInput(),
         }
 
+    def clean(self, *args, **kwargs):
+        cleaned_data = super(CrearTensionForm, self).clean(*args, **kwargs)
+
+        tSistolica = cleaned_data.get('tSistolica', None)
+        tDiastolica = cleaned_data.get('tDiastolica', None)
+        # Comprobamos que la tensión diastolica sea menos que la sistólica
+        if tSistolica <= tDiastolica:
+            self.add_error('tSistolica', ('La tensión sistólica debe er mayor que la diastólica'))
+
+        # Comprobamos que la tensión diastolica o sistólica no sea negativo
+        if tSistolica <= 0.:
+            self.add_error('tSistolica', ('La tensión sistólica debe ser mayor que cero'))
+
+        if tDiastolica <= 0.:
+            self.add_error('tDiastolica', ('La tensión sistólica debe ser mayor que cero'))
+
+        # Comprobamos que el momento introducido no sea futuro
+        momento = cleaned_data.get('momento', None)
+        if momento is not None:
+            now = timezone.now()
+            if momento > now:
+                self.add_error('momento', ('No puede ser futuro'))
+
 class CrearPesoForm(forms.ModelForm):
 
     class Meta:
@@ -171,6 +194,23 @@ class CrearPesoForm(forms.ModelForm):
             'fecha': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
             'peso': forms.NumberInput(),
         }
+
+    def clean(self, *args, **kwargs):
+        cleaned_data = super(CrearPesoForm, self).clean(*args, **kwargs)
+
+        peso = cleaned_data.get('peso', None)
+        fecha = cleaned_data.get('fecha', None)
+        # Comprobamos que la tensión diastolica sea menos que la sistólica
+        if peso <= 0:
+            self.add_error('peso', ('El peso debe ser mayor que cero'))
+
+        # Comprobamos que la fecha introducido no sea futuro
+        if fecha is not None:
+            now = timezone.now().date()
+            if fecha > now:
+                self.add_error('fecha', ('No puede ser futuro'))
+
+
 
 class CrearPatadaForm(forms.ModelForm):
 
@@ -198,15 +238,30 @@ class CrearMedicacionForm(forms.ModelForm):
             'medicamento': 'Medicamento',
             'fechaInicio': 'Fecha de inicio del tratamiento',
             'fechaFin': 'Fecha de fin del tratamiento',
-            'frecuencia': 'Frecuencia de tomas',
+            'frecuencia': 'Frecuencia de tomas (en horas)',
 
         }
+
         widgets = {
             'medicamento': forms.TextInput(attrs={'class': 'form-control'}),
             'fechaInicio': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
             'fechaFin': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
             'frecuencia': forms.NumberInput(),
         }
+
+    def clean(self, *args, **kwargs):
+        cleaned_data = super(CrearMedicacionForm, self).clean(*args, **kwargs)
+
+        # Comprobamos que la frecuencia no sea negativa
+        frecuencia = cleaned_data.get('frecuencia', None)
+        fechaInicio = cleaned_data.get('fechaInicio', None)
+        fechaFin = cleaned_data.get('fechaFin', None)
+        if frecuencia <= 0:
+            self.add_error('frecuencia', ('La frecuencia debe ser mayor que cero'))
+
+        # Comprobamos que la fecha inicio sea antes que la fecha fin del tratamiento
+        if str(fechaInicio) > str(fechaFin):
+            self.add_error('fechaInicio', ('El inicio del tratamiento no puede ser después que el fin'))
 
 class CrearContraccionForm(forms.ModelForm):
 

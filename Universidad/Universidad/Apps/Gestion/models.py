@@ -95,7 +95,7 @@ class Peso(models.Model):
 
 class Contraccion(models.Model):
     momento = models.DateTimeField ()
-    despripcion = models.CharField(max_length=1000, null=True)
+    despripcion = models.CharField(max_length=1000,null=True, blank = True)
     diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False)
 
 
