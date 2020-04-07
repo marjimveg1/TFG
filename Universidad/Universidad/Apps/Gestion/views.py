@@ -8,7 +8,7 @@ from .forms import *
 from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from .models import *
 from django.shortcuts import render
 
@@ -86,6 +86,112 @@ def registro(request):
     else:
         form = MamaCreateForm()
     return render(request, 'registro.html', {'form': form})
+
+
+# DIARIO
+def diario(request):
+    return render(request, 'agenda.html')
+
+def anadirTension(request):
+    if request.user.is_authenticated:
+        user = request.user
+        if request.method == 'POST':
+            form = CrearTensionForm(request.POST)
+            if form.is_valid():
+                diario = Diario.objects.filter(user=user)[0]
+                obj = form.save(commit=False)
+                obj.diario = diario
+                form.save()
+                return redirect('/miDiario/')
+        else:
+            form = CrearTensionForm()
+
+    return render(request, 'anadirTension.html', {'form': form})
+
+def anadirPesoMama(request):
+    if request.user.is_authenticated:
+        user = request.user
+        if request.method == 'POST':
+            form = CrearPesoForm(request.POST)
+            if form.is_valid():
+                diario = Diario.objects.filter(user=user)[0]
+                obj = form.save(commit=False)
+                obj.diario = diario
+                obj.tipo = "Madre"
+                form.save()
+                return redirect('/miDiario/')
+        else:
+            form = CrearPesoForm()
+
+    return render(request, 'anadirPesoMama.html', {'form': form})
+
+def anadirPesoBebe(request):
+    if request.user.is_authenticated:
+        user = request.user
+        if request.method == 'POST':
+            form = CrearPesoForm(request.POST)
+            if form.is_valid():
+                diario = Diario.objects.filter(user=user)[0]
+                obj = form.save(commit=False)
+                obj.diario = diario
+                obj.tipo = "Bebe"
+                form.save()
+                return redirect('/miDiario/')
+        else:
+            form = CrearPesoForm()
+
+    return render(request, 'anadirPesoBebe.html', {'form': form})
+
+def anadirPatada(request):
+    if request.user.is_authenticated:
+        user = request.user
+        if request.method == 'POST':
+            form = CrearPatadaForm(request.POST)
+            if form.is_valid():
+                diario = Diario.objects.filter(user=user)[0]
+                obj = form.save(commit=False)
+                obj.diario = diario
+                obj.momento = datetime.now()
+                form.save()
+                return redirect('/miDiario/')
+        else:
+            form = CrearPatadaForm()
+
+    return render(request, 'anadirPatada.html', {'form': form})
+
+
+def anadirMedicacion(request):
+    if request.user.is_authenticated:
+        user = request.user
+        if request.method == 'POST':
+            form = CrearMedicacionForm(request.POST)
+            if form.is_valid():
+                diario = Diario.objects.filter(user=user)[0]
+                obj = form.save(commit=False)
+                obj.diario = diario
+                form.save()
+                return redirect('/miDiario/')
+        else:
+            form = CrearMedicacionForm()
+
+    return render(request, 'anadirMedicacion.html', {'form': form})
+
+def anadirContraccion(request):
+    if request.user.is_authenticated:
+        user = request.user
+        if request.method == 'POST':
+            form = CrearContraccionForm(request.POST)
+            if form.is_valid():
+                diario = Diario.objects.filter(user=user)[0]
+                obj = form.save(commit=False)
+                obj.diario = diario
+                obj.momento = datetime.now()
+                form.save()
+                return redirect('/miDiario/')
+        else:
+            form = CrearContraccionForm()
+
+    return render(request, 'anadirContraccion.html', {'form': form})
 
 
 # CALENDARIO

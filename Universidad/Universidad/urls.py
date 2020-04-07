@@ -34,6 +34,15 @@ urlpatterns = [
 
     url('anadirFecha/',crearFechaCalendario, name='anadirFecha'),
 
+    url('miDiario/', diario,name='diario'),
+    url('anadirTension/', anadirTension,name='anadirTension'),
+    url('anadirPesoMama/', anadirPesoMama,name='anadirPesoMama'),
+    url('anadirPesoBebe/', anadirPesoBebe,name='anadirPesoBebe'),
+    url('anadirPatada/', anadirPatada,name='anadirPatada'),
+    url('anadirMedicacion/', anadirMedicacion,name='anadirMedicacion'),
+    url('anadirFoto/', diario,name='anadirFoto'),
+    url('anadirContraccion/', anadirContraccion,name='anadirContraccion'),
+
     url('inicioSesion/', auth_views.LoginView.as_view(), name='inicioSesion'),
     url('cerrarSesion/', auth_views.LogoutView.as_view(), name='logout'),
 

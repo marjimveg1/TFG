@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'Universidad.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tfg_db',
+        'NAME': 'tfg_bbdd',
         'USER': 'tfg',
         'PASSWORD': '1233',
         'HOST': 'localhost',
@@ -117,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Madrid'
 
 USE_I18N = True
 

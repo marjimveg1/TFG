@@ -28,11 +28,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.nickName
 
 class Calendario (models.Model):
-    nombre = models.CharField(max_length=25,default='SOME STRING')
+    nombre = models.CharField(max_length=50,default='SOME STRING')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
 
 class Evento(models.Model):
-    titulo = models.CharField(max_length=25)
+    titulo = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=350)
     fecha = models.DateTimeField ()
     calendario = models.ForeignKey(Calendario, on_delete=models.CASCADE, null=False, blank=False)
@@ -43,7 +43,7 @@ class Evento(models.Model):
         return '<p>{self.title}</p><a href="{url}">edit</a>'
 
 class Diario(models.Model):
-    nombre = models.CharField(max_length=25,default='SOME STRING')
+    nombre = models.CharField(max_length=50,default='SOME STRING')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
 
     def __str__(self):
@@ -59,13 +59,13 @@ class Medida(models.Model):
 
 class Fotografia(models.Model):
     enlace = models.CharField(max_length=1000)
-    despription = models.CharField(max_length=1000, null=True, blank = True)
+    despripcion = models.CharField(max_length=1000, null=True, blank = True)
     diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False)
 
 
 class Patada(models.Model):
     momento = models.DateTimeField ()
-    despription = models.CharField(max_length=1000, null=True, blank = True)
+    despripcion = models.CharField(max_length=1000, null=True, blank = True)
     diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False)
 
 class Tension(models.Model):
@@ -95,7 +95,7 @@ class Peso(models.Model):
 
 class Contraccion(models.Model):
     momento = models.DateTimeField ()
-    despription = models.CharField(max_length=1000, null=True)
+    despripcion = models.CharField(max_length=1000, null=True)
     diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False)
 
 

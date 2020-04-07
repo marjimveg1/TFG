@@ -58,6 +58,18 @@ class MamaCreateForm(UserCreationForm):
         calendario.user = user
         calendario.save()
 
+        diario = Diario()
+        diario.nombre = "diario"
+        diario.user = user
+        diario.save()
+
+        evento_fechaUltMenst = Evento()
+        evento_fechaUltMenst.titulo = "Última menstruación"
+        evento_fechaUltMenst.fecha = user.fechaUltMens
+        evento_fechaUltMenst.calendario = calendario
+        evento_fechaUltMenst.save()
+
+
         return user
 
     def clean(self, *args, **kwargs):
@@ -122,6 +134,95 @@ class EditarPerfilForm(forms.ModelForm):
             now = timezone.now().date()
             if fecha_mens > now:
                 self.add_error('fechaUltMens', ('No puede ser futuro'))
+
+
+class CrearTensionForm(forms.ModelForm):
+
+    class Meta:
+        model = Tension
+        exclude = {'diario',}
+        fields = ['momento','tSistolica','tDiastolica',]
+
+        labels = {
+            'momento': 'Fecha',
+            'tSistolica': 'Tensión sistólica',
+            'tDiastolica': 'Tensión diastólica',
+
+        }
+        widgets = {
+            'momento': forms.DateTimeInput(attrs={'placeholder': 'dd/mm/aaaa hh:mm'}),
+            'tSistolica': forms.NumberInput(),
+            'tDiastolica' : forms.NumberInput(),
+        }
+
+class CrearPesoForm(forms.ModelForm):
+
+    class Meta:
+        model = Peso
+        exclude = {'diario','tipo'}
+        fields = ['fecha','peso',]
+
+        labels = {
+            'fecha': 'Fecha',
+            'peso': 'Peso',
+
+        }
+        widgets = {
+            'fecha': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
+            'peso': forms.NumberInput(),
+        }
+
+class CrearPatadaForm(forms.ModelForm):
+
+    class Meta:
+        model = Patada
+        exclude = {'diario','momento'}
+        fields = ['despripcion',]
+
+        labels = {
+            'despripcion': 'Descripción',
+
+        }
+        widgets = {
+            'despripcion': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+class CrearMedicacionForm(forms.ModelForm):
+
+    class Meta:
+        model = Medicacion
+        exclude = {'diario',}
+        fields = ['medicamento','fechaInicio','fechaFin', 'frecuencia']
+
+        labels = {
+            'medicamento': 'Medicamento',
+            'fechaInicio': 'Fecha de inicio del tratamiento',
+            'fechaFin': 'Fecha de fin del tratamiento',
+            'frecuencia': 'Frecuencia de tomas',
+
+        }
+        widgets = {
+            'medicamento': forms.TextInput(attrs={'class': 'form-control'}),
+            'fechaInicio': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
+            'fechaFin': forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa'}),
+            'frecuencia': forms.NumberInput(),
+        }
+
+class CrearContraccionForm(forms.ModelForm):
+
+    class Meta:
+        model = Contraccion
+        exclude = {'diario','momento'}
+        fields = ['despripcion',]
+
+        labels = {
+            'despripcion': 'Descripción',
+
+        }
+        widgets = {
+            'despripcion': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
 
 
 
