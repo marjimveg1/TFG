@@ -90,7 +90,7 @@ def registro(request):
 
 # DIARIO
 def diario(request):
-    return render(request, 'agenda.html')
+    return render(request, 'diarioSeguimiento.html')
 
 def anadirTension(request):
     if request.user.is_authenticated:
