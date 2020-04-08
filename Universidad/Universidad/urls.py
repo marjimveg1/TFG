@@ -35,7 +35,10 @@ urlpatterns = [
     url('anadirFecha/',crearFechaCalendario, name='anadirFecha'),
 
     url('miDiario/', diario,name='diario'),
+
+    url('inicioTension/', inicioTension, name='inicioTension'),
     url('anadirTension/', anadirTension,name='anadirTension'),
+
     url('anadirPesoMama/', anadirPesoMama,name='anadirPesoMama'),
     url('anadirPesoBebe/', anadirPesoBebe,name='anadirPesoBebe'),
     url('anadirPatada/', anadirPatada,name='anadirPatada'),

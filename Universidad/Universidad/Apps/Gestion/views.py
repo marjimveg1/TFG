@@ -92,6 +92,17 @@ def registro(request):
 def diario(request):
     return render(request, 'diarioSeguimiento.html')
 
+#TENSION
+
+
+def inicioTension(request):
+    lista_tension = {}
+    if request.user.is_authenticated:
+        user = request.user
+        diario_owner = Diario.objects.filter(user=user)[0]
+        lista_tension = Tension.objects.filter(diario=diario_owner)
+    return render(request, 'inicioTension.html', {"lista_tension": lista_tension})
+
 def anadirTension(request):
     if request.user.is_authenticated:
         user = request.user
