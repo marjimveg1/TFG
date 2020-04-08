@@ -3,16 +3,11 @@
 
 {% block contenido %}
 
-<style>
-    .icono{
-        width: 30px;
-        height: 30px;
-    }
-</style>
 
 
 
-<div class=" row m-5 pr-lg-5 pl-lg-5 justify-content-center">
+
+<div class=" row m-5 pr-lg-5 pl-lg-5 row  d-flex  justify-content-center ro">
     <div class="col-12">
         <h1 align="center"  class="nav justify-content-center tituloView">Registro de mi tensión arterial</h1>
         <hr style="width: 60%">
@@ -20,13 +15,13 @@
 
 
     <div class="col-12 justify-content-center">
-        <table class="table table-responsive table-hover">
+        <table class="table table-responsive table-hover tablaPerzonalizada">
             <thead>
 		    <tr>
                 <td><strong>Fecha</strong></td>
                 <td><strong>Tensión sistólica</strong></td>
                 <td><strong>Tensión diastólica</strong></td>
-                <td class="justify-content-center">
+                <td>
                     <a href="/anadirTension/">
                        <img  src="../static/icon/anadir.svg" alt="Anadir" class="icono" align="center">
                     </a>
@@ -61,6 +56,15 @@
 
     </div>
 
+    <div class="col-12">
+        <h5 class="nav justify-content">Página:
+            <span>
+                {% for l in  lista_tension.paginator.page_range %}
+                    <a class="enlacePaginacion" href="?pagina={{forloop.counter}}"> {{forloop.counter}}</a>,
+                 {% endfor %}
+            </span>
+        </h5>
+     </div>
 
 </div>
 

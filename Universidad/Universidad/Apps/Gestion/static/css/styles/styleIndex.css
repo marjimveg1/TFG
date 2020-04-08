@@ -42,6 +42,20 @@ a#hover {
 }
 
 
+.tablaPerzonalizada{
+        display: table;
+
+}
+
+.enalacePaginacion{
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+}
+
+.icono{
+    width: 30px;
+    height: 30px;
+}
 
 /* Style inputs, select elements and textareas */
 input[type=text],input[type=number],input[type=email] , input[type=month] , input[type=textarea], select, textarea{

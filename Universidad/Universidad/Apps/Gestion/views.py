@@ -11,6 +11,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 from datetime import date, timedelta, datetime
 from .models import *
 from django.shortcuts import render
+from django.core.paginator import Paginator
+from django.conf import settings
 
 # Create your views here.
 
@@ -101,7 +103,12 @@ def inicioTension(request):
         user = request.user
         diario_owner = Diario.objects.filter(user=user)[0]
         lista_tension = Tension.objects.filter(diario=diario_owner)
-    return render(request, 'inicioTension.html', {"lista_tension": lista_tension})
+
+        paginator = Paginator(lista_tension, 10)
+        page = request.GET.get('pagina')
+        lista_tension = paginator.get_page(page)
+
+    return render(request, 'inicioTension.html', {"lista_tension": lista_tension, 'page':page,'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirTension(request):
     if request.user.is_authenticated:
@@ -113,7 +120,7 @@ def anadirTension(request):
                 obj = form.save(commit=False)
                 obj.diario = diario
                 form.save()
-                return redirect('/miDiario/')
+                return redirect('/inicioTension/')
         else:
             form = CrearTensionForm()
 
