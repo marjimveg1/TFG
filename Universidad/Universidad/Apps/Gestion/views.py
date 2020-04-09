@@ -99,6 +99,7 @@ def diario(request):
 
 def inicioTension(request):
     lista_tension = {}
+    page = ""
     if request.user.is_authenticated:
         user = request.user
         diario_owner = Diario.objects.filter(user=user)[0]
@@ -126,6 +127,21 @@ def anadirTension(request):
 
     return render(request, 'anadirTension.html', {'form': form})
 
+
+def inicioPesoMama(request):
+    lista_peso = {}
+    page = ""
+    if request.user.is_authenticated:
+        user = request.user
+        diario_owner = Diario.objects.filter(user=user)[0]
+        lista_peso = Peso.objects.filter(diario=diario_owner, tipo="Madre")
+
+        paginator = Paginator(lista_peso, 10)
+        page = request.GET.get('pagina')
+        lista_peso = paginator.get_page(page)
+
+    return render(request, 'inicioPeso.html', {"isMama":True, "lista_peso": lista_peso, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
+
 def anadirPesoMama(request):
     if request.user.is_authenticated:
         user = request.user
@@ -137,11 +153,26 @@ def anadirPesoMama(request):
                 obj.diario = diario
                 obj.tipo = "Madre"
                 form.save()
-                return redirect('/miDiario/')
+                return redirect('/inicioPesoMama/')
         else:
             form = CrearPesoForm()
 
     return render(request, 'anadirPesoMama.html', {'form': form})
+
+
+def inicioPesoBebe(request):
+    lista_peso = {}
+    page = ""
+    if request.user.is_authenticated:
+        user = request.user
+        diario_owner = Diario.objects.filter(user=user)[0]
+        lista_peso = Peso.objects.filter(diario=diario_owner, tipo="Bebe")
+
+        paginator = Paginator(lista_peso, 10)
+        page = request.GET.get('pagina')
+        lista_peso = paginator.get_page(page)
+
+    return render(request, 'inicioPeso.html', {"isMama":False, "lista_peso": lista_peso, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirPesoBebe(request):
     if request.user.is_authenticated:
@@ -154,7 +185,7 @@ def anadirPesoBebe(request):
                 obj.diario = diario
                 obj.tipo = "Bebe"
                 form.save()
-                return redirect('/miDiario/')
+                return redirect('/inicioPesoBebe/')
         else:
             form = CrearPesoForm()
 
