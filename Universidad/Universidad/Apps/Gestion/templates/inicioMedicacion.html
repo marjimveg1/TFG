@@ -4,18 +4,9 @@
 {% block contenido %}
 
 
-
-
-
 <div class=" row m-5 pr-lg-5 pl-lg-5  d-flex  justify-content-center ">
     <div class="col-12">
-        {% if isMama %}
-             <h1 align="center"  class="nav justify-content-center tituloView">Registro de mi peso</h1>
-        {% endif %}
-
-        {% if not isMama %}
-             <h1 align="center"  class="nav justify-content-center tituloView">Registro del peso de mi bebé</h1>
-        {% endif %}
+        <h1 align="center"  class="nav justify-content-center tituloView">Mi medicación</h1>
         <hr style="width: 60%">
     </div>
 
@@ -24,37 +15,35 @@
         <table class="table-responsive-sm table">
             <thead>
 		    <tr>
-                <td><strong>Fecha</strong></td>
-                <td><strong>Peso(KG)</strong></td>
-                {% if isMama %}
+                <td><strong>Medicamento</strong></td>
+                <td><strong>Fecha Inicio</strong></td>
+                <td><strong>Fecha Fin</strong></td>
+                <td><strong>Frecuencia (horas)</strong></td>
                 <td>
-                    <a href="/anadirPesoMama/">
+                    <a href="/anadirMedicacion/">
                        <img  src="../static/icon/anadir.svg" alt="Anadir" class="icono" align="center">
                     </a>
                 </td>
-                {% endif %}
-
-            {% if not isMama %}
-                <td>
-                    <a href="/anadirPesoBebe/">
-                       <img  src="../static/icon/anadir.svg" alt="Anadir" class="icono" align="center">
-                    </a>
-                </td>
-                {% endif %}
             </tr>
 	        </thead>
 
             <tbody align="">
-                 {% for peso in lista_peso %}
+                 {% for medicacion in lista_medicacion %}
                 <tr>
                     <td>
-                       {{ peso.fecha }}
+                       {{ medicacion.medicamento }}
                     </td>
                     <td>
-                       {{ peso.peso }}
+                       {{ medicacion.fechaInicio }}
                     </td>
                     <td>
-                        <a href="/borrarPeso/{{ peso.id }}">
+                       {{ medicacion.fechaFin }}
+                    </td>
+                    <td>
+                       {{ medicacion.frecuencia }}
+                    </td>
+                    <td>
+                        <a href="/borrarMedicacion/{{ medicamento.id }}">
                              <img   src="../static/icon/borrar.svg" alt="Borrar" class="icono" align="center">
                         </a>
                     </td>
@@ -71,7 +60,7 @@
     <div class="col-12">
         <h5 class="nav justify-content">Página:
             <span>
-                {% for l in  lista_peso.paginator.page_range %}
+                {% for l in  lista_medicacion.paginator.page_range %}
                     <a class="enlacePaginacion" href="?pagina={{forloop.counter}}"> {{forloop.counter}}</a>,
                  {% endfor %}
             </span>

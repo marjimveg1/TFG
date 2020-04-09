@@ -46,7 +46,10 @@ urlpatterns = [
     url('anadirPesoBebe/', anadirPesoBebe,name='anadirPesoBebe'),
 
     url('anadirPatada/', anadirPatada,name='anadirPatada'),
+
+    url('inicioMedicacion/', inicioMedicacion, name='inicioMedicacion'),
     url('anadirMedicacion/', anadirMedicacion,name='anadirMedicacion'),
+
     url('anadirFoto/', diario,name='anadirFoto'),
     url('anadirContraccion/', anadirContraccion,name='anadirContraccion'),
 

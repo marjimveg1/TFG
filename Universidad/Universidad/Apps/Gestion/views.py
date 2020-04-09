@@ -208,6 +208,19 @@ def anadirPatada(request):
 
     return render(request, 'anadirPatada.html', {'form': form})
 
+def inicioMedicacion(request):
+    lista_medicacion = {}
+    page = ""
+    if request.user.is_authenticated:
+        user = request.user
+        diario_owner = Diario.objects.filter(user=user)[0]
+        lista_medicacion = Medicacion.objects.filter(diario=diario_owner)
+
+        paginator = Paginator(lista_medicacion, 10)
+        page = request.GET.get('pagina')
+        lista_medicacion = paginator.get_page(page)
+
+    return render(request, 'inicioMedicacion.html', {"lista_medicacion": lista_medicacion, 'page':page,'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirMedicacion(request):
     if request.user.is_authenticated:
