@@ -256,6 +256,37 @@ def anadirContraccion(request):
     return render(request, 'anadirContraccion.html', {'form': form})
 
 
+def inicioMedida(request):
+    lista_medida = {}
+    page = ""
+    if request.user.is_authenticated:
+        user = request.user
+        diario_owner = Diario.objects.filter(user=user)[0]
+        lista_medida = Medida.objects.filter(diario=diario_owner)
+
+        paginator = Paginator(lista_medida, 10)
+        page = request.GET.get('pagina')
+        lista_medida = paginator.get_page(page)
+
+    return render(request, 'inicioMedida.html', {"lista_medida": lista_medida, 'page':page,'MEDIA_URL': settings.MEDIA_URL})
+
+def anadirMedida(request):
+    if request.user.is_authenticated:
+        user = request.user
+        if request.method == 'POST':
+            form = CrearMedidaForm(request.POST)
+            if form.is_valid():
+                diario = Diario.objects.filter(user=user)[0]
+                obj = form.save(commit=False)
+                obj.diario = diario
+                form.save()
+                return redirect('/miDiario/')
+        else:
+            form = CrearMedidaForm()
+
+    return render(request, 'anadirMedida.html', {'form': form})
+
+
 # CALENDARIO
 def buscarFecha(request):
     return render(request, 'buscarFecha.html')

@@ -166,10 +166,10 @@ class CrearTensionForm(forms.ModelForm):
 
         # Comprobamos que la tensión diastolica o sistólica no sea negativo
         if tSistolica <= 0.:
-            self.add_error('tSistolica', ('La tensión sistólica debe ser mayor que cero'))
+            self.add_error('tSistolica', ('Error. Introduzca una medida válida'))
 
         if tDiastolica <= 0.:
-            self.add_error('tDiastolica', ('La tensión sistólica debe ser mayor que cero'))
+            self.add_error('tDiastolica', ('Error. Introduzca una medida válida'))
 
         # Comprobamos que el momento introducido no sea futuro
         momento = cleaned_data.get('momento', None)
@@ -202,7 +202,7 @@ class CrearPesoForm(forms.ModelForm):
         fecha = cleaned_data.get('fecha', None)
         # Comprobamos que la tensión diastolica sea menos que la sistólica
         if peso <= 0:
-            self.add_error('peso', ('El peso debe ser mayor que cero'))
+            self.add_error('peso', ('Error. Introduzca in peso válido'))
 
         # Comprobamos que la fecha introducido no sea futuro
         if fecha is not None:
@@ -257,7 +257,7 @@ class CrearMedicacionForm(forms.ModelForm):
         fechaInicio = cleaned_data.get('fechaInicio', None)
         fechaFin = cleaned_data.get('fechaFin', None)
         if frecuencia <= 0:
-            self.add_error('frecuencia', ('La frecuencia debe ser mayor que cero'))
+            self.add_error('frecuencia', ('Error. Introduzca una frecuencia válida'))
 
         # Comprobamos que la fecha inicio sea antes que la fecha fin del tratamiento
         if str(fechaInicio) > str(fechaFin):
@@ -278,7 +278,42 @@ class CrearContraccionForm(forms.ModelForm):
             'despripcion': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
+class CrearMedidaForm(forms.ModelForm):
 
+    class Meta:
+        model = Medida
+        exclude = {'diario'}
+        fields = ['fecha', 'dBiparieta', 'cAbdominal','lFemur',]
+
+        labels = {
+            'fecha': 'Fecha',
+            'dBiparieta': 'Diámetro biparietal',
+            'cAbdominal': 'Circunferencia abdominal',
+            'lFemur': 'Longitud del fémur',
+
+        }
+        widgets = {
+            'fecha': forms.DateTimeInput(attrs={'placeholder': 'dd/mm/aaaa'}),
+            'dBiparieta' : forms.NumberInput(),
+            'cAbdominal': forms.NumberInput(),
+            'lFemur': forms.NumberInput(),
+        }
+
+    def clean(self, *args, **kwargs):
+        cleaned_data = super(CrearMedidaForm, self).clean(*args, **kwargs)
+
+            # Comprobamos que los valores no sean negativo
+        dBiparieta = cleaned_data.get('dBiparieta', None)
+        cAbdominal = cleaned_data.get('cAbdominal', None)
+        lFemur = cleaned_data.get('lFemur', None)
+        if dBiparieta <= 0:
+            self.add_error('dBiparieta', ('Error. Introduzca una medida válida'))
+
+        if cAbdominal <= 0:
+            self.add_error('cAbdominal', ('Error. Introduzca una medida válida'))
+
+        if lFemur <= 0:
+            self.add_error('lFemur', ('Error. Introduzca una medida válida'))
 
 
 class FechaCalendarioForm(forms.ModelForm):

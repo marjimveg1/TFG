@@ -50,7 +50,9 @@ urlpatterns = [
     url('inicioMedicacion/', inicioMedicacion, name='inicioMedicacion'),
     url('anadirMedicacion/', anadirMedicacion,name='anadirMedicacion'),
 
-    url('anadirFoto/', diario,name='anadirFoto'),
+    url('inicioMedida/', inicioMedida, name='inicioMedida'),
+    url('anadirMedida/', anadirMedida,name='anadirMedida'),
+
     url('anadirContraccion/', anadirContraccion,name='anadirContraccion'),
 
     url('inicioSesion/', auth_views.LoginView.as_view(), name='inicioSesion'),
