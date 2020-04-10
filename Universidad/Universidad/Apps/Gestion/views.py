@@ -103,7 +103,7 @@ def inicioTension(request):
     if request.user.is_authenticated:
         user = request.user
         diario_owner = Diario.objects.filter(user=user)[0]
-        lista_tension = Tension.objects.filter(diario=diario_owner)
+        lista_tension = Tension.objects.filter(diario=diario_owner).order_by('momento')
 
         paginator = Paginator(lista_tension, 10)
         page = request.GET.get('pagina')
@@ -127,6 +127,16 @@ def anadirTension(request):
 
     return render(request, 'anadirTension.html', {'form': form})
 
+def borrarTension(request, idTension):
+    tension = Tension.objects.get(id=idTension)
+    user = request.user
+    diario = Diario.objects.filter(user=user)[0]
+    lista_tension = Tension.objects.filter(diario=diario)
+
+    if tension in lista_tension:
+        tension.delete()
+    return redirect('/inicioTension/')
+
 
 def inicioPesoMama(request):
     lista_peso = {}
@@ -134,7 +144,7 @@ def inicioPesoMama(request):
     if request.user.is_authenticated:
         user = request.user
         diario_owner = Diario.objects.filter(user=user)[0]
-        lista_peso = Peso.objects.filter(diario=diario_owner, tipo="Madre")
+        lista_peso = Peso.objects.filter(diario=diario_owner, tipo="Madre").order_by('fecha')
 
         paginator = Paginator(lista_peso, 10)
         page = request.GET.get('pagina')
@@ -159,6 +169,16 @@ def anadirPesoMama(request):
 
     return render(request, 'anadirPesoMama.html', {'form': form})
 
+def borrarPeso(request, idPeso):
+    peso = Peso.objects.get(id=idPeso)
+    user = request.user
+    diario = Diario.objects.filter(user=user)[0]
+    lista_peso = Peso.objects.filter(diario=diario)
+
+    if peso in lista_peso:
+        peso.delete()
+    return redirect('/miDiario/')
+
 
 def inicioPesoBebe(request):
     lista_peso = {}
@@ -166,7 +186,7 @@ def inicioPesoBebe(request):
     if request.user.is_authenticated:
         user = request.user
         diario_owner = Diario.objects.filter(user=user)[0]
-        lista_peso = Peso.objects.filter(diario=diario_owner, tipo="Bebe")
+        lista_peso = Peso.objects.filter(diario=diario_owner, tipo="Bebe").order_by('fecha')
 
         paginator = Paginator(lista_peso, 10)
         page = request.GET.get('pagina')
@@ -214,7 +234,7 @@ def inicioMedicacion(request):
     if request.user.is_authenticated:
         user = request.user
         diario_owner = Diario.objects.filter(user=user)[0]
-        lista_medicacion = Medicacion.objects.filter(diario=diario_owner)
+        lista_medicacion = Medicacion.objects.filter(diario=diario_owner).order_by('fechaInicio')
 
         paginator = Paginator(lista_medicacion, 10)
         page = request.GET.get('pagina')
@@ -237,6 +257,16 @@ def anadirMedicacion(request):
             form = CrearMedicacionForm()
 
     return render(request, 'anadirMedicacion.html', {'form': form})
+
+def borrarMedicacion(request, idMedicacion):
+    medicacion = Medicacion.objects.get(id=idMedicacion)
+    user = request.user
+    diario = Diario.objects.filter(user=user)[0]
+    lista_medicacion = Medicacion.objects.filter(diario=diario)
+
+    if medicacion in lista_medicacion:
+        medicacion.delete()
+    return redirect('/inicioMedicacion/')
 
 def anadirContraccion(request):
     if request.user.is_authenticated:
@@ -262,7 +292,7 @@ def inicioMedida(request):
     if request.user.is_authenticated:
         user = request.user
         diario_owner = Diario.objects.filter(user=user)[0]
-        lista_medida = Medida.objects.filter(diario=diario_owner)
+        lista_medida = Medida.objects.filter(diario=diario_owner).order_by('fecha')
 
         paginator = Paginator(lista_medida, 10)
         page = request.GET.get('pagina')
@@ -285,6 +315,16 @@ def anadirMedida(request):
             form = CrearMedidaForm()
 
     return render(request, 'anadirMedida.html', {'form': form})
+
+def borrarMedida(request, idMedida):
+    medida = Medida.objects.get(id=idMedida)
+    user = request.user
+    diario = Diario.objects.filter(user=user)[0]
+    lista_medida = Medida.objects.filter(diario=diario)
+
+    if medida in lista_medida:
+        medida.delete()
+    return redirect('/inicioMedida/')
 
 
 # CALENDARIO
