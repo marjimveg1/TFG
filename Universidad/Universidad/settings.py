@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'Universidad.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tfg_bbdd',
+        'NAME': 'basedatostfg',
         'USER': 'tfg',
         'PASSWORD': '1233',
         'HOST': 'localhost',

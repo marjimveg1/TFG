@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b559192-cc1d-4e7a-9100-f193a3f700fc" name="Default Changelist" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioMedicacion.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioMedicacion.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioMedida.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioMedida.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/urls.py" afterPath="$PROJECT_DIR$/Universidad/urls.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py~parent of 3408c56... agenda" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/migrations/0002_auto_20200407_1950.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py~parent of 3408c56... agenda" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/agenda.html~parent of 3408c56... agenda" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/migrations/0001_initial.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cal_mes.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cal_mes.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/settings.py" afterPath="$PROJECT_DIR$/Universidad/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,7 +68,7 @@
       <file leaf-file-name="diarioSeguimiento.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/diarioSeguimiento.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
+            <state relative-caret-position="2886">
               <caret line="111" column="5" lean-forward="false" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
               <folding />
             </state>
@@ -71,7 +78,7 @@
       <file leaf-file-name="inicioMedicacion.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioMedicacion.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
+            <state relative-caret-position="1170">
               <caret line="45" column="64" lean-forward="false" selection-start-line="45" selection-start-column="64" selection-end-line="45" selection-end-column="64" />
               <folding />
             </state>
@@ -81,7 +88,7 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
+            <state relative-caret-position="806">
               <caret line="37" column="62" lean-forward="false" selection-start-line="37" selection-start-column="62" selection-end-line="37" selection-end-column="62" />
               <folding />
             </state>
@@ -91,7 +98,7 @@
       <file leaf-file-name="inicioMedida.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioMedida.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
+            <state relative-caret-position="858">
               <caret line="33" column="35" lean-forward="false" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
               <folding />
             </state>
@@ -101,8 +108,8 @@
       <file leaf-file-name="inicioPeso.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioPeso.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state relative-caret-position="1638">
+              <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -111,11 +118,51 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="105" column="85" lean-forward="false" selection-start-line="105" selection-start-column="85" selection-end-line="105" selection-end-column="85" />
+            <state relative-caret-position="175">
+              <caret line="447" column="0" lean-forward="false" selection-start-line="447" selection-start-column="0" selection-end-line="447" selection-end-column="0" />
               <folding>
                 <element signature="e#24#50#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="40" column="47" lean-forward="false" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Universidad/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-133">
+              <caret line="93" column="5" lean-forward="true" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cal_mes.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cal_mes.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="54" column="29" lean-forward="false" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="330" column="0" lean-forward="false" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,9 +179,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pESO</find>
-      <find>Tension</find>
-      <find>Area</find>
       <find>descrip</find>
       <find>desc</find>
       <find>nom</find>
@@ -162,6 +206,9 @@
       <find>C</find>
       <find>lista_medicacion</find>
       <find>borrar</find>
+      <find>CATEGORIA</find>
+      <find>Evento</find>
+      <find>evento</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -195,15 +242,12 @@
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/miPerfil.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/miCalendario.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cambiarContra.html" />
-        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cal_mes.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirTension.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirPesoMama.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirPesoBebe.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirPatada.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirMedicamento.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirContraccion.html" />
-        <option value="$PROJECT_DIR$/Universidad/settings.py" />
-        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirMedicacion.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicio.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html" />
@@ -216,12 +260,15 @@
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioTension.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioPeso.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirMedida.html" />
-        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/diarioSeguimiento.html" />
         <option value="$PROJECT_DIR$/Universidad/urls.py" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioMedicacion.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioMedida.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" />
+        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" />
+        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" />
+        <option value="$PROJECT_DIR$/Universidad/settings.py" />
+        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cal_mes.html" />
       </list>
     </option>
   </component>
@@ -254,6 +301,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -498,7 +546,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -856,9 +903,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="2391" y="-9" width="2418" height="1318" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20772532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21072961" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294849" sideWeight="0.49316823" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37566608" sideWeight="0.5291845" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921588" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -866,9 +913,9 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3365897" sideWeight="0.48975235" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285968" sideWeight="0.45730144" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3534636" sideWeight="0.46584117" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3543517" sideWeight="0.46584117" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3561279" sideWeight="0.47081545" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4609236" sideWeight="0.47081545" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -948,7 +995,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="111" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Universidad/Apps/Gestion/views.py</url>
+          <line>447</line>
+          <option name="timeStamp" value="117" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="118" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1024,13 +1078,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17550">
           <caret line="699" column="8" lean-forward="false" selection-start-line="699" selection-start-column="8" selection-end-line="699" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cal_mes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1716">
-          <caret line="66" column="12" lean-forward="false" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1122,14 +1169,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Universidad/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="119" column="26" lean-forward="false" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirMedicacion.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -1138,13 +1177,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/agenda.html~parent of 3408c56... agenda">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/agenda.html~parent of 3408c56... agenda" />
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/anadirPatada.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="806">
@@ -1181,15 +1214,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="97" column="74" lean-forward="false" selection-start-line="97" selection-start-column="74" selection-end-line="97" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1221,7 +1245,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="55" column="16" lean-forward="false" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1237,22 +1260,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="5" column="21505" lean-forward="false" selection-start-line="5" selection-start-column="21505" selection-end-line="5" selection-end-column="21505" />
-          <folding>
-            <element signature="e#25768#26002#2" expanded="false" />
-            <element signature="e#26806#26959#1" expanded="false" />
-            <element signature="e#26999#27233#1" expanded="false" />
-            <element signature="e#30239#30515#2" expanded="false" />
-            <element signature="e#31347#31500#1" expanded="false" />
-            <element signature="e#31540#31816#1" expanded="false" />
-            <element signature="e#61072#61259#2" expanded="false" />
-            <element signature="e#61488#61624#2" expanded="false" />
-            <element signature="e#62027#62160#2" expanded="false" />
-            <element signature="e#63642#63795#1" expanded="false" />
-            <element signature="e#75788#76018#2" expanded="false" />
-            <element signature="e#76885#77121#2" expanded="false" />
-            <element signature="e#106714#106891#2" expanded="false" />
-            <element signature="e#106937#107114#2" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1260,7 +1267,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="1601" column="30" lean-forward="false" selection-start-line="1601" selection-start-column="25" selection-end-line="1601" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1276,7 +1282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1304,25 +1309,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="315" column="12" lean-forward="false" selection-start-line="315" selection-start-column="12" selection-end-line="315" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioPeso.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        <state relative-caret-position="1638">
+          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/diarioSeguimiento.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
+        <state relative-caret-position="2886">
           <caret line="111" column="5" lean-forward="false" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
           <folding />
         </state>
@@ -1330,7 +1327,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
+        <state relative-caret-position="806">
           <caret line="37" column="62" lean-forward="false" selection-start-line="37" selection-start-column="62" selection-end-line="37" selection-end-column="62" />
           <folding />
         </state>
@@ -1338,7 +1335,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioMedicacion.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="1170">
           <caret line="45" column="64" lean-forward="false" selection-start-line="45" selection-start-column="64" selection-end-line="45" selection-end-column="64" />
           <folding />
         </state>
@@ -1346,16 +1343,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicioMedida.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
+        <state relative-caret-position="858">
           <caret line="33" column="35" lean-forward="false" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Universidad/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-133">
+          <caret line="93" column="5" lean-forward="true" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="330" column="0" lean-forward="false" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="40" column="47" lean-forward="false" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cal_mes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="54" column="29" lean-forward="false" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="105" column="85" lean-forward="false" selection-start-line="105" selection-start-column="85" selection-end-line="105" selection-end-column="85" />
+        <state relative-caret-position="175">
+          <caret line="447" column="0" lean-forward="false" selection-start-line="447" selection-start-column="0" selection-end-line="447" selection-end-column="0" />
           <folding>
             <element signature="e#24#50#0" expanded="true" />
           </folding>

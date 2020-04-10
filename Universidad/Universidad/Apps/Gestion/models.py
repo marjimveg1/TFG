@@ -32,9 +32,14 @@ class Calendario (models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
 
 class Evento(models.Model):
+    CAREGORIA_OPCION = (
+        ('Cita médico', 'Cita médico'),
+        ('Recordatorio', 'Recordatorio'),
+    )
     titulo = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=350)
-    fecha = models.DateTimeField ()
+    categoria = models.CharField(max_length=100, choices=CAREGORIA_OPCION,)
+    fecha = models.DateTimeField()
     calendario = models.ForeignKey(Calendario, on_delete=models.CASCADE, null=False, blank=False)
 
     @property

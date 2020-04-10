@@ -321,17 +321,19 @@ class FechaCalendarioForm(forms.ModelForm):
     class Meta:
         model = Evento
         exclude = {'calendario',}
-        fields = ['titulo','fecha','descripcion',]
+        fields = ['titulo','fecha','categoria','descripcion',]
 
         labels = {
             'titulo': 'Título',
             'fecha': 'Fecha',
+            'categoria': 'Categoria',
             'descripcion': 'Descripción',
 
         }
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'fecha': forms.DateTimeInput(attrs={'placeholder': 'dd/mm/aaaa hh:mm'}),
+            'categoria': forms.Select(attrs={'class':'form-control'}),
             'descripcion' : forms.Textarea(attrs={'class': 'form-control'})
         }
 
