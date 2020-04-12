@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+
+
+{% block contenido %}
+
+
+<div class=" row m-5 pr-lg-5 pl-lg-5  d-flex  justify-content-center ">
+    <div class="col-12">
+        <h1 align="center"  class="nav justify-content-center tituloView">Contrador de contracciones</h1>
+        <hr style="width: 60%">
+    </div>
+
+
+    <div class="col-12 justify-content-center">
+        <button name="boton" type="submit">
+            <img src="../../static/icon/contraccion.svg" class="iconoBoton" align="center">
+            Pulsa
+        </button>
+
+    </div>
+
+<div>
+    <h2>
+        <span id="crono">0.0
+
+        </span> Segundos
+    </h2>
+</div>
+
+<button type="button" id="cambiar"> Arrancar/parar</button>
+<button type="button" id="inicializar"> inicializar</button>
+
+
+</div>
+
+
+    <script type="text/javascript" src={%  static 'js/zepto.js' %}></script>
+    <script type="text/javascript">
+        $(function(){
+            var t,cl = $("#crono");
+            function mostrar() { cl.html((+cl.html()+0.1).toFixed(1));};
+            function arrancar() {t=setInterval(mostrar,100);};
+            function parar() { clearInterval(t);t=undefined;};
+            function cambiar() { if(!t) arrancar(); else parar(); };
+
+            $('#cambiar').on('click', cambiar());
+            $("#inicializar").on('click', function() {cl.html("0.0");});
+
+        });
+    </script>
+
+
+{% endblock %}
+

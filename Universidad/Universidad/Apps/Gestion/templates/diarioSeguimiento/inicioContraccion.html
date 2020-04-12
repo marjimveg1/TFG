@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+
+
+{% block contenido %}
+
+
+<div class=" row m-5 pr-lg-5 pl-lg-5  d-flex  justify-content-center ">
+    <div class="col-12">
+        <h1 align="center"  class="nav justify-content-center tituloView">Contrador de contracciones</h1>
+        <hr style="width: 60%">
+    </div>
+
+
+<hr>
+
+
+  <form name="cron" action="#"> <!--botones-->
+      <div id="cronometro">
+
+        <div id="reloj">  00 : 00 : 00</div> <!--cornómetro-->
+        <div id="duracionContraccion"></div> <!--cornómetro-->
+     </div>
+
+     <div>
+        <div id="relojIntervalo">  00 : 00 : 00</div> <!--cornómetro-->
+        <div id="intervalo"></div> <!--cornómetro-->
+     </div>
+
+
+      <button type="button" value="Empezar" name="empieza" >
+          CONTRACCIÓN
+          <img src="../../static/icon/contraccion.svg" class="iconoBoton" align="center">
+      </button>
+
+      <button type="button" value="Parar" name="para" >
+          FIN CONTRACCIÓN
+          <img src="../../static/icon/embarazada.svg" class="iconoBoton" align="center">
+      </button>
+
+
+    <input type="button" value="Continuar" name="continua" />
+    <input type="button" value="Reiniciar" name="reinicia" />
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+window.onload = function() {
+    //localiza en pantalla el reloj y se ronombra visorReloj para trabajar con ello
+    visorReloj=document.getElementById("reloj");
+    intervaloReloj=document.getElementById("relojIntervalo");
+
+    document.cron.empieza.onclick = empezar;
+    document.cron.para.onclick = parar;
+    document.cron.continua.onclick = continuar;
+    document.cron.reinicia.onclick = reiniciar;
+}
+
+    var marcha=0; //control del temporizador--> 0= parado; 1= activo
+    var cro=0; //estado inicial del cronómetro.
+    var valor = 0;
+
+    function empezar() {
+        if (marcha==0) { //Si el cronometro esta parado
+            emp=new Date() //fecha actual
+            elcrono=setInterval(tiempo,10); //función del temporizador.
+            marcha=1 //indicamos que se ha puesto en marcha.
+
+            clearInterval(elcronotiempo1); //parar el crono
+            var varial = "#NuevoId" + valor;
+            valor = valor +1;
+            $('#intervalo').append('<div id="NuevoId'+ valor + '">'+cro+'</div>');
+        }
+    }
+
+    function tiempo() { //función del temporizador
+        actual=new Date() //fecha en el instante
+        cro=actual-emp //tiempo transcurrido en milisegundos
+        cr=new Date() //fecha donde guardamos el tiempo transcurrido
+        cr.setTime(cro) //nos da la fecha en milisegundos
+        cs=cr.getMilliseconds() //milisegundos del cronómetro
+        sg=cr.getSeconds(); //segundos del cronómetro
+        mn=cr.getMinutes(); //minutos del cronómetro
+        cs=cs/10; //paso a centésimas de segundo.
+        cs=Math.round(cs) //despreciamos los decimales
+        ho=cr.getHours()-1; //horas del cronómetro
+             if (cs<10) {cs="0"+cs;}  //se ponen siempre 2 cifras en los números
+             if (sg<10) {sg="0"+sg;}
+             if (mn<10) {mn="0"+mn;}
+        visorReloj.innerHTML=ho+" : "+mn+" : "+sg+" : "+cs; //pasar a pantalla.
+    }
+    function tiempo1() { //función del temporizador
+        actual=new Date() //fecha en el instante
+        cro=actual-emp //tiempo transcurrido en milisegundos
+        cr=new Date() //fecha donde guardamos el tiempo transcurrido
+        cr.setTime(cro) //nos da la fecha en milisegundos
+        cs=cr.getMilliseconds() //milisegundos del cronómetro
+        sg=cr.getSeconds(); //segundos del cronómetro
+        mn=cr.getMinutes(); //minutos del cronómetro
+        cs=cs/10; //paso a centésimas de segundo.
+        cs=Math.round(cs) //despreciamos los decimales
+        ho=cr.getHours()-1; //horas del cronómetro
+             if (cs<10) {cs="0"+cs;}  //se ponen siempre 2 cifras en los números
+             if (sg<10) {sg="0"+sg;}
+             if (mn<10) {mn="0"+mn;}
+        intervaloReloj.innerHTML=ho+" : "+mn+" : "+sg+" : "+cs; //pasar a pantalla.
+    }
+
+//parar el cronómetro
+    function parar() {
+        if (marcha==1) { //sólo si está en funcionamiento
+            clearInterval(elcrono); //parar el crono
+            var varial = "#NuevoId" + valor;
+            valor = valor +1;
+            $('#duracionContraccion').append('<div id="NuevoId'+ valor + '">'+cro+'</div>');
+            marcha=0; //indicar que está parado.
+            elcronotiempo1=setInterval(tiempo1,10); //función del temporizador.
+        }
+    }
+
+             //Continuar una cuenta empezada y parada.
+        function continuar() {
+             if (marcha==0) { //sólo si el crono está parado
+                emp2=new Date(); //fecha actual
+                emp2=emp2.getTime(); //pasar a tiempo Unix
+                emp3=emp2-cro; //restar tiempo anterior
+                emp=new Date(); //nueva fecha inicial para pasar al temporizador
+                emp.setTime(emp3); //datos para nueva fecha inicial.
+                elcrono=setInterval(tiempo,10); //activar temporizador
+                marcha=1; //indicamos que se ha puesto en marcha.
+                }
+             }
+             //Volver al estado inicial
+    function reiniciar() {
+             if (marcha==1) { //si el cronómetro está en marcha:
+                clearInterval(elcrono); //parar el crono
+                clearInterval(elcronotiempo1); //parar el crono
+
+                marcha=0;   //indicar que está parado
+                }
+                for(num =1; num <= valor; num++){
+
+                 var identificadornumber = "NuevoId" + num;
+                 identificador = document.getElementById(identificadornumber);
+                 if(num % 2 == 0) {
+
+                     document.getElementById("intervalo").removeChild(identificador);
+                 }else{
+
+                     document.getElementById("duracionContraccion").removeChild(identificador);
+                 }
+                }
+             cro=0; //tiempo transcurrido a cero
+             visorReloj.innerHTML = "0 : 00 : 00 : 00"; //se escribe en el visorReloj todo a 0
+            intervaloReloj.innerHTML = "0 : 00 : 00 : 00"; //se escribe en el visorReloj todo a 0
+
+             }
+
+</script>
+
+
+
+
+{% endblock %}
+

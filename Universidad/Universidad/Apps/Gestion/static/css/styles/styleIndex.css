@@ -57,6 +57,11 @@ a#hover {
     height: 30px;
 }
 
+.iconoBoton{
+    width: 60px;
+    height: 60px;
+}
+
 /* Style inputs, select elements and textareas */
 input[type=text],input[type=number],input[type=email] , input[type=month] , input[type=textarea], select, textarea{
   padding: 12px;

@@ -92,7 +92,7 @@ def registro(request):
 
 # DIARIO
 def diario(request):
-    return render(request, 'diarioSeguimiento.html')
+    return render(request, 'diarioSeguimiento/diarioSeguimiento.html')
 
 #TENSION
 
@@ -109,7 +109,7 @@ def inicioTension(request):
         page = request.GET.get('pagina')
         lista_tension = paginator.get_page(page)
 
-    return render(request, 'inicioTension.html', {"lista_tension": lista_tension, 'page':page,'MEDIA_URL': settings.MEDIA_URL})
+    return render(request, 'diarioSeguimiento/inicioTension.html', {"lista_tension": lista_tension, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirTension(request):
     if request.user.is_authenticated:
@@ -125,7 +125,7 @@ def anadirTension(request):
         else:
             form = CrearTensionForm()
 
-    return render(request, 'anadirTension.html', {'form': form})
+    return render(request, 'diarioSeguimiento/anadirTension.html', {'form': form})
 
 def borrarTension(request, idTension):
     tension = Tension.objects.get(id=idTension)
@@ -150,7 +150,7 @@ def inicioPesoMama(request):
         page = request.GET.get('pagina')
         lista_peso = paginator.get_page(page)
 
-    return render(request, 'inicioPeso.html', {"isMama":True, "lista_peso": lista_peso, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
+    return render(request, 'diarioSeguimiento/inicioPeso.html', {"isMama":True, "lista_peso": lista_peso, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirPesoMama(request):
     if request.user.is_authenticated:
@@ -167,7 +167,7 @@ def anadirPesoMama(request):
         else:
             form = CrearPesoForm()
 
-    return render(request, 'anadirPesoMama.html', {'form': form})
+    return render(request, 'diarioSeguimiento/anadirPesoMama.html', {'form': form})
 
 def borrarPeso(request, idPeso):
     peso = Peso.objects.get(id=idPeso)
@@ -192,7 +192,7 @@ def inicioPesoBebe(request):
         page = request.GET.get('pagina')
         lista_peso = paginator.get_page(page)
 
-    return render(request, 'inicioPeso.html', {"isMama":False, "lista_peso": lista_peso, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
+    return render(request, 'diarioSeguimiento/inicioPeso.html', {"isMama":False, "lista_peso": lista_peso, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirPesoBebe(request):
     if request.user.is_authenticated:
@@ -209,7 +209,7 @@ def anadirPesoBebe(request):
         else:
             form = CrearPesoForm()
 
-    return render(request, 'anadirPesoBebe.html', {'form': form})
+    return render(request, 'diarioSeguimiento/anadirPesoBebe.html', {'form': form})
 
 def anadirPatada(request):
     if request.user.is_authenticated:
@@ -226,7 +226,7 @@ def anadirPatada(request):
         else:
             form = CrearPatadaForm()
 
-    return render(request, 'anadirPatada.html', {'form': form})
+    return render(request, 'diarioSeguimiento/anadirPatada.html', {'form': form})
 
 def inicioMedicacion(request):
     lista_medicacion = {}
@@ -240,7 +240,7 @@ def inicioMedicacion(request):
         page = request.GET.get('pagina')
         lista_medicacion = paginator.get_page(page)
 
-    return render(request, 'inicioMedicacion.html', {"lista_medicacion": lista_medicacion, 'page':page,'MEDIA_URL': settings.MEDIA_URL})
+    return render(request, 'diarioSeguimiento/inicioMedicacion.html', {"lista_medicacion": lista_medicacion, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirMedicacion(request):
     if request.user.is_authenticated:
@@ -256,7 +256,7 @@ def anadirMedicacion(request):
         else:
             form = CrearMedicacionForm()
 
-    return render(request, 'anadirMedicacion.html', {'form': form})
+    return render(request, 'diarioSeguimiento/anadirMedicacion.html', {'form': form})
 
 def borrarMedicacion(request, idMedicacion):
     medicacion = Medicacion.objects.get(id=idMedicacion)
@@ -267,6 +267,9 @@ def borrarMedicacion(request, idMedicacion):
     if medicacion in lista_medicacion:
         medicacion.delete()
     return redirect('/inicioMedicacion/')
+
+def inicioContraccion(request):
+    return render(request, 'diarioSeguimiento/inicioContraccion.html')
 
 def anadirContraccion(request):
     if request.user.is_authenticated:
@@ -283,7 +286,7 @@ def anadirContraccion(request):
         else:
             form = CrearContraccionForm()
 
-    return render(request, 'anadirContraccion.html', {'form': form})
+    return render(request, 'diarioSeguimiento/anadirContraccion.html', {'form': form})
 
 
 def inicioMedida(request):
@@ -298,7 +301,7 @@ def inicioMedida(request):
         page = request.GET.get('pagina')
         lista_medida = paginator.get_page(page)
 
-    return render(request, 'inicioMedida.html', {"lista_medida": lista_medida, 'page':page,'MEDIA_URL': settings.MEDIA_URL})
+    return render(request, 'diarioSeguimiento/inicioMedida.html', {"lista_medida": lista_medida, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirMedida(request):
     if request.user.is_authenticated:
@@ -314,7 +317,7 @@ def anadirMedida(request):
         else:
             form = CrearMedidaForm()
 
-    return render(request, 'anadirMedida.html', {'form': form})
+    return render(request, 'diarioSeguimiento/anadirMedida.html', {'form': form})
 
 def borrarMedida(request, idMedida):
     medida = Medida.objects.get(id=idMedida)
@@ -329,7 +332,7 @@ def borrarMedida(request, idMedida):
 
 # CALENDARIO
 def buscarFecha(request):
-    return render(request, 'buscarFecha.html')
+    return render(request, 'agenda/buscarFecha.html')
 
 
 def crearFechaCalendario(request):
@@ -346,7 +349,7 @@ def crearFechaCalendario(request):
         else:
             form = FechaCalendarioForm()
 
-    return render(request, 'anadirFechaCalendario.html', {'form': form})
+    return render(request, 'agenda/anadirFechaCalendario.html', {'form': form})
 
 
 
@@ -460,7 +463,7 @@ def agenda(request):
     mesCal = getMesEspañol(fecha_pedida)
     añoCal = fecha_pedida.strftime("%Y")
 
-    return render(request, 'cal_mes.html',
+    return render(request, 'agenda/cal_mes.html',
                   {'mesCal': mesCal, 'anoCal': añoCal, 'calendar': cal_mes, 'headers': week_headers,
                   'getDetalle': getDetalle, 'detalles': detalles, "getMes": getMes, 'masMes': fecha})
 
