@@ -17,16 +17,7 @@
 
 
   <form name="cron" action="#"> <!--botones-->
-      <div id="cronometro">
 
-        <div id="reloj">  00 : 00 : 00</div> <!--cornómetro-->
-        <div id="duracionContraccion"></div> <!--cornómetro-->
-     </div>
-
-     <div>
-        <div id="relojIntervalo">  00 : 00 : 00</div> <!--cornómetro-->
-        <div id="intervalo"></div> <!--cornómetro-->
-     </div>
 
 
       <button type="button" value="Empezar" name="empieza" >
@@ -42,14 +33,19 @@
 
     <input type="button" value="Continuar" name="continua" />
     <input type="button" value="Reiniciar" name="reinicia" />
+      <div id="cronometro">
+
+        <div id="reloj">  00 : 00 : 00</div> <!--cornómetro-->
+        <div id="duracionContraccion"></div> <!--cornómetro-->
+     </div>
+
+     <div>
+        <div id="relojIntervalo">  00 : 00 : 00</div> <!--cornómetro-->
+        <div id="intervalo"></div> <!--cornómetro-->
+     </div>
+
   </form>
 </div>
-
-
-
-
-
-
 
 
 
@@ -66,28 +62,52 @@ window.onload = function() {
     document.cron.reinicia.onclick = reiniciar;
 }
 
-    var marcha=0; //control del temporizador--> 0= parado; 1= activo
-    var cro=0; //estado inicial del cronómetro.
+    var enMarchaContraccion=0; //control del temporizador--> 0= parado; 1= activo
+    var croContraccion=0; //estado inicial del cronómetro.
+
+    var enMarchaIntervalo=0; //control del temporizador--> 0= parado; 1= activo
+    var croIntervalo=0; //estado inicial del cronómetro.
+
     var valor = 0;
 
     function empezar() {
-        if (marcha==0) { //Si el cronometro esta parado
+        if (enMarchaContraccion==0) { //Si el cronometro esta parado
             emp=new Date() //fecha actual
             elcrono=setInterval(tiempo,10); //función del temporizador.
-            marcha=1 //indicamos que se ha puesto en marcha.
+            enMarchaContraccion=1 //indicamos que se ha puesto en enMarchaContraccion.
 
+        }
+        if(enMarchaIntervalo==1){
             clearInterval(elcronotiempo1); //parar el crono
             var varial = "#NuevoId" + valor;
             valor = valor +1;
-            $('#intervalo').append('<div id="NuevoId'+ valor + '">'+cro+'</div>');
+            $('#intervalo').append('<div id="NuevoId'+ valor + '">'+croIntervalo+'</div>');
+             enMarchaIntervalo=0;
+        }
+    }
+
+        function parar() {
+        if (enMarchaContraccion==1) { //sólo si está en funcionamiento
+            clearInterval(elcrono); //parar el crono
+            var varial = "#NuevoId" + valor;
+            valor = valor +1;
+            $('#duracionContraccion').append('<div id="NuevoId'+ valor + '">'+croContraccion+'</div>');
+            enMarchaContraccion=0; //indicar que está parado.
+
+
+        }
+        if (enMarchaIntervalo==0) { //Si el cronometro esta parado
+            emp1=new Date() //fecha actual
+            elcronotiempo1=setInterval(tiempo1,10); //función del temporizador..
+            enMarchaIntervalo=1 //indicamos que se ha puesto en enMarchaContraccion.
         }
     }
 
     function tiempo() { //función del temporizador
         actual=new Date() //fecha en el instante
-        cro=actual-emp //tiempo transcurrido en milisegundos
+        croContraccion=actual-emp //tiempo transcurrido en milisegundos
         cr=new Date() //fecha donde guardamos el tiempo transcurrido
-        cr.setTime(cro) //nos da la fecha en milisegundos
+        cr.setTime(croContraccion) //nos da la fecha en milisegundos
         cs=cr.getMilliseconds() //milisegundos del cronómetro
         sg=cr.getSeconds(); //segundos del cronómetro
         mn=cr.getMinutes(); //minutos del cronómetro
@@ -99,54 +119,46 @@ window.onload = function() {
              if (mn<10) {mn="0"+mn;}
         visorReloj.innerHTML=ho+" : "+mn+" : "+sg+" : "+cs; //pasar a pantalla.
     }
+
     function tiempo1() { //función del temporizador
-        actual=new Date() //fecha en el instante
-        cro=actual-emp //tiempo transcurrido en milisegundos
-        cr=new Date() //fecha donde guardamos el tiempo transcurrido
-        cr.setTime(cro) //nos da la fecha en milisegundos
-        cs=cr.getMilliseconds() //milisegundos del cronómetro
-        sg=cr.getSeconds(); //segundos del cronómetro
-        mn=cr.getMinutes(); //minutos del cronómetro
-        cs=cs/10; //paso a centésimas de segundo.
-        cs=Math.round(cs) //despreciamos los decimales
-        ho=cr.getHours()-1; //horas del cronómetro
-             if (cs<10) {cs="0"+cs;}  //se ponen siempre 2 cifras en los números
-             if (sg<10) {sg="0"+sg;}
-             if (mn<10) {mn="0"+mn;}
-        intervaloReloj.innerHTML=ho+" : "+mn+" : "+sg+" : "+cs; //pasar a pantalla.
+        actual1=new Date() //fecha en el instante
+        croIntervalo=actual1-emp1 //tiempo transcurrido en milisegundos
+        cr1=new Date() //fecha donde guardamos el tiempo transcurrido
+        cr1.setTime(croIntervalo) //nos da la fecha en milisegundos
+        cs1=cr1.getMilliseconds() //milisegundos del cronómetro
+        sg1=cr1.getSeconds(); //segundos del cronómetro
+        mn1=cr1.getMinutes(); //minutos del cronómetro
+        cs1=cs1/10; //paso a centésimas de segundo.
+        cs1=Math.round(cs1) //despreciamos los decimales
+        ho1=cr1.getHours()-1; //horas del cronómetro
+             if (cs1<10) {cs1="0"+cs1;}  //se ponen siempre 2 cifras en los números
+             if (sg1<10) {sg1="0"+sg1;}
+             if (mn1<10) {mn1="0"+mn1;}
+        intervaloReloj.innerHTML=ho1+" : "+mn1+" : "+sg1+" : "+cs1; //pasar a pantalla.
     }
 
-//parar el cronómetro
-    function parar() {
-        if (marcha==1) { //sólo si está en funcionamiento
-            clearInterval(elcrono); //parar el crono
-            var varial = "#NuevoId" + valor;
-            valor = valor +1;
-            $('#duracionContraccion').append('<div id="NuevoId'+ valor + '">'+cro+'</div>');
-            marcha=0; //indicar que está parado.
-            elcronotiempo1=setInterval(tiempo1,10); //función del temporizador.
-        }
-    }
+
 
              //Continuar una cuenta empezada y parada.
         function continuar() {
-             if (marcha==0) { //sólo si el crono está parado
+             if (enMarchaContraccion==0) { //sólo si el crono está parado
                 emp2=new Date(); //fecha actual
                 emp2=emp2.getTime(); //pasar a tiempo Unix
-                emp3=emp2-cro; //restar tiempo anterior
+                emp3=emp2-croContraccion; //restar tiempo anterior
                 emp=new Date(); //nueva fecha inicial para pasar al temporizador
                 emp.setTime(emp3); //datos para nueva fecha inicial.
                 elcrono=setInterval(tiempo,10); //activar temporizador
-                marcha=1; //indicamos que se ha puesto en marcha.
+                enMarchaContraccion=1; //indicamos que se ha puesto en enMarchaContraccion.
                 }
              }
              //Volver al estado inicial
     function reiniciar() {
-             if (marcha==1) { //si el cronómetro está en marcha:
+             if (enMarchaContraccion==1 || enMarchaIntervalo==1) { //si el cronómetro está en enMarchaContraccion:
                 clearInterval(elcrono); //parar el crono
                 clearInterval(elcronotiempo1); //parar el crono
 
-                marcha=0;   //indicar que está parado
+                enMarchaContraccion=0;
+                enMarchaIntervalo =0;//indicar que está parado
                 }
                 for(num =1; num <= valor; num++){
 
@@ -160,7 +172,8 @@ window.onload = function() {
                      document.getElementById("duracionContraccion").removeChild(identificador);
                  }
                 }
-             cro=0; //tiempo transcurrido a cero
+             croContraccion=0; //tiempo transcurrido a cero
+            croIntervalo=0;
              visorReloj.innerHTML = "0 : 00 : 00 : 00"; //se escribe en el visorReloj todo a 0
             intervaloReloj.innerHTML = "0 : 00 : 00 : 00"; //se escribe en el visorReloj todo a 0
 
