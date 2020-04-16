@@ -6,7 +6,7 @@
 {% block contenido %}
 
 
-<div class=" row m-5 pr-lg-5 pl-lg-5  d-flex  justify-content-center ">
+<div class=" row m-5 pr-lg-5 pl-lg-5  d-flex align-items-center  justify-content-center ">
     <div class="col-12">
         <h1 align="center"  class="nav justify-content-center tituloView">Contrador de contracciones</h1>
         <hr style="width: 60%">
@@ -18,31 +18,57 @@
 
   <form name="cron" action="#"> <!--botones-->
 
+        <div class="row p-3 align-items-center justify-content-center">
+            <div class="col-sm-6 mt-2">
+                <button class="btn btn-outline-info" style="background: #ebebeb; color: black; width: 100%; height: 100%" type="button " value="Empezar" name="empieza" >
+                CONTRACCIÓN
+                    <img src="../../static/icon/contraccion.svg" class="iconoBoton" align="center">
+                </button>
+            </div>
+
+            <div class="col-12 col-sm-6 mt-2">
+                <button class="btn btn-outline-info" style="background: #ebebeb; color: black;width: 100%; height: 100%" type="button" value="Parar" name="para" >
+                FIN CONTRACCIÓN
+                    <img src="../../static/icon/embarazada.svg" class="iconoBoton" align="center">
+                </button>
+            </div>
+        </div>
+
+        <div class="row p-3 align-items-center justify-content-center ">
+            <div class="col-sm-5 col-12 alert alert-info  mr-1 m-sm-2" id="cronometro">
+                <div id="reloj">
+                    00 : 00
+                </div> <!--cornómetro-->
+
+             </div>
+
+            <div class="col-sm-5 col-12 alert alert-info ml-1 m-sm-2" id="cronometro">
+                <div id="relojIntervalo">
+                    00 : 00
+                </div> <!--cornómetro-->
+            </div>
+        </div>
 
 
-      <button type="button" value="Empezar" name="empieza" >
-          CONTRACCIÓN
-          <img src="../../static/icon/contraccion.svg" class="iconoBoton" align="center">
-      </button>
+        <div class="row p-3 align-items-center justify-content-center">
+            <div class="col-12" id="duracionContraccion">
 
-      <button type="button" value="Parar" name="para" >
-          FIN CONTRACCIÓN
-          <img src="../../static/icon/embarazada.svg" class="iconoBoton" align="center">
-      </button>
+            </div> <!--cornómetro-->
+
+            <div class="col-12" id="intervalo">
+
+            </div> <!--cornómetro-->
+
+        </div>
 
 
-    <input type="button" value="Continuar" name="continua" />
-    <input type="button" value="Reiniciar" name="reinicia" />
-      <div id="cronometro">
 
-        <div id="reloj">  00 : 00 : 00</div> <!--cornómetro-->
-        <div id="duracionContraccion"></div> <!--cornómetro-->
-     </div>
 
-     <div>
-        <div id="relojIntervalo">  00 : 00 : 00</div> <!--cornómetro-->
-        <div id="intervalo"></div> <!--cornómetro-->
-     </div>
+
+        <input type="button" value="Reiniciar" name="reinicia" />
+
+
+
 
   </form>
 </div>
@@ -68,7 +94,7 @@ window.onload = function() {
     var enMarchaIntervalo=0; //control del temporizador--> 0= parado; 1= activo
     var croIntervalo=0; //estado inicial del cronómetro.
 
-    var valor = 0;
+    var valor = 1;
 
     function empezar() {
         if (enMarchaContraccion==0) { //Si el cronometro esta parado
@@ -79,20 +105,41 @@ window.onload = function() {
         }
         if(enMarchaIntervalo==1){
             clearInterval(elcronotiempo1); //parar el crono
-            var varial = "#NuevoId" + valor;
-            valor = valor +1;
-            $('#intervalo').append('<div id="NuevoId'+ valor + '">'+croIntervalo+'</div>');
+            var idContraccion = "#Contraccion" + valor;
+
+
+            if(mn1 == "00"){
+             $(idContraccion).append('<div id="Intervalo'+ valor + '">'+"INTERVALO " + sg1+' segundos'+'</div>');
+            }else{
+                $(idContraccion).append('<div id="Intervalo'+ valor + '">'+"INTERVALO "+mn1 +' minuto/s y '+ sg1+' segundos'+'</div>');
+            }
              enMarchaIntervalo=0;
+            valor = valor +1;
         }
     }
 
         function parar() {
         if (enMarchaContraccion==1) { //sólo si está en funcionamiento
             clearInterval(elcrono); //parar el crono
-            var varial = "#NuevoId" + valor;
-            valor = valor +1;
-            $('#duracionContraccion').append('<div id="NuevoId'+ valor + '">'+croContraccion+'</div>');
+            var idContraccion = "#Contraccion" + valor;
+            var mes = emp.getMonth() + 1;
+
+
+            $('#duracionContraccion').append('<div class="alert alert-secondary" id="Contraccion'+ valor + '"></div>')
+
+            $(idContraccion).append('<div id="Fecha'+ valor + '">'+"FECHA "+emp.getDate()+"/"+ mes + "/"+ emp.getFullYear() + " " + emp.getHours() + ":" + emp.getMinutes() +'</div>')
+
+            if(mn == "00"){
+             $(idContraccion).append('<div id="Duracion'+ valor + '">'
+                                                        +"DURACIÓN "+ sg+' segundos'+
+
+                                            '</div>');
+            }else{
+                $(idContraccion).append('<div id="Duracion'+ valor + '">'+"DURACIÓN "+mn +' minuto/s y '+ sg+' segundos'+'</div>');
+            }
+
             enMarchaContraccion=0; //indicar que está parado.
+
 
 
         }
@@ -117,7 +164,7 @@ window.onload = function() {
              if (cs<10) {cs="0"+cs;}  //se ponen siempre 2 cifras en los números
              if (sg<10) {sg="0"+sg;}
              if (mn<10) {mn="0"+mn;}
-        visorReloj.innerHTML=ho+" : "+mn+" : "+sg+" : "+cs; //pasar a pantalla.
+        visorReloj.innerHTML=mn+" : "+sg; //pasar a pantalla.
     }
 
     function tiempo1() { //función del temporizador
@@ -134,7 +181,7 @@ window.onload = function() {
              if (cs1<10) {cs1="0"+cs1;}  //se ponen siempre 2 cifras en los números
              if (sg1<10) {sg1="0"+sg1;}
              if (mn1<10) {mn1="0"+mn1;}
-        intervaloReloj.innerHTML=ho1+" : "+mn1+" : "+sg1+" : "+cs1; //pasar a pantalla.
+        intervaloReloj.innerHTML=mn1+" : "+sg1; //pasar a pantalla.
     }
 
 
@@ -153,32 +200,29 @@ window.onload = function() {
              }
              //Volver al estado inicial
     function reiniciar() {
-             if (enMarchaContraccion==1 || enMarchaIntervalo==1) { //si el cronómetro está en enMarchaContraccion:
-                clearInterval(elcrono); //parar el crono
-                clearInterval(elcronotiempo1); //parar el crono
+        if (enMarchaContraccion==1 || enMarchaIntervalo==1) { //si el cronómetro está en enMarchaContraccion:
+            clearInterval(elcrono); //parar el crono
+            clearInterval(elcronotiempo1); //parar el crono
 
-                enMarchaContraccion=0;
-                enMarchaIntervalo =0;//indicar que está parado
-                }
-                for(num =1; num <= valor; num++){
+            enMarchaContraccion=0;
+            enMarchaIntervalo =0;//indicar que está parado
+        }
+        for(num =1; num <= valor; num++){
+            var identificadornumber = "NuevoId" + num;
+            identificador = document.getElementById(identificadornumber);
+            if(num % 2 == 0) {
+                document.getElementById("intervalo").removeChild(identificador);
+            }else{
+                document.getElementById("duracionContraccion").removeChild(identificador);
+            }
+        }
+        croContraccion=0; //tiempo transcurrido a cero
+        croIntervalo=0;
+        valor = 0;
+        visorReloj.innerHTML = "00 : 00"; //se escribe en el visorReloj todo a 0
+        intervaloReloj.innerHTML = "00 : 00"; //se escribe en el visorReloj todo a 0
 
-                 var identificadornumber = "NuevoId" + num;
-                 identificador = document.getElementById(identificadornumber);
-                 if(num % 2 == 0) {
-
-                     document.getElementById("intervalo").removeChild(identificador);
-                 }else{
-
-                     document.getElementById("duracionContraccion").removeChild(identificador);
-                 }
-                }
-             croContraccion=0; //tiempo transcurrido a cero
-            croIntervalo=0;
-            valor = 0;
-             visorReloj.innerHTML = "0 : 00 : 00 : 00"; //se escribe en el visorReloj todo a 0
-            intervaloReloj.innerHTML = "0 : 00 : 00 : 00"; //se escribe en el visorReloj todo a 0
-
-             }
+    }
 
 </script>
 
