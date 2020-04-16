@@ -56,7 +56,7 @@ urlpatterns = [
     url('anadirPatada/', anadirPatada,name='anadirPatada'),
 
     url('inicioContraccion/', inicioContraccion, name='inicioContraccion'),
-    url('anadirContraccion/', anadirContraccion,name='anadirContraccion'),
+    #url('anadirContraccion/', anadirContraccion,name='anadirContraccion'),
 
     url('inicioSesion/', auth_views.LoginView.as_view(), name='inicioSesion'),
     url('cerrarSesion/', auth_views.LogoutView.as_view(), name='logout'),

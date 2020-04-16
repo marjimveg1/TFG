@@ -13,6 +13,7 @@ from .models import *
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.conf import settings
+from decimal import  Decimal
 
 # Create your views here.
 
@@ -268,25 +269,37 @@ def borrarMedicacion(request, idMedicacion):
         medicacion.delete()
     return redirect('/inicioMedicacion/')
 
-def inicioContraccion(request):
-    return render(request, 'diarioSeguimiento/inicioContraccion.html')
 
-def anadirContraccion(request):
+def inicioContraccion(request):
     if request.user.is_authenticated:
         user = request.user
+        diario = Diario.objects.filter(user=user)[0]
         if request.method == 'POST':
-            form = CrearContraccionForm(request.POST)
-            if form.is_valid():
-                diario = Diario.objects.filter(user=user)[0]
-                obj = form.save(commit=False)
-                obj.diario = diario
-                obj.momento = datetime.now()
-                form.save()
-                return redirect('/miDiario/')
-        else:
-            form = CrearContraccionForm()
+            fecha = request.POST['form_fecha']
+            duracion = request.POST['form_duracion']
+            intervalo = request.POST['form_intervalo']
+            crearContracciones(fecha,duracion,intervalo,diario)
+            return redirect('/inicioContraccion/')
 
-    return render(request, 'diarioSeguimiento/anadirContraccion.html', {'form': form})
+    return render(request, 'diarioSeguimiento/inicioContraccion.html')
+
+def crearContracciones(fecha,duracion,intervalo,diario):
+    intervalo = intervalo + "00.00;"
+    lista_fecha = fecha.split(";")
+    lista_duracion = duracion.split(";")
+    lista_intervalo = intervalo.split(";")
+
+
+
+    for i in range(0,len(lista_fecha)-1):
+        fecha = lista_fecha[i]
+        duracion = lista_duracion[i]
+        intervalo = lista_intervalo[i]
+        contraccion = Contraccion(diario=diario, duración=Decimal(duracion.strip(' "')), intervalo=Decimal(intervalo.strip(' "')), momento=fecha)
+        contraccion.save()
+
+    return lista_fecha,lista_intervalo,lista_duracion;
+
 
 
 def inicioMedida(request):

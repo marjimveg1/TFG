@@ -1,4 +1,5 @@
 
+
 #headerInicio{
     background-position: cover;
     font-family: 'Delius Unicase', cursive;
@@ -144,6 +145,11 @@ th, td {
 .columView{
      color: #B6B6B6 ;
 }
+
+html{
+    height: 100%;
+}
+
 
 
 /*

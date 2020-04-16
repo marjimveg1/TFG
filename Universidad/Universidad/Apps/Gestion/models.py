@@ -99,8 +99,9 @@ class Peso(models.Model):
     diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False)
 
 class Contraccion(models.Model):
-    momento = models.DateTimeField ()
-    despripcion = models.CharField(max_length=1000,null=True, blank = True)
+    momento = models.DateTimeField()
+    duración = models.DecimalField(max_digits=10, decimal_places=2)
+    intervalo = models.DecimalField(max_digits=10, decimal_places=2)
     diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False)
 
 

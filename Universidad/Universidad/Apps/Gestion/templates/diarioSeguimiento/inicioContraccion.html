@@ -16,19 +16,25 @@
 <hr>
 
 
-  <form name="cron" action="#"> <!--botones-->
+  <form name="cron" id="formulario" method="post" action="#"> <!--botones-->
+{% csrf_token %}
+        <div id = "formulario_oculto" class="formulario_oculto">
+            <input id="form_fecha" name="form_fecha" type="hidden">
+            <input id="form_duracion" name="form_duracion" type="hidden">
+            <input id="form_intervalo" name="form_intervalo" type="hidden">
+        </div>
 
         <div class="row p-3 align-items-center justify-content-center">
             <div class="col-sm-6 mt-2">
-                <button class="btn btn-outline-info" style="background: #ebebeb; color: black; width: 100%; height: 100%" type="button " value="Empezar" name="empieza" >
-                CONTRACCIÓN
+                <button  class="btn btn-outline-info" style="background: #ebebeb; color: black; width: 100%; height: 100%" type="button" value="Contracción" name="empieza" >
+                    Contracción
                     <img src="../../static/icon/contraccion.svg" class="iconoBoton" align="center">
                 </button>
             </div>
 
             <div class="col-12 col-sm-6 mt-2">
-                <button class="btn btn-outline-info" style="background: #ebebeb; color: black;width: 100%; height: 100%" type="button" value="Parar" name="para" >
-                FIN CONTRACCIÓN
+                <button class="btn btn-outline-info" style="background: #ebebeb; color: black;width: 100%; height: 100%" type="button" value="Fin contracción" name="para" >
+                    Fin contracción
                     <img src="../../static/icon/embarazada.svg" class="iconoBoton" align="center">
                 </button>
             </div>
@@ -64,8 +70,13 @@
 
 
 
-
-        <input type="button" value="Reiniciar" name="reinicia" />
+        <div class="row p-3 align-items-center justify-content-center">
+            <div class="col-sm-6 mt-2">
+                <button class="btn btn-outline-info" style="background: #ebebeb; color: black; width: 100%; height: 100%" type="submit" value="Reiniciar" name="reinicia" >
+                REINICIAR
+                </button>
+            </div>
+        </div>
 
 
 
@@ -84,7 +95,6 @@ window.onload = function() {
 
     document.cron.empieza.onclick = empezar;
     document.cron.para.onclick = parar;
-    document.cron.continua.onclick = continuar;
     document.cron.reinicia.onclick = reiniciar;
 }
 
@@ -93,10 +103,14 @@ window.onload = function() {
 
     var enMarchaIntervalo=0; //control del temporizador--> 0= parado; 1= activo
     var croIntervalo=0; //estado inicial del cronómetro.
+    var input_fecha = "";
+    var input_duracion = "";
+    var input_intervalo = "";
 
     var valor = 1;
 
     function empezar() {
+        $("#id_despripcion").val('30');
         if (enMarchaContraccion==0) { //Si el cronometro esta parado
             emp=new Date() //fecha actual
             elcrono=setInterval(tiempo,10); //función del temporizador.
@@ -115,19 +129,30 @@ window.onload = function() {
             }
              enMarchaIntervalo=0;
             valor = valor +1;
+
+            input_intervalo = input_intervalo +mn1.toString() + "."+sg1.toString() +";";
         }
+
     }
 
         function parar() {
         if (enMarchaContraccion==1) { //sólo si está en funcionamiento
             clearInterval(elcrono); //parar el crono
             var idContraccion = "#Contraccion" + valor;
-            var mes = emp.getMonth() + 1;
+            var month = emp.getMonth() + 1;
+
+            if(month <=9){
+                mes = "0" + month.toString();
+            }else{
+                mes = month
+            }
+            var string_fecha = emp.getDate()+"/"+ mes + "/"+ emp.getFullYear() + " " + emp.getHours() + ":" + emp.getMinutes() ;
+            var string_fecha_input = emp.getFullYear()+"-"+ mes + "-"+ emp.getDate() + " " + emp.getHours() + ":" + emp.getMinutes()
 
 
             $('#duracionContraccion').append('<div class="alert alert-secondary" id="Contraccion'+ valor + '"></div>')
 
-            $(idContraccion).append('<div id="Fecha'+ valor + '">'+"FECHA "+emp.getDate()+"/"+ mes + "/"+ emp.getFullYear() + " " + emp.getHours() + ":" + emp.getMinutes() +'</div>')
+            $(idContraccion).append('<div id="Fecha'+ valor + '">'+"FECHA "+ string_fecha +'</div>')
 
             if(mn == "00"){
              $(idContraccion).append('<div id="Duracion'+ valor + '">'
@@ -137,6 +162,8 @@ window.onload = function() {
             }else{
                 $(idContraccion).append('<div id="Duracion'+ valor + '">'+"DURACIÓN "+mn +' minuto/s y '+ sg+' segundos'+'</div>');
             }
+            input_fecha = input_fecha +string_fecha_input+ ";";
+            input_duracion = input_duracion +mn.toString() + "."+sg.toString() +";";
 
             enMarchaContraccion=0; //indicar que está parado.
 
@@ -148,6 +175,7 @@ window.onload = function() {
             elcronotiempo1=setInterval(tiempo1,10); //función del temporizador..
             enMarchaIntervalo=1 //indicamos que se ha puesto en enMarchaContraccion.
         }
+
     }
 
     function tiempo() { //función del temporizador
@@ -200,7 +228,12 @@ window.onload = function() {
              }
              //Volver al estado inicial
     function reiniciar() {
+
+
         if (enMarchaContraccion==1 || enMarchaIntervalo==1) { //si el cronómetro está en enMarchaContraccion:
+            $("#form_fecha").val(input_fecha);
+            $("#form_intervalo").val(input_intervalo);
+            $("#form_duracion").val(input_duracion);
             clearInterval(elcrono); //parar el crono
             clearInterval(elcronotiempo1); //parar el crono
 
@@ -221,6 +254,7 @@ window.onload = function() {
         valor = 0;
         visorReloj.innerHTML = "00 : 00"; //se escribe en el visorReloj todo a 0
         intervaloReloj.innerHTML = "00 : 00"; //se escribe en el visorReloj todo a 0
+        document.formulario.descripcion.value = patatitafrita;
 
     }
 
