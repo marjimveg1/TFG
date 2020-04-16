@@ -53,10 +53,9 @@ urlpatterns = [
     url('anadirMedida/', anadirMedida,name='anadirMedida'),
     url(r'^borrarMedida/(?P<idMedida>\d+)/$', borrarMedida,name='borrarMedida'),
 
-    url('anadirPatada/', anadirPatada,name='anadirPatada'),
+    url('inicioPatada/', inicioPatada, name='inicioPatada'),
 
     url('inicioContraccion/', inicioContraccion, name='inicioContraccion'),
-    #url('anadirContraccion/', anadirContraccion,name='anadirContraccion'),
 
     url('inicioSesion/', auth_views.LoginView.as_view(), name='inicioSesion'),
     url('cerrarSesion/', auth_views.LogoutView.as_view(), name='logout'),

@@ -212,22 +212,19 @@ def anadirPesoBebe(request):
 
     return render(request, 'diarioSeguimiento/anadirPesoBebe.html', {'form': form})
 
-def anadirPatada(request):
-    if request.user.is_authenticated:
-        user = request.user
-        if request.method == 'POST':
-            form = CrearPatadaForm(request.POST)
-            if form.is_valid():
-                diario = Diario.objects.filter(user=user)[0]
-                obj = form.save(commit=False)
-                obj.diario = diario
-                obj.momento = datetime.now()
-                form.save()
-                return redirect('/miDiario/')
-        else:
-            form = CrearPatadaForm()
+def inicioPatada(request):
+    # if request.user.is_authenticated:
+    #     user = request.user
+    #     diario = Diario.objects.filter(user=user)[0]
+    #     if request.method == 'POST':
+    #         fecha = request.POST['form_fecha']
+    #         duracion = request.POST['form_duracion']
+    #         intervalo = request.POST['form_intervalo']
+    #         crearContracciones(fecha,duracion,intervalo,diario)
+    #         return redirect('/inicioContraccion/')
 
-    return render(request, 'diarioSeguimiento/anadirPatada.html', {'form': form})
+    return render(request, 'diarioSeguimiento/inicioPatada.html')
+
 
 def inicioMedicacion(request):
     lista_medicacion = {}

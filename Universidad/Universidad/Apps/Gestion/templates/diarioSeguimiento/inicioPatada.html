@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+
+
+{% block contenido %}
+
+<div class="container">
+<div class=" row mr-5 ml-5 mt-5 pr-lg-5 pl-lg-5  d-flex align-items-center  justify-content-center ">
+    <div class="col-12">
+        <h1 align="center"  class="nav justify-content-center tituloView">Contador de patadas</h1>
+        <hr style="width: 60%">
+    </div>
+</div>
+
+
+
+
+
+  <form name="cron" id="formulario" method="post" action="#"> <!--botones-->
+{% csrf_token %}
+        <div id = "formulario_oculto" class="formulario_oculto">
+            <input id="form_fecha" name="form_fecha" type="hidden">
+            <input id="form_duracion" name="form_duracion" type="hidden">
+            <input id="form_numero" name="form_numero" type="hidden">
+        </div>
+
+
+
+        <div class="row p-2 align-items-center justify-content-center">
+            <div class="col-sm-4 mt-2 p-md-3">
+                <button  class="btn btn-outline-info" style="background: #ebebeb; color: black; width: 100%; height: 100%" type="button" value="Contracción" name="empieza" >
+                    Patada
+                    <img src="../../static/icon/patada.svg" class="iconoBoton" align="center"><h5 id="numeroPatadas">0</h5>
+                </button>
+            </div>
+            <div class="col-sm-1"></div>
+
+
+        </div>
+
+       <div class="row p-3 align-items-center justify-content-center ">
+            <div class=" col-4 alert alert-info   " id="cronometro">
+                <div id="reloj">
+                    00 : 00
+                </div> <!--cornómetro-->
+
+             </div>
+           <div class="col-12 col-sm-4 mt-2 p-md-3">
+                <button class="btn btn-outline-info" style="background: #ebebeb; color: black;width: 100%; height: 100%" type="submit" value="Reiniciar" name="reiniciar" >
+                    Fin
+                    <img src="../../static/icon/embarazada.svg" class="iconoBoton" align="center">
+                </button>
+            </div>
+        </div>
+
+
+
+
+  </form>
+</div>
+
+
+
+<script type="text/javascript">
+
+window.onload = function() {
+    //localiza en pantalla el reloj y se ronombra visorReloj para trabajar con ello
+    visorReloj=document.getElementById("reloj");
+
+    document.cron.empieza.onclick = empezar;
+    document.cron.reinicia.onclick = reiniciar;
+}
+
+    var enMarchaContraccion=0; //control del temporizador--> 0= parado; 1= activo
+    var croContraccion=0; //estado inicial del cronómetro.
+
+
+    var input_fecha = "";
+    var input_duracion = "";
+    var input_numero = "";
+
+    var valor = 1;
+
+    function empezar() {
+        if (enMarchaContraccion==0) { //Si el cronometro esta parado
+            emp=new Date() //fecha actual
+            elcrono=setInterval(tiempo,10); //función del temporizador.
+            enMarchaContraccion=1 //indicamos que se ha puesto en enMarchaContraccion.
+
+        }
+        valorVista = document.getElementById("numeroPatadas").innerHTML;
+        document.getElementById("numeroPatadas").innerHTML = parseInt(valorVista) + 1;
+
+    }
+
+
+
+    function tiempo() { //función del temporizador
+        actual=new Date() //fecha en el instante
+        croContraccion=actual-emp //tiempo transcurrido en milisegundos
+        cr=new Date() //fecha donde guardamos el tiempo transcurrido
+        cr.setTime(croContraccion) //nos da la fecha en milisegundos
+        cs=cr.getMilliseconds() //milisegundos del cronómetro
+        sg=cr.getSeconds(); //segundos del cronómetro
+        mn=cr.getMinutes(); //minutos del cronómetro
+        cs=cs/10; //paso a centésimas de segundo.
+        cs=Math.round(cs) //despreciamos los decimales
+        ho=cr.getHours()-1; //horas del cronómetro
+             if (cs<10) {cs="0"+cs;}  //se ponen siempre 2 cifras en los números
+             if (sg<10) {sg="0"+sg;}
+             if (mn<10) {mn="0"+mn;}
+        visorReloj.innerHTML=mn+" : "+sg; //pasar a pantalla.
+    }
+
+
+    function reiniciar() {
+        if (enMarchaContraccion==1) { //si el cronómetro está en enMarchaContraccion:
+            $("#form_fecha").val(input_fecha);
+            $("#form_numero").val(input_numero);
+            $("#form_duracion").val(input_duracion);
+            clearInterval(elcrono); //parar el crono
+
+            enMarchaContraccion=0;
+
+        }
+
+        croContraccion=0; //tiempo transcurrido a cero
+        valor = 0;
+        visorReloj.innerHTML = "00 : 00"; //se escribe en el visorReloj todo a 0
+    }
+
+</script>
+
+
+
+
+{% endblock %}
+
