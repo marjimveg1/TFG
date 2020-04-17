@@ -212,20 +212,6 @@ class CrearPesoForm(forms.ModelForm):
 
 
 
-class CrearPatadaForm(forms.ModelForm):
-
-    class Meta:
-        model = Patada
-        exclude = {'diario','momento'}
-        fields = ['despripcion',]
-
-        labels = {
-            'despripcion': 'Descripción',
-
-        }
-        widgets = {
-            'despripcion': forms.Textarea(attrs={'class': 'form-control'}),
-        }
 
 class CrearMedicacionForm(forms.ModelForm):
 
@@ -263,20 +249,6 @@ class CrearMedicacionForm(forms.ModelForm):
         if str(fechaInicio) > str(fechaFin):
             self.add_error('fechaInicio', ('El inicio del tratamiento no puede ser después que el fin'))
 
-# class CrearContraccionForm(forms.ModelForm):
-#
-#     class Meta:
-#         model = Contraccion
-#         exclude = {'diario','momento'}
-#         fields = ['despripcion',]
-#
-#         labels = {
-#             'despripcion': 'Descripción',
-#
-#         }
-#         widgets = {
-#             'despripcion': forms.Textarea(attrs={'class': 'form-control'}),
-#         }
 
 class CrearMedidaForm(forms.ModelForm):
 

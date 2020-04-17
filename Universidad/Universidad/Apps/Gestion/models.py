@@ -70,7 +70,8 @@ class Fotografia(models.Model):
 
 class Patada(models.Model):
     momento = models.DateTimeField ()
-    despripcion = models.CharField(max_length=1000, null=True, blank = True)
+    duración = models.DecimalField(max_digits=10, decimal_places=2)
+    numero = models.IntegerField()
     diario = models.ForeignKey(Diario, on_delete=models.CASCADE, null=False, blank=False)
 
 class Tension(models.Model):

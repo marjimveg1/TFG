@@ -69,7 +69,7 @@ window.onload = function() {
     visorReloj=document.getElementById("reloj");
 
     document.cron.empieza.onclick = empezar;
-    document.cron.reinicia.onclick = reiniciar;
+    document.cron.reiniciar.onclick = reiniciar;
 }
 
     var enMarchaContraccion=0; //control del temporizador--> 0= parado; 1= activo
@@ -91,7 +91,6 @@ window.onload = function() {
         }
         valorVista = document.getElementById("numeroPatadas").innerHTML;
         document.getElementById("numeroPatadas").innerHTML = parseInt(valorVista) + 1;
-
     }
 
 
@@ -116,6 +115,40 @@ window.onload = function() {
 
     function reiniciar() {
         if (enMarchaContraccion==1) { //si el cronómetro está en enMarchaContraccion:
+
+            //Guardamos fecha
+            ahora=new Date();
+            var month = emp.getMonth() + 1;
+            var day = emp.getDate();
+            var minutes = emp.getMinutes();
+
+            if(minutes <=9){
+                minutos = "0" + minutes.toString();
+            }else{
+                minutos = minutes;
+            }
+
+            if(day <=9){
+                dia = "0" + day.toString();
+            }else{
+                dia = day;
+            }
+
+            if(month <=9){
+                mes = "0" + month.toString();
+            }else{
+                mes = month
+            }
+            var string_fecha_input = ahora.getFullYear()+"-"+ mes + "-"+ dia + " " + ahora.getHours() + ":" + minutos;
+            input_fecha = input_fecha +string_fecha_input;
+
+            //Guardamos duracion
+            input_numero = document.getElementById("numeroPatadas").innerHTML;
+
+            //Guardamos numero
+            input_duracion = input_duracion +mn.toString() + "."+sg.toString();
+
+
             $("#form_fecha").val(input_fecha);
             $("#form_numero").val(input_numero);
             $("#form_duracion").val(input_duracion);

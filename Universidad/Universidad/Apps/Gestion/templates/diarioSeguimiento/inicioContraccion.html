@@ -74,7 +74,7 @@
 
         <div class="row p-3 align-items-center justify-content-center">
             <div class="col-4 col-md-3 mt-2">
-                <button class="btn btn-outline-info" style="background: #ebebeb; color: black; width: 100%; height: 100%" type="submit" value="Reiniciar" name="reinicia" >
+                <button class="btn btn-outline-info" style="background: #ebebeb; color: black; width: 100%; height: 100%" type="submit" value="Reiniciar" name="reiniciar" >
                 REINICIAR
                 </button>
             </div>
@@ -97,7 +97,7 @@ window.onload = function() {
 
     document.cron.empieza.onclick = empezar;
     document.cron.para.onclick = parar;
-    document.cron.reinicia.onclick = reiniciar;
+    document.cron.reiniciar.onclick = reiniciar;
 }
 
     var enMarchaContraccion=0; //control del temporizador--> 0= parado; 1= activo
@@ -142,14 +142,28 @@ window.onload = function() {
             clearInterval(elcrono); //parar el crono
             var idContraccion = "#Contraccion" + valor;
             var month = emp.getMonth() + 1;
+            var minutes = emp.getMinutes();
+            var day = emp.getDate();
+
+            if(minutes <=9){
+                minutos = "0" + minutes.toString();
+            }else{
+                minutos = minutes;
+            }
+
+            if(day <=9){
+                dia = "0" + day.toString();
+            }else{
+                dia = day;
+            }
 
             if(month <=9){
                 mes = "0" + month.toString();
             }else{
                 mes = month
             }
-            var string_fecha = emp.getDate()+"/"+ mes + "/"+ emp.getFullYear() + " " + emp.getHours() + ":" + emp.getMinutes() ;
-            var string_fecha_input = emp.getFullYear()+"-"+ mes + "-"+ emp.getDate() + " " + emp.getHours() + ":" + emp.getMinutes()
+            var string_fecha = dia+"/"+ mes + "/"+ emp.getFullYear() + " " + emp.getHours() + ":" + minutos ;
+            var string_fecha_input = emp.getFullYear()+"-"+ mes + "-"+ dia + " " + emp.getHours() + ":" + minutos;
 
 
             $('#duracionContraccion').append('<div class="alert alert-secondary" id="Contraccion'+ valor + '"></div>')

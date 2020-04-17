@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
-from builtins import print
 
-from django.http import HttpResponse
 
-from django.shortcuts import render, redirect
+from django.shortcuts import  redirect
 from .forms import *
 from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta
 from .models import *
 from django.shortcuts import render
 from django.core.paginator import Paginator
@@ -113,6 +111,7 @@ def inicioTension(request):
     return render(request, 'diarioSeguimiento/inicioTension.html', {"lista_tension": lista_tension, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirTension(request):
+    global form
     if request.user.is_authenticated:
         user = request.user
         if request.method == 'POST':
@@ -154,6 +153,7 @@ def inicioPesoMama(request):
     return render(request, 'diarioSeguimiento/inicioPeso.html', {"isMama":True, "lista_peso": lista_peso, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirPesoMama(request):
+    global form
     if request.user.is_authenticated:
         user = request.user
         if request.method == 'POST':
@@ -196,6 +196,7 @@ def inicioPesoBebe(request):
     return render(request, 'diarioSeguimiento/inicioPeso.html', {"isMama":False, "lista_peso": lista_peso, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirPesoBebe(request):
+    global form
     if request.user.is_authenticated:
         user = request.user
         if request.method == 'POST':
@@ -212,19 +213,23 @@ def anadirPesoBebe(request):
 
     return render(request, 'diarioSeguimiento/anadirPesoBebe.html', {'form': form})
 
+
 def inicioPatada(request):
-    # if request.user.is_authenticated:
-    #     user = request.user
-    #     diario = Diario.objects.filter(user=user)[0]
-    #     if request.method == 'POST':
-    #         fecha = request.POST['form_fecha']
-    #         duracion = request.POST['form_duracion']
-    #         intervalo = request.POST['form_intervalo']
-    #         crearContracciones(fecha,duracion,intervalo,diario)
-    #         return redirect('/inicioContraccion/')
+    if request.user.is_authenticated:
+        user = request.user
+        diario = Diario.objects.filter(user=user)[0]
+        if request.method == 'POST':
+            fecha = request.POST['form_fecha']
+            duracion = request.POST['form_duracion']
+            numero = request.POST['form_numero']
+            crearPatada(fecha,duracion,numero,diario)
+            return redirect('/inicioPatada/')
 
     return render(request, 'diarioSeguimiento/inicioPatada.html')
 
+def crearPatada(fecha,duracion,numero,diario):
+    patada = Patada(diario=diario, duración = duracion, numero=numero, momento=fecha)
+    patada.save()
 
 def inicioMedicacion(request):
     lista_medicacion = {}
@@ -241,6 +246,7 @@ def inicioMedicacion(request):
     return render(request, 'diarioSeguimiento/inicioMedicacion.html', {"lista_medicacion": lista_medicacion, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirMedicacion(request):
+    global form
     if request.user.is_authenticated:
         user = request.user
         if request.method == 'POST':
@@ -295,7 +301,7 @@ def crearContracciones(fecha,duracion,intervalo,diario):
         contraccion = Contraccion(diario=diario, duración=Decimal(duracion.strip(' "')), intervalo=Decimal(intervalo.strip(' "')), momento=fecha)
         contraccion.save()
 
-    return lista_fecha,lista_intervalo,lista_duracion;
+    return lista_fecha,lista_intervalo,lista_duracion
 
 
 
@@ -314,6 +320,7 @@ def inicioMedida(request):
     return render(request, 'diarioSeguimiento/inicioMedida.html', {"lista_medida": lista_medida, 'page':page, 'MEDIA_URL': settings.MEDIA_URL})
 
 def anadirMedida(request):
+    global form
     if request.user.is_authenticated:
         user = request.user
         if request.method == 'POST':
@@ -346,6 +353,7 @@ def buscarFecha(request):
 
 
 def crearFechaCalendario(request):
+    global form
     if request.user.is_authenticated:
         user = request.user
         if request.method == 'POST':
@@ -366,6 +374,7 @@ def crearFechaCalendario(request):
 
 
 def agenda(request):
+    global nueva_fecha
     dic_solicitud = request.GET.dict()
 
     detalle, fecha = getValores(dic_solicitud)
@@ -456,9 +465,8 @@ def agenda(request):
         for evento in eventos_owner_lista:
             if dia == evento.fecha.date():
                 cal_day['event'] = True
-                if getDetalle:
-                    if dia == nueva_fecha:
-                        detalles.append(evento)
+                if getDetalle and nueva_fecha == dia:
+                    detalles.append(evento)
 
         if dia.month == month:
             cal_day['in_month'] = True
