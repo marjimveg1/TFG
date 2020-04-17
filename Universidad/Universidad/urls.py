@@ -28,6 +28,8 @@ urlpatterns = [
     url('registro/', registro),
     url('miPerfil/', miPerfil),
 
+    url('ruedaObstetrica/', ruedaObstetrica, name='ruedaObstetrica'),
+
     url('editarPerfil/', editarPerfil,name='editarPerfil'),
     url('borrarUsuario/', borrarUsuario, name='borrarUsuario'),
     url('cambiarContra/', cambiar_contra, name='cambiarContra'),

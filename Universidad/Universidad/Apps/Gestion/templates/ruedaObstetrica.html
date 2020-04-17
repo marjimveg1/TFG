@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+
+
+{% block contenido %}
+
+
+
+<div class="container">
+<div class=" row mr-5 ml-5 mt-5 pr-lg-5 pl-lg-5  d-flex align-items-center  justify-content-center">
+    <div class="col-12">
+        <h1 align="center"  class="nav justify-content-center tituloView">Calculadora de la fecha de parto</h1>
+        <hr style="width: 60%">
+    </div>
+</div>
+
+ <form name="cron" id="formulario" method="post" action="#"> <!--botones-->
+{% csrf_token %}
+    <div class="row align-items-center justify-content-center" >
+        <div class="col-sm-4 col-10 mr-sm-3 ml-sm-3">
+            <label >Fecha de última menstruación</label>
+            <input type="date" class="form-control" id="fechaUltMens">
+        </div>
+
+
+        <div class=" col-6 col-md-4 col-lg-3 mt-5 mt-sm-2">
+            <button class="btn btn-outline-info" style="background: #ebebeb; color: black; width: 100%; height: 100%" type="button" value="Calcular" name="calcular" >
+                Calcular
+            </button>
+        </div>
+    </div>
+
+
+     <div class="row p-3 align-items-center justify-content-center">
+            <div class="col-12" id="resultado">
+
+            </div>
+
+            <div class="col-12" id="intervalo">
+
+            </div>
+
+     </div>
+
+
+
+
+
+  </form>
+</div>
+
+
+<script type="text/javascript">
+
+window.onload = function() {
+    //localiza en pantalla el reloj y se ronombra visorReloj para trabajar con ello
+
+
+    click = true;
+
+    document.cron.calcular.onclick = calcular;
+
+}
+    var string_fecha_input, form_fecha_input,fecha_input;
+    var dia, mes, año;
+    var momento_fecha_input,semana, hoy, fecha_parto;
+
+
+
+
+    function calcular(){
+        if(click){
+
+        form_fecha_input= document.getElementById("fechaUltMens");
+        string_fecha_input = form_fecha_input.value.toString();
+
+        año = string_fecha_input.substr(0,4);
+        mes = string_fecha_input.substr(5,2);
+        dia = string_fecha_input.substr(8,2);
+        fecha_input = new Date(año, mes-1, dia);
+        semana = getSemana();
+
+
+
+
+
+        $('#resultado').append('<div id="Ultima' + '">'+"Última menstruación " + getStringFecha(fecha_input) +'</div>')
+        $('#resultado').append('<div id="Parto' + '">'+"Fecha estimada de parto " + getFechaParto() +'</div>')
+        $('#resultado').append('<div id="Semana' + '">'+"Semana " + semana +'</div>')
+
+     //   click=false;
+        }
+    }
+
+    function getStringFecha(b){
+        var day,month, year, res;
+
+        day = b.getDate();
+        month = b.getMonth()+1;
+        year = b.getFullYear();
+
+        if(day <=9){
+             day = "0" + day.toString();
+        }else{
+             day = day;
+        }
+
+        if(month <=9){
+            month = "0" + month.toString();
+        }else{
+            month = month
+        }
+
+        res = day + "-" + month + "-" + year;
+
+        return res;
+    }
+    function getFechaParto() {
+        var res;
+        var masDias, masAño, menosMes;
+        var fecha = fecha_input;
+
+        fecha.setDate(fecha.getDate() + 7);
+        fecha.setMonth(fecha.getMonth() - 3);
+        fecha.setFullYear(fecha.getFullYear()+1);
+
+        res = getStringFecha(fecha);
+
+
+        return res;
+    }
+
+    function getSemana(){
+        var res;
+        var help;
+
+        hoy = new moment(new Date())
+        momento_fecha_input = new moment(fecha_input);
+        semana = hoy.diff(fecha_input, "weeks");
+        res =Math.abs(semana+1);
+        if(semana<42){
+            res = 0;
+        }else{
+            res = res;
+        }
+
+
+
+
+        return res;
+    }
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+{% endblock %}
+

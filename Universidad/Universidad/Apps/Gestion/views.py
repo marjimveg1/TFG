@@ -19,6 +19,9 @@ from decimal import  Decimal
 def inicio(request):
     return render(request, 'inicio.html', {"inicioview": True})
 
+def ruedaObstetrica(request):
+    return render(request, 'ruedaObstetrica.html')
+
 def miPerfil(request):
     if request.user.is_authenticated:
         user = request.user
