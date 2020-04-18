@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7b559192-cc1d-4e7a-9100-f193a3f700fc" name="Default Changelist" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/diarioSeguimiento/inicioContraccion.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/diarioSeguimiento/inicioContraccion.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicio.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/inicio.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/urls.py" afterPath="$PROJECT_DIR$/Universidad/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/static/css/styles/styleIndex.css" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/static/css/styles/styleIndex.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/ruedaObstetrica.html" afterPath="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/ruedaObstetrica.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Universidad$Django__runserver.coverage" NAME="Django: runserver Coverage Results" MODIFIED="1587148984013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Universidad$Django__runserver.coverage" NAME="Django: runserver Coverage Results" MODIFIED="1587226885957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -66,8 +63,8 @@
       <file leaf-file-name="inicioContraccion.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/diarioSeguimiento/inicioContraccion.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-506">
-              <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+            <state relative-caret-position="-2206">
+              <caret line="54" column="27" lean-forward="true" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -76,8 +73,8 @@
       <file leaf-file-name="ruedaObstetrica.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/ruedaObstetrica.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="141" column="22" lean-forward="true" selection-start-line="141" selection-start-column="22" selection-end-line="141" selection-end-column="22" />
+            <state relative-caret-position="329">
+              <caret line="86" column="97" lean-forward="false" selection-start-line="86" selection-start-column="97" selection-end-line="86" selection-end-column="97" />
               <folding />
             </state>
           </provider>
@@ -86,7 +83,7 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
+            <state relative-caret-position="3278">
               <caret line="149" column="61" lean-forward="false" selection-start-line="149" selection-start-column="61" selection-end-line="149" selection-end-column="61" />
               <folding />
             </state>
@@ -96,7 +93,7 @@
       <file leaf-file-name="moment.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/static/js/moment.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1504">
+            <state relative-caret-position="101222">
               <caret line="4601" column="5" lean-forward="false" selection-start-line="4601" selection-start-column="5" selection-end-line="4601" selection-end-column="5" />
               <folding />
             </state>
@@ -126,7 +123,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
+            <state relative-caret-position="352">
               <caret line="26" column="27" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
               <folding>
                 <element signature="e#26#64#0" expanded="true" />
@@ -138,8 +135,8 @@
       <file leaf-file-name="styleIndex.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/static/css/styles/styleIndex.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+            <state relative-caret-position="263">
+              <caret line="152" column="29" lean-forward="false" selection-start-line="152" selection-start-column="29" selection-end-line="152" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -178,9 +175,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>style</find>
-      <find>INICIOcON</find>
-      <find>cont</find>
       <find>reini</find>
       <find>float</find>
       <find>EmpezarCon</find>
@@ -208,6 +202,9 @@
       <find>Rueda</find>
       <find>flex</find>
       <find>duracionCont</find>
+      <find>septi</find>
+      <find>for(</find>
+      <find>alert</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -261,7 +258,6 @@
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/cal_mes.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/static/js/zepto.js" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/static/js/zepto.min.js" />
-        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/static/css/styles/styleIndex.css" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/diarioSeguimiento/diarioSeguimiento.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/forms.py" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/models.py" />
@@ -272,6 +268,7 @@
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/diarioSeguimiento/inicioContraccion.html" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/static/js/moment.js" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html" />
+        <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/static/css/styles/styleIndex.css" />
         <option value="$PROJECT_DIR$/Universidad/Apps/Gestion/templates/ruedaObstetrica.html" />
       </list>
     </option>
@@ -305,6 +302,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -619,8 +618,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -760,6 +757,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -1016,7 +1019,7 @@
     <frame x="2391" y="-9" width="2418" height="1318" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18958156" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19171648" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32870772" sideWeight="0.49316823" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37566608" sideWeight="0.5291845" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921588" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1026,7 +1029,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3529922" sideWeight="0.46584117" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16652212" sideWeight="0.47081545" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3529922" sideWeight="0.47081545" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1372,13 +1375,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1452">
           <caret line="73" column="33" lean-forward="false" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
+        <state relative-caret-position="352">
           <caret line="26" column="27" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
           <folding>
             <element signature="e#26#64#0" expanded="true" />
@@ -1425,17 +1427,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/static/css/styles/styleIndex.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/static/js/moment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1504">
+        <state relative-caret-position="101222">
           <caret line="4601" column="5" lean-forward="false" selection-start-line="4601" selection-start-column="5" selection-end-line="4601" selection-end-column="5" />
           <folding />
         </state>
@@ -1443,7 +1437,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
+        <state relative-caret-position="3278">
           <caret line="149" column="61" lean-forward="false" selection-start-line="149" selection-start-column="61" selection-end-line="149" selection-end-column="61" />
           <folding />
         </state>
@@ -1451,16 +1445,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/diarioSeguimiento/inicioContraccion.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-506">
-          <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+        <state relative-caret-position="-2206">
+          <caret line="54" column="27" lean-forward="true" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/static/css/styles/styleIndex.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="152" column="29" lean-forward="false" selection-start-line="152" selection-start-column="29" selection-end-line="152" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Universidad/Apps/Gestion/templates/ruedaObstetrica.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="141" column="22" lean-forward="true" selection-start-line="141" selection-start-column="22" selection-end-line="141" selection-end-column="22" />
+        <state relative-caret-position="329">
+          <caret line="86" column="97" lean-forward="false" selection-start-line="86" selection-start-column="97" selection-end-line="86" selection-end-column="97" />
           <folding />
         </state>
       </provider>

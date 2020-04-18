@@ -32,16 +32,14 @@
     </div>
 
 
-     <div class="row p-3 align-items-center justify-content-center">
-            <div class="col-12" id="resultado">
+     <div class="row  mt-3 p-3 align-items-center justify-content-center">
+            <div class="col-5 align-items-center justify-content-center" id="resultado">
 
             </div>
 
-            <div class="col-12" id="intervalo">
 
-            </div>
 
-     </div>
+        </div>
 
 
 
@@ -64,7 +62,7 @@ window.onload = function() {
 }
     var string_fecha_input, form_fecha_input,fecha_input;
     var dia, mes, año;
-    var momento_fecha_input,semana, hoy, fecha_parto;
+    var momento_fecha_input,semana, hoy, fecha_parto, trimestre;
 
 
 
@@ -80,16 +78,19 @@ window.onload = function() {
         dia = string_fecha_input.substr(8,2);
         fecha_input = new Date(año, mes-1, dia);
         semana = getSemana();
+        trimestre = getTrimestre();
 
 
+        $('#resultado').append('<div class="resultadoCaluladora alert" id="getResultado' + '">'+'</div>')
 
 
+        $('#getResultado').append('<div id="Parto' + '"><strong>'+"Fecha estimada de parto es el  " + getFechaParto() +'</strong></div>')
 
-        $('#resultado').append('<div id="Ultima' + '">'+"Última menstruación " + getStringFecha(fecha_input) +'</div>')
-        $('#resultado').append('<div id="Parto' + '">'+"Fecha estimada de parto " + getFechaParto() +'</div>')
-        $('#resultado').append('<div id="Semana' + '">'+"Semana " + semana +'</div>')
+            if(semana!=0){
+            $('#getResultado').append('<div  id="Semana' + '">'+"¡ENHORABUENA! Estás de " + semana + " semanas."+ '<br>'+"Estás en el " +  trimestre + " trimestre de tu embarazo."+ '</div>');
+            }
 
-     //   click=false;
+        click=false;
         }
     }
 
@@ -138,17 +139,54 @@ window.onload = function() {
         hoy = new moment(new Date())
         momento_fecha_input = new moment(fecha_input);
         semana = hoy.diff(fecha_input, "weeks");
+
         res =Math.abs(semana+1);
-        if(semana<42){
-            res = 0;
+
+        if(semana<42 && semana >0){
+            semana = Math.abs(semana+1);
+        }else if( semana >=42){
+            semana = 0;
         }else{
-            res = res;
+            if(fecha_input< hoy){
+                semana =Math.abs(semana+1);
+            }else{
+                semana = 0;
+            }
         }
 
 
 
 
-        return res;
+        return semana;
+    }
+
+    function getTrimestre(){
+        if(semana <=12 && semana !=0) {
+            trimestre = "Primer";
+        }else if(semana >12 && semana <=26){
+            trimestre = "Segundo";
+        }else if(semana >26){
+            trimestre = "Tercer";
+        }else{
+            trimestre = "Cero";
+        }
+        return trimestre;
+    }
+    
+    function datosSemanas() {
+
+            $('#primeravisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
+            $('#segundavisita').append('<div id="SegundaVisita1' + '">'+"Debe acudir hospital para realizar la PRIMERA ECOGRAFÍA y screening bioquímico" +'</div>');
+            $('#terceravisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
+            $('#cuartavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
+            $('#quintavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
+            $('#sextavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
+            $('#septimavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
+            $('#octavavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
+            $('#novenavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
+            $('#decimavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
+
+
     }
 
 
