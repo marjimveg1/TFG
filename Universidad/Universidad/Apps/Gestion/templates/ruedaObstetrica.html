@@ -84,7 +84,7 @@ window.onload = function() {
         $('#resultado').append('<div class="resultadoCaluladora alert" id="getResultado' + '">'+'</div>')
 
 
-        $('#getResultado').append('<div id="Parto' + '"><strong>'+"Fecha estimada de parto es el  " + getFechaParto() +'</strong></div>')
+        $('#getResultado').append('<div id="Parto' + '"><strong>'+"La fecha estimada de parto es el  " + getFechaParto() +'</strong></div>')
 
             if(semana!=0){
             $('#getResultado').append('<div  id="Semana' + '">'+"¡ENHORABUENA! Estás de " + semana + " semanas."+ '<br>'+"Estás en el " +  trimestre + " trimestre de tu embarazo."+ '</div>');
@@ -122,9 +122,7 @@ window.onload = function() {
         var masDias, masAño, menosMes;
         var fecha = fecha_input;
 
-        fecha.setDate(fecha.getDate() + 7);
-        fecha.setMonth(fecha.getMonth() - 3);
-        fecha.setFullYear(fecha.getFullYear()+1);
+        fecha.setDate(fecha.getDate() + 280);
 
         res = getStringFecha(fecha);
 
@@ -173,21 +171,6 @@ window.onload = function() {
         return trimestre;
     }
     
-    function datosSemanas() {
-
-            $('#primeravisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
-            $('#segundavisita').append('<div id="SegundaVisita1' + '">'+"Debe acudir hospital para realizar la PRIMERA ECOGRAFÍA y screening bioquímico" +'</div>');
-            $('#terceravisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
-            $('#cuartavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
-            $('#quintavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
-            $('#sextavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
-            $('#septimavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
-            $('#octavavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
-            $('#novenavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
-            $('#decimavisita').append('<div id="PrimeraVisita1' + '">'+"Debe acudir al centro de At. Primaria" +'</div>');
-
-
-    }
 
 
 

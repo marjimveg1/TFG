@@ -47,7 +47,7 @@
 
              </div>
            <div class="col-12 col-sm-4 mt-2 p-md-3">
-                <button class="btn btn-outline-info" style="background: #ebebeb; color: black;width: 100%; height: 100%" type="submit" value="Reiniciar" name="reiniciar" >
+                <button class="btn btn-outline-info" style="background: #ebebeb; color: black;width: 100%; height: 100%" type="submit" value="Reiniciar" id= "reiniciar" name="reiniciar" >
                     Fin
                     <img src="../../static/icon/embarazada.svg" class="iconoBoton" align="center">
                 </button>
@@ -91,6 +91,10 @@ window.onload = function() {
         }
         valorVista = document.getElementById("numeroPatadas").innerHTML;
         document.getElementById("numeroPatadas").innerHTML = parseInt(valorVista) + 1;
+
+        if(valorVista=="9"){
+              document.getElementById("reiniciar").click();
+        }
     }
 
 

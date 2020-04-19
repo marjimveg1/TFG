@@ -35,6 +35,7 @@ class Evento(models.Model):
     CAREGORIA_OPCION = (
         ('Cita médico', 'Cita médico'),
         ('Recordatorio', 'Recordatorio'),
+        ('Fecha importante', 'Fecha importante'),
     )
     titulo = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=350)
