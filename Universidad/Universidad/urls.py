@@ -63,6 +63,7 @@ urlpatterns = [
     url('cerrarSesion/', auth_views.LogoutView.as_view(), name='logout'),
 
     url('anadirFecha/', crearFechaCalendario, name='anadirFecha'),
+    url(r'^borrarEvento/(?P<idEvento>\d+)/$', borrarEvento, name='borrarEvento'),
     url(r'^buscarFecha/$', buscarFecha, name='buscarFecha'),
     url(r'^miAgenda/$', agenda, name='agenda'),
     url(r'^miAgenda/?detalle=(?P<fechaDetalle>\d+)/$', agenda, name='agenda'),

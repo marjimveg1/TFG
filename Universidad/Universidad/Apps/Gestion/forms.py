@@ -80,7 +80,7 @@ class MamaCreateForm(UserCreationForm):
         eventoCita2 = Evento()
         eventoCita2.titulo = "Recordatorio"
         eventoCita2.categoria = "Fecha importante"
-        eventoCita2.descripcion = "Recuerda pedir la cita para la primera ECO, debes hacertela entre antes de un mes"
+        eventoCita2.descripcion = "Recuerda pedir la cita para la primera ECO, debes hacertela antes de un mes"
         eventoCita2.fecha = cita2
         eventoCita2.calendario = calendario
         eventoCita2.save()

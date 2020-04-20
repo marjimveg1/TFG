@@ -23,15 +23,15 @@
             {% for week in calendar %}
             <tr>
                 {% for day in week %}
-                     <td{% if  day.in_month %}
+                     <td {% if not day.in_month %}
                          class="columView"
                         {% endif %}>
 
                          {% if day.event %}
                             {% if getMes %}
-                                <a href="/miAgenda/?fecha={{ masMes }}&detalle={{day.day|date:"Ymd" }}">{{ day.day|date:"j" }}</a>
+                                <a href="/miAgenda/?fecha={{ masMes }}&detalle={{day.day|date:'Ymd' }}">{{ day.day|date:"j" }}</a>
                              {% else %}
-                                <a href="/miAgenda/?detalle={{day.day|date:"Ymd" }}">{{ day.day|date:"j" }}</a>
+                                <a href="/miAgenda/?detalle={{day.day|date:'Ymd' }}">{{ day.day|date:"j" }}</a>
                             {% endif %}
 
                          {% else %}
@@ -54,8 +54,11 @@
                 {{ detalle.categoria }}
                 </strong><br>
                 <strong>{{ detalle.titulo }} -
-                {{ detalle.fecha }}</strong><br>
+                {{ detalle.fecha }} <a href="/borrarEvento/{{ detalle.id }}">
+                             <img src="../../static/icon/borrar.svg" alt="Borrar" class="icono" align="center">
+                        </a></strong><br>
                 {{ detalle.descripcion }}
+
                 <hr style="width: 100%">
 
             {% endfor %}

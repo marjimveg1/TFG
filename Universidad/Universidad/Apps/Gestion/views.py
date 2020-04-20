@@ -12,6 +12,8 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.conf import settings
 from decimal import  Decimal
+from django.utils.timezone import activate
+
 
 # Create your views here.
 
@@ -374,9 +376,18 @@ def crearFechaCalendario(request):
 
 
 
+def borrarEvento (request, idEvento):
+    evento = Evento.objects.get(id=idEvento)
+    user = request.user
+    calendario = Calendario.objects.filter(user=user)[0]
+    lista_eventos = Evento.objects.filter(calendario=calendario)
 
+    if evento in lista_eventos:
+        evento.delete()
+    return redirect('/miAgenda/')
 
 def agenda(request):
+    activate(settings.TIME_ZONE)
     global nueva_fecha
     dic_solicitud = request.GET.dict()
 
@@ -385,8 +396,8 @@ def agenda(request):
    # fecha = "-90"
 
     user = request.user
-    calendario_owner = Calendario.objects.filter(user=user)[0]
-    eventos_owner_lista = Evento.objects.filter(calendario=calendario_owner)
+    calendario_owner = Calendario.objects.filter(user_id=user.id)[0]
+    eventos_owner_lista = Evento.objects.filter(calendario_id=calendario_owner.id )
     hoy = date.today()
     getDetalle = False
     getMes= False
@@ -440,7 +451,7 @@ def agenda(request):
 
 
     primer_dia_mes = date(year, month, 1)
-
+    mes_actual = month
     if (month == 12):
         year += 1
         month = 1
@@ -471,7 +482,7 @@ def agenda(request):
                 if getDetalle and nueva_fecha == dia:
                     detalles.append(evento)
 
-        if dia.month == month:
+        if dia.month == mes_actual:
             cal_day['in_month'] = True
         else:
             cal_day['in_month'] = False
