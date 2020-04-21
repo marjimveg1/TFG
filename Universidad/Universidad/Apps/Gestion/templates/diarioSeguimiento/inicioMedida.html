@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block contenido %}
+
+
+<div class=" row m-5 pr-lg-5 pl-lg-5  d-flex  justify-content-center ">
+    <div class="col-12">
+        <h1 align="center"  class="nav justify-content-center tituloView">Medidas de mi bebé</h1>
+        <hr style="width: 60%">
+    </div>
+
+
+    <div class="col-12 justify-content-center">
+        <table class="table-responsive-sm table">
+            <thead>
+		    <tr>
+                <td><strong>Fecha</strong></td>
+                <td><strong>Diámetro biparietal</strong></td>
+                <td><strong>Circunferencia abdominal</strong></td>
+                <td><strong>Longitud del fémul</strong></td>
+                <td>
+                    <a href="/anadirMedida/">
+                       <img src="../../static/icon/anadir.svg" alt="Anadir" class="icono" align="center">
+                    </a>
+                </td>
+            </tr>
+	        </thead>
+
+            <tbody align="">
+                 {% for medida in lista_medida %}
+                <tr>
+                    <td>
+                       {{ medida.fecha }}
+                    </td>
+                    <td>
+                       {{ medida.dBiparieta }}
+                    </td>
+                    <td>
+                       {{ medida.cAbdominal }}
+                    </td>
+                    <td>
+                       {{ medida.lFemur }}
+                    </td>
+                    <td>
+                        <a href="/borrarMedida/{{ medida.id }}">
+                             <img src="../../static/icon/borrar.svg" alt="Borrar" class="icono" align="center">
+                        </a>
+                    </td>
+                 </tr>
+                {% endfor %}
+            </tbody>
+
+
+
+        </table>
+
+    </div>
+
+    <div class="col-12">
+        <h5 class="nav justify-content">Página:
+            <span>
+                {% for l in  lista_medida.paginator.page_range %}
+                    <a class="enlacePaginacion" href="?pagina={{forloop.counter}}"> {{forloop.counter}}</a>,
+                 {% endfor %}
+            </span>
+        </h5>
+     </div>
+
+</div>
+
+
+{% endblock %}

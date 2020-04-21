@@ -32,10 +32,39 @@
 }
 
 
+.enlacesDiario{
+    color: black;
+    text-decoration: none;
+}
 
+a#hover {
+    color: black;
+    background-color: #6c757d;
+}
+
+
+.tablaPerzonalizada{
+        display: table;
+
+}
+
+.enalacePaginacion{
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+}
+
+.icono{
+    width: 30px;
+    height: 30px;
+}
+
+.iconoBoton{
+    width: 60px;
+    height: 60px;
+}
 
 /* Style inputs, select elements and textareas */
-input[type=text],input[type=email] , input[type=month] , input[type=textarea], select, textarea{
+input[type=text],input[type=number],input[type=email] , input[type=month] , input[type=textarea], select, textarea{
   padding: 12px;
   border: 1px solid #f5f5f5;
   border-radius: 4px;
@@ -116,6 +145,14 @@ th, td {
 .columView{
      color: #B6B6B6 ;
 }
+
+html{
+    height: 100%;
+}
+#getResultado{
+    background-color: #FFEAED;
+}
+
 
 
 /*

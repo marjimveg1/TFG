@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'Universidad.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tfg_db',
+        'NAME': 'basedatostfg',
         'USER': 'tfg',
         'PASSWORD': '1233',
         'HOST': 'localhost',
@@ -117,13 +117,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-es'
 
+USE_TZ = True
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

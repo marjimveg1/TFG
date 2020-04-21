@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block contenido %}
+
+
+
+
+
+<div class=" row m-5 pr-lg-5 pl-lg-5  d-flex  justify-content-center ">
+    <div class="col-12">
+        {% if isMama %}
+             <h1 align="center"  class="nav justify-content-center tituloView">Registro de mi peso</h1>
+        {% endif %}
+
+        {% if not isMama %}
+             <h1 align="center"  class="nav justify-content-center tituloView">Registro del peso de mi bebé</h1>
+        {% endif %}
+        <hr style="width: 60%">
+    </div>
+
+
+    <div class="col-12 justify-content-center">
+        <table class="table-responsive-sm table">
+            <thead>
+		    <tr>
+                <td><strong>Fecha</strong></td>
+                <td><strong>Peso(KG)</strong></td>
+                {% if isMama %}
+                <td>
+                    <a href="/anadirPesoMama/">
+                       <img src="../../static/icon/anadir.svg" alt="Anadir" class="icono" align="center">
+                    </a>
+                </td>
+                {% endif %}
+
+            {% if not isMama %}
+                <td>
+                    <a href="/anadirPesoBebe/">
+                       <img src="../../static/icon/anadir.svg" alt="Anadir" class="icono" align="center">
+                    </a>
+                </td>
+                {% endif %}
+            </tr>
+	        </thead>
+
+            <tbody align="">
+                 {% for peso in lista_peso %}
+                <tr>
+                    <td>
+                       {{ peso.fecha }}
+                    </td>
+                    <td>
+                       {{ peso.peso }}
+                    </td>
+                    <td>
+                        <a href="/borrarPeso/{{ peso.id }}">
+                             <img src="../../static/icon/borrar.svg" alt="Borrar" class="icono" align="center">
+                        </a>
+                    </td>
+                 </tr>
+                {% endfor %}
+            </tbody>
+
+
+
+        </table>
+
+    </div>
+
+    <div class="col-12">
+        <h5 class="nav justify-content">Página:
+            <span>
+                {% for l in  lista_peso.paginator.page_range %}
+                    <a class="enlacePaginacion" href="?pagina={{forloop.counter}}"> {{forloop.counter}}</a>,
+                 {% endfor %}
+            </span>
+        </h5>
+     </div>
+
+</div>
+
+
+{% endblock %}

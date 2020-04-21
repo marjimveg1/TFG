@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block contenido %}
+
+
+<div class=" row m-5 pr-lg-5 pl-lg-5  d-flex  justify-content-center ">
+    <div class="col-12">
+        <h1 align="center"  class="nav justify-content-center tituloView">Mi medicación</h1>
+        <hr style="width: 60%">
+    </div>
+
+
+    <div class="col-12 justify-content-center">
+        <table class="table-responsive-sm table">
+            <thead>
+		    <tr>
+                <td><strong>Medicamento</strong></td>
+                <td><strong>Fecha Inicio</strong></td>
+                <td><strong>Fecha Fin</strong></td>
+                <td><strong>Frecuencia (horas)</strong></td>
+                <td>
+                    <a href="/anadirMedicacion/">
+                       <img src="../../static/icon/anadir.svg" alt="Anadir" class="icono" align="center">
+                    </a>
+                </td>
+            </tr>
+	        </thead>
+
+            <tbody align="">
+                 {% for medicacion in lista_medicacion %}
+                <tr>
+                    <td>
+                       {{ medicacion.medicamento }}
+                    </td>
+                    <td>
+                       {{ medicacion.fechaInicio }}
+                    </td>
+                    <td>
+                       {{ medicacion.fechaFin }}
+                    </td>
+                    <td>
+                       {{ medicacion.frecuencia }}
+                    </td>
+                    <td>
+                        <a href="/borrarMedicacion/{{ medicacion.id }}">
+                             <img src="../../static/icon/borrar.svg" alt="Borrar" class="icono" align="center">
+                        </a>
+                    </td>
+                 </tr>
+                {% endfor %}
+            </tbody>
+
+
+
+        </table>
+
+    </div>
+
+    <div class="col-12">
+        <h5 class="nav justify-content">Página:
+            <span>
+                {% for l in  lista_medicacion.paginator.page_range %}
+                    <a class="enlacePaginacion" href="?pagina={{forloop.counter}}"> {{forloop.counter}}</a>,
+                 {% endfor %}
+            </span>
+        </h5>
+     </div>
+
+</div>
+
+
+{% endblock %}
