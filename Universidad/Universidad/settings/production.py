@@ -7,12 +7,12 @@ ALLOWED_HOSTS = ['tfguni.herokuapp.com']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd495oj224n1p7',
-        'USER': 'vexljkjdcvqroy',
-        'PASSWORD': '981ea66a58891cf881c056f1377df4ddb6e028ca3300af1dcd635cfdd82ae8de',
-        'HOST': 'ec2-52-71-85-210.compute-1.amazonaws.com',
+        'NAME': 'dck30heug5gjmv',
+        'USER': 'qzayzqdlvcqggh',
+        'PASSWORD': '7f08c9c3808df6328b9ecc7bb2a69387259bf39e6797c724a8419fa6d55e4d69',
+        'HOST': 'ec2-18-233-137-77.compute-1.amazonaws.com',
         'PORT': 5432,
     }
 }
 
-STATICFILES_DIRS = (BASE_DIR, 'static')
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
